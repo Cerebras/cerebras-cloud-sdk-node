@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:Cerebras/cerebras-api-node",
+  "repository": "github:Cerebras/cerebras-cloud-sdk-node",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [

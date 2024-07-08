@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ## Installation
 <!--
 ```sh
-npm install git+ssh://git@github.com:Cerebras/cerebras-api-node.git
+npm install git+ssh://git@github.com:Cerebras/cerebras-cloud-sdk-node.git
 ```
 -->
 > [!NOTE]
@@ -240,7 +240,7 @@ import Cerebras from 'cerebras_cloud_sdk';
 ```
 
 To do the inverse, add `import "cerebras_cloud_sdk/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/Cerebras/cerebras-api-node/tree/staging/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/Cerebras/cerebras-cloud-sdk-node/tree/staging/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -300,7 +300,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
 <!--
-We are keen for your feedback; please open an [issue](https://www.github.com/Cerebras/cerebras-api-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/Cerebras/cerebras-cloud-sdk-node/issues) with questions, bugs, or suggestions.
 -->
 
 ## Requirements
