@@ -9,11 +9,11 @@ The REST API documentation can be found [on docs.cerebras.net](https://docs.cere
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Installation
-
+<!--
 ```sh
 npm install git+ssh://git@github.com:Cerebras/cerebras-api-node.git
 ```
-
+-->
 > [!NOTE]
 > Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install cerebras_cloud_sdk`
 
@@ -299,7 +299,9 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
+<!--
 We are keen for your feedback; please open an [issue](https://www.github.com/Cerebras/cerebras-api-node/issues) with questions, bugs, or suggestions.
+-->
 
 ## Requirements
 
@@ -317,4 +319,6 @@ The following runtimes are supported:
 
 Note that React Native is not supported at this time.
 
+<!--
 If you are interested in other runtime environments, please open or upvote an issue on GitHub.
+-->
