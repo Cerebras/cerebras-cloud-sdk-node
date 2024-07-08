@@ -157,13 +157,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['CEREBRAS_BASE_URL'] = ''; // empty
       const client = new Cerebras({ cerebrasAPIKey: 'My Cerebras API Key' });
-      expect(client.baseURL).toEqual('https://d365u9pius31oq.cloudfront.net/dev/');
+      expect(client.baseURL).toEqual('https://d1n704mb908frr.cloudfront.net');
     });
 
     test('blank env variable', () => {
       process.env['CEREBRAS_BASE_URL'] = '  '; // blank
       const client = new Cerebras({ cerebrasAPIKey: 'My Cerebras API Key' });
-      expect(client.baseURL).toEqual('https://d365u9pius31oq.cloudfront.net/dev/');
+      expect(client.baseURL).toEqual('https://d1n704mb908frr.cloudfront.net');
     });
   });
 

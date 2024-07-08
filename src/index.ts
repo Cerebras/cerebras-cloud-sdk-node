@@ -81,7 +81,7 @@ export class Cerebras extends Core.APIClient {
    * API Client for interfacing with the Cerebras API.
    *
    * @param {string | undefined} [opts.cerebrasAPIKey=process.env['CEREBRAS_API_KEY'] ?? undefined]
-   * @param {string} [opts.baseURL=process.env['CEREBRAS_BASE_URL'] ?? https://d365u9pius31oq.cloudfront.net/dev/] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['CEREBRAS_BASE_URL'] ?? https://d1n704mb908frr.cloudfront.net] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -103,7 +103,7 @@ export class Cerebras extends Core.APIClient {
     const options: ClientOptions = {
       cerebrasAPIKey,
       ...opts,
-      baseURL: baseURL || `https://d365u9pius31oq.cloudfront.net/dev/`,
+      baseURL: baseURL || `https://d1n704mb908frr.cloudfront.net`,
     };
 
     super({
