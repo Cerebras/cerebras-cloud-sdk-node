@@ -6,9 +6,9 @@
     "rootDir": "./deno",
     "lib": ["es2020", "DOM"],
     "paths": {
-      "petstore/_shims/auto/*": ["deno/_shims/auto/*-deno"],
-      "petstore/*": ["deno/*"],
-      "petstore": ["deno/index.ts"],
+      "cerebras_cloud_sdk/_shims/auto/*": ["deno/_shims/auto/*-deno"],
+      "cerebras_cloud_sdk/*": ["deno/*"],
+      "cerebras_cloud_sdk": ["deno/index.ts"],
     },
     "noEmit": true,
     "declaration": true,

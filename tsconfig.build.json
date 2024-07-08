@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "petstore/*": ["dist/src/*"],
-      "petstore": ["dist/src/index.ts"],
+      "cerebras_cloud_sdk/*": ["dist/src/*"],
+      "cerebras_cloud_sdk": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

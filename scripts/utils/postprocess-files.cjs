@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { parse } = require('@typescript-eslint/parser');
 
-const pkgImportPath = process.env['PKG_IMPORT_PATH'] ?? 'petstore/';
+const pkgImportPath = process.env['PKG_IMPORT_PATH'] ?? 'cerebras_cloud_sdk/';
 
 const distDir =
   process.env['DIST_PATH'] ?
@@ -142,7 +142,7 @@ async function postprocess() {
 
     if (file.endsWith('.d.ts')) {
       // work around bad tsc behavior
-      // if we have `import { type Readable } from 'petstore/_shims/index'`,
+      // if we have `import { type Readable } from 'cerebras_cloud_sdk/_shims/index'`,
       // tsc sometimes replaces `Readable` with `import("stream").Readable` inline
       // in the output .d.ts
       transformed = transformed.replace(/import\("stream"\).Readable/g, 'Readable');

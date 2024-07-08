@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'petstore/shims/node'
- *   import 'petstore/shims/web'
+ *   import 'cerebras_cloud_sdk/shims/node'
+ *   import 'cerebras_cloud_sdk/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */

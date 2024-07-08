@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'petstore/core';
-import { Headers } from 'petstore/_shims/index';
+import { createResponseHeaders } from 'cerebras_cloud_sdk/core';
+import { Headers } from 'cerebras_cloud_sdk/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters

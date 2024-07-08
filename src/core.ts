@@ -1,7 +1,6 @@
 import { VERSION } from './version';
-;
 import {
-  PetstoreError,
+  CerebrasError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -39,8 +38,6 @@ type APIResponseProps = {
 
 async function defaultParseResponse<T>(props: APIResponseProps): Promise<T> {
   const { response } = props;
-  ;
-
   // fetch refuses to read the body when the status code is 204.
   if (response.status === 204) {
     return null as T;
@@ -100,9 +97,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'petstore'`:
-   * - `import 'petstore/shims/node'` (if you're running on Node)
-   * - `import 'petstore/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from 'cerebras_cloud_sdk'`:
+   * - `import 'cerebras_cloud_sdk/shims/node'` (if you're running on Node)
+   * - `import 'cerebras_cloud_sdk/shims/web'` (otherwise)
    */
   asResponse(): Promise<Response> {
     return this.responsePromise.then((p) => p.response);
@@ -116,9 +113,9 @@ export class APIPromise<T> extends Promise<T> {
    *
    * 👋 Getting the wrong TypeScript type for `Response`?
    * Try setting `"moduleResolution": "NodeNext"` if you can,
-   * or add one of these imports before your first `import … from 'petstore'`:
-   * - `import 'petstore/shims/node'` (if you're running on Node)
-   * - `import 'petstore/shims/web'` (otherwise)
+   * or add one of these imports before your first `import … from 'cerebras_cloud_sdk'`:
+   * - `import 'cerebras_cloud_sdk/shims/node'` (if you're running on Node)
+   * - `import 'cerebras_cloud_sdk/shims/web'` (otherwise)
    */
   async withResponse(): Promise<{ data: T; response: Response }> {
     const [data, response] = await Promise.all([this.parse(), this.asResponse()]);
@@ -197,7 +194,7 @@ export abstract class APIClient {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       'User-Agent': this.getUserAgent(),
-...getPlatformHeaders(),
+      ...getPlatformHeaders(),
       ...this.authHeaders(opts),
     };
   }
@@ -489,7 +486,7 @@ export abstract class APIClient {
         if (value === null) {
           return `${encodeURIComponent(key)}=`;
         }
-        throw new PetstoreError(
+        throw new CerebrasError(
           `Cannot stringify type ${typeof value}; Expected string, number, boolean, or null. If you need to pass nested query parameters, you can manually encode them, e.g. { query: { 'foo[key1]': value1, 'foo[key2]': value2 } }, and please open a GitHub issue requesting better support for your use case.`,
         );
       })
@@ -635,7 +632,7 @@ export abstract class AbstractPage<Item> implements AsyncIterable<Item> {
   async getNextPage(): Promise<this> {
     const nextInfo = this.nextPageInfo();
     if (!nextInfo) {
-      throw new PetstoreError(
+      throw new CerebrasError(
         'No next page expected; please check `.hasNextPage()` before calling `.getNextPage()`.',
       );
     }
@@ -754,11 +751,8 @@ export type RequestOptions<
   signal?: AbortSignal | undefined | null;
   idempotencyKey?: string;
 
-
-
   __binaryRequest?: boolean | undefined;
   __binaryResponse?: boolean | undefined;
-
 };
 
 // This is required so that we can determine if a given object matches the RequestOptions
@@ -778,11 +772,8 @@ const requestOptionsKeys: KeysEnum<RequestOptions> = {
   signal: true,
   idempotencyKey: true,
 
-
-
   __binaryRequest: true,
   __binaryResponse: true,
-
 };
 
 export const isRequestOptions = (obj: unknown): obj is RequestOptions => {
@@ -977,10 +968,10 @@ export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve
 
 const validatePositiveInteger = (name: string, n: unknown): number => {
   if (typeof n !== 'number' || !Number.isInteger(n)) {
-    throw new PetstoreError(`${name} must be an integer`);
+    throw new CerebrasError(`${name} must be an integer`);
   }
   if (n < 0) {
-    throw new PetstoreError(`${name} must be a positive integer`);
+    throw new CerebrasError(`${name} must be a positive integer`);
   }
   return n;
 };
@@ -991,8 +982,7 @@ export const castToError = (err: any): Error => {
 };
 
 export const ensurePresent = <T>(value: T | null | undefined): T => {
-  if (value == null)
-    throw new PetstoreError(`Expected a value to be given but received ${value} instead.`);
+  if (value == null) throw new CerebrasError(`Expected a value to be given but received ${value} instead.`);
   return value;
 };
 
@@ -1017,14 +1007,14 @@ export const coerceInteger = (value: unknown): number => {
   if (typeof value === 'number') return Math.round(value);
   if (typeof value === 'string') return parseInt(value, 10);
 
-  throw new PetstoreError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
+  throw new CerebrasError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
 };
 
 export const coerceFloat = (value: unknown): number => {
   if (typeof value === 'number') return value;
   if (typeof value === 'string') return parseFloat(value);
 
-  throw new PetstoreError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
+  throw new CerebrasError(`Could not coerce ${value} (type: ${typeof value}) into a number`);
 };
 
 export const coerceBoolean = (value: unknown): boolean => {
@@ -1090,7 +1080,7 @@ function applyHeadersMut(targetHeaders: Headers, newHeaders: Headers): void {
 
 export function debug(action: string, ...args: any[]) {
   if (typeof process !== 'undefined' && process?.env?.['DEBUG'] === 'true') {
-    console.log(`Petstore:DEBUG:${action}`, ...args);
+    console.log(`Cerebras:DEBUG:${action}`, ...args);
   }
 }
 
@@ -1167,7 +1157,7 @@ export const toBase64 = (str: string | null | undefined): string => {
     return btoa(str);
   }
 
-  throw new PetstoreError('Cannot generate b64 string; Expected `Buffer` or `btoa` to be defined');
+  throw new CerebrasError('Cannot generate b64 string; Expected `Buffer` or `btoa` to be defined');
 };
 
 export function isObj(obj: unknown): obj is Record<string, unknown> {
