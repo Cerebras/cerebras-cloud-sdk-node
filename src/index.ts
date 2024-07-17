@@ -10,7 +10,7 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['CEREBRAS_API_KEY'].
    */
-  cerebrasAPIKey?: string | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
@@ -73,14 +73,14 @@ export interface ClientOptions {
  * API Client for interfacing with the Cerebras API.
  */
 export class Cerebras extends Core.APIClient {
-  cerebrasAPIKey: string;
+  apiKey: string;
 
   private _options: ClientOptions;
 
   /**
    * API Client for interfacing with the Cerebras API.
    *
-   * @param {string | undefined} [opts.cerebrasAPIKey=process.env['CEREBRAS_API_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.apiKey=process.env['CEREBRAS_API_KEY'] ?? undefined]
    * @param {string} [opts.baseURL=process.env['CEREBRAS_BASE_URL'] ?? https://d1n704mb908frr.cloudfront.net] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
@@ -91,17 +91,17 @@ export class Cerebras extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('CEREBRAS_BASE_URL'),
-    cerebrasAPIKey = Core.readEnv('CEREBRAS_API_KEY'),
+    apiKey = Core.readEnv('CEREBRAS_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
-    if (cerebrasAPIKey === undefined) {
+    if (apiKey === undefined) {
       throw new Errors.CerebrasError(
-        "The CEREBRAS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Cerebras client with an cerebrasAPIKey option, like new Cerebras({ cerebrasAPIKey: 'My Cerebras API Key' }).",
+        "The CEREBRAS_API_KEY environment variable is missing or empty; either provide it, or instantiate the Cerebras client with an apiKey option, like new Cerebras({ apiKey: 'My API Key' }).",
       );
     }
 
     const options: ClientOptions = {
-      cerebrasAPIKey,
+      apiKey,
       ...opts,
       baseURL: baseURL || `https://d1n704mb908frr.cloudfront.net`,
     };
@@ -116,7 +116,7 @@ export class Cerebras extends Core.APIClient {
 
     this._options = options;
 
-    this.cerebrasAPIKey = cerebrasAPIKey;
+    this.apiKey = apiKey;
   }
 
   chat: API.Chat = new API.Chat(this);
@@ -133,7 +133,7 @@ export class Cerebras extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { Authorization: `Bearer ${this.cerebrasAPIKey}` };
+    return { Authorization: `Bearer ${this.apiKey}` };
   }
 
   static Cerebras = this;

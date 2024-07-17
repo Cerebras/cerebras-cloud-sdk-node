@@ -4,7 +4,10 @@
 
 This library provides convenient access to the Cerebras REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found [on docs.cerebras.net](https://docs.cerebras.net). The full API of this library can be found in [api.md](api.md).
+<!--
+The REST API documentation can be found on [docs.cerebras.net](https://docs.cerebras.net).
+-->
+The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -26,16 +29,16 @@ The full API of this library can be found in [api.md](api.md).
 import Cerebras from 'cerebras_cloud_sdk';
 
 const cerebras = new Cerebras({
-  cerebrasAPIKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const chatCompletion = await cerebras.chat.completions.create({
+  const completionCreateResponse = await cerebras.chat.completions.create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3-8b-8192',
   });
 
-  console.log(chatCompletion.messages);
+  console.log(completionCreateResponse);
 }
 
 main();
@@ -50,7 +53,7 @@ This library includes TypeScript definitions for all request params and response
 import Cerebras from 'cerebras_cloud_sdk';
 
 const cerebras = new Cerebras({
-  cerebrasAPIKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
@@ -58,7 +61,8 @@ async function main() {
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3-8b-8192',
   };
-  const chatCompletion: Cerebras.Chat.ChatCompletion = await cerebras.chat.completions.create(params);
+  const completionCreateResponse: Cerebras.Chat.CompletionCreateResponse =
+    await cerebras.chat.completions.create(params);
 }
 
 main();
@@ -75,7 +79,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const chatCompletion = await cerebras.chat.completions
+  const completionCreateResponse = await cerebras.chat.completions
     .create({
       messages: [{ role: 'user', content: 'This should cause an error!' }],
       model: 'some-model-that-doesnt-exist',
@@ -170,14 +174,14 @@ const response = await cerebras.chat.completions
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: chatCompletion, response: raw } = await cerebras.chat.completions
+const { data: completionCreateResponse, response: raw } = await cerebras.chat.completions
   .create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3-8b-8192',
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(chatCompletion.messages);
+console.log(completionCreateResponse);
 ```
 
 ### Making custom/undocumented requests
@@ -308,14 +312,6 @@ We are keen for your feedback; please open an [issue](https://www.github.com/Cer
 TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
-
-- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
-- Deno v1.28.0 or higher, using `import Cerebras from "npm:cerebras_cloud_sdk"`.
-- Bun 1.0 or later.
-- Cloudflare Workers.
-- Vercel Edge Runtime.
-- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
-- Nitro v2.6 or greater.
 
 Note that React Native is not supported at this time.
 

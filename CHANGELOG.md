@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2024-07-17)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/Cerebras/cerebras-cloud-sdk-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** update via SDK Studio ([#58](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/58)) ([1c02a5d](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/1c02a5d0dcab19eb1bcb00f513870f404aea7bf9))
+* **api:** update via SDK Studio ([#61](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/61)) ([e8219b2](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/e8219b28faab03a1f9e7691bd529d3224a5c9f11))
+* **api:** update via SDK Studio ([#62](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/62)) ([37a0f42](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/37a0f42078b942572c05e685a7fd7e590dcd5f04))
+* **api:** update via SDK Studio ([#63](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/63)) ([0c10f13](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/0c10f13508db06f7e7f6038aa9609a2833ec0955))
+* **api:** update via SDK Studio ([#64](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/64)) ([dbcdf80](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/dbcdf80cfe4b5aa00bdbb0ee87acc95c00b24b35))
+* **api:** update via SDK Studio ([#65](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/65)) ([480caf2](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/480caf2f72698b54c8af54a79a06875f76e47d95))
+* **api:** update via SDK Studio ([#67](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/67)) ([f1912c8](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/f1912c86c61446560e2369c20e61ae81522f4b15))
+* **api:** update via SDK Studio ([#68](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/68)) ([dc423dd](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/dc423dd3f1a4f626b6d53322382cfa5ab797c1d3))
+* **api:** update via SDK Studio ([#69](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/69)) ([4acc0b4](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/4acc0b4cd9af6eeaf14b0bb352a6fdec0ccb8b62))
+* **api:** update via SDK Studio ([#70](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/70)) ([c69ef0f](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/c69ef0f7055a75c4b70c3f55887d82f2419137f6))
+* **api:** update via SDK Studio ([#71](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/71)) ([92d3f47](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/92d3f47cd76f4f1c73bafc88b861293e3f6cc7f8))
+* **api:** update via SDK Studio ([#72](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/72)) ([37b639c](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/37b639c514381e99219fab4d1a280d85f269f7f0))
+* **api:** update via SDK Studio ([#73](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/73)) ([9fa7521](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/9fa75219b0146f5203944c1d98c591c276fcba3d))
+* **api:** update via SDK Studio ([#74](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/74)) ([295f7a9](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/295f7a9ae11dd90c54101ee03b71c2ecc9195eb7))
+* **api:** update via SDK Studio ([#75](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/75)) ([a9d9099](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/a9d909942bc72152aed2fe7c8bd2be05636d90b0))
+* **api:** update via SDK Studio ([#76](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/76)) ([5f527e2](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/5f527e2e747d1ada3123db3e8e85da9b9e3ca2b5))
+
 ## 0.1.0-alpha.2 (2024-07-09)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/Cerebras/cerebras-cloud-sdk-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
