@@ -197,8 +197,8 @@ export interface CompletionCreateParams {
   top_p?: number | null;
 
   /**
-   * A unique identifier representing your end-user, which can help OpenAI to monitor
-   * and detect abuse.
+   * A unique identifier representing your end-user, which can help Cerebras to
+   * monitor and detect abuse.
    */
   user?: string | null;
 }
