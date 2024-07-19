@@ -3,6 +3,7 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as CompletionsAPI from './completions';
+import { Stream } from '../../streaming';
 
 export class Completions extends APIResource {
   /**
@@ -11,8 +12,10 @@ export class Completions extends APIResource {
   create(
     body: CompletionCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<CompletionCreateResponse> {
-    return this._client.post('/v1/chat/completions', { body, ...options });
+  ): Core.APIPromise<CompletionCreateResponse> | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>> {
+    return this._client.post('/v1/chat/completions', { body, ...options, stream: body.stream ?? false }) as
+      | Core.APIPromise<CompletionCreateResponse>
+      | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>>;
   }
 }
 
@@ -23,7 +26,7 @@ export interface ChatCompletion {
 
   created: number;
 
-  model: 'llama3-8b-8192';
+  model: 'llama3-8b-8192' | 'llama3-70b-8192';
 
   object: 'chat.completion';
 
@@ -83,7 +86,7 @@ export namespace CompletionCreateResponse {
 
     created: number;
 
-    model: 'llama3-8b-8192';
+    model: 'llama3-8b-8192' | 'llama3-70b-8192';
 
     object: 'chat.completion.chunk';
 
@@ -156,11 +159,11 @@ export interface CompletionCreateParams {
     | CompletionCreateParams.AssistantMessageRequest
   >;
 
-  model: 'llama3-8b-8192';
+  model: 'llama3-8b-8192' | 'llama3-70b-8192';
 
   /**
-   * The maximum number of [tokens](/tokenizer) that can be generated in the
-   * completion. The token count of your plus `max_tokens` cannot exceed the model's
+   * The maximum number of tokens that can be generated in the chat completion. The
+   * total length of input tokens and generated tokens is limited by the model's
    * context length.
    */
   max_tokens?: number | null;

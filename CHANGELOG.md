@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.2.1 (2024-07-19)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/Cerebras/cerebras-cloud-sdk-node/compare/v0.2.0...v0.2.1)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#90](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/90)) ([85c67b5](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/85c67b57325dcddc2e9f7ba55ae6810dce837b17))
+* **api:** OpenAPI spec update via Stainless API ([#91](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/91)) ([e6f93ac](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/e6f93ac5fcdb4a20c52e481ee29422d5d0c120a3))
+* **api:** OpenAPI spec update via Stainless API ([#92](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/92)) ([346f40e](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/346f40e29aa836003c0b9c54bbf5f79e1a8721cc))
+* **api:** update via SDK Studio ([#82](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/82)) ([e57b0a7](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/e57b0a7817c0e3ad1ef12f068993f5a91795296d))
+* **api:** update via SDK Studio ([#83](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/83)) ([0832c04](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/0832c04084904974cac2591a8ca853e1ff17fd5f))
+* **api:** update via SDK Studio ([#84](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/84)) ([5fcf6e6](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/5fcf6e640f76b01c816f6ce600e0a1cd7f7490c9))
+* **api:** update via SDK Studio ([#85](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/85)) ([e39528b](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/e39528bd1f311e351aca208eef0cb34239ad4b01))
+* **api:** update via SDK Studio ([#86](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/86)) ([96822f6](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/96822f6d035ef5ce6503ad85f06ad036e76f2113))
+* **api:** update via SDK Studio ([#93](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/93)) ([6aa21ba](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/6aa21ba90cf76d5b1adc208a1865c7151e21f3ca))
+
+
+### Chores
+
+* **internal:** version bump ([#80](https://github.com/Cerebras/cerebras-cloud-sdk-node/issues/80)) ([26811af](https://github.com/Cerebras/cerebras-cloud-sdk-node/commit/26811af28eb022a4113ab72a889d6c44a1a4d3f9))
+
 ## 0.2.0 (2024-07-17)
 
 Full Changelog: [v0.1.0-alpha.3...v0.2.0](https://github.com/Cerebras/cerebras-cloud-sdk-node/compare/v0.1.0-alpha.3...v0.2.0)

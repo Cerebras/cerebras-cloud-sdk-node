@@ -1,6 +1,6 @@
 {
   "name": "cerebras_cloud_sdk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "The official TypeScript library for the Cerebras API",
   "author": "Cerebras <support@cerebras.net>",
   "types": "dist/index.d.ts",

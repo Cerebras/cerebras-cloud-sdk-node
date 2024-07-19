@@ -28,7 +28,7 @@ The full API of this library can be found in [api.md](api.md).
 ```js
 import Cerebras from 'cerebras_cloud_sdk';
 
-const cerebras = new Cerebras({
+const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
 });
 
@@ -44,6 +44,34 @@ async function main() {
 main();
 ```
 
+## Streaming responses
+
+We provide support for streaming responses using Server Sent Events (SSE).
+
+```ts
+import Cerebras from 'cerebras_cloud_sdk';
+
+const cerebras = new Cerebras({
+  apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
+});
+
+async function main() {
+  const stream = await cerebras.chat.completions.create({
+    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
+    model: 'llama3-8b-8192',
+    stream: true,
+  });
+  for await (const chunk of stream) {
+    process.stdout.write(chunk.choices[0]?.delta?.content || '');
+  }
+}
+
+main();
+```
+
+If you need to cancel a stream, you can `break` from the loop
+or call `stream.controller.abort()`.
+
 ### Request & Response types
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
@@ -52,7 +80,7 @@ This library includes TypeScript definitions for all request params and response
 ```ts
 import Cerebras from 'cerebras_cloud_sdk';
 
-const cerebras = new Cerebras({
+const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
 });
 
@@ -122,7 +150,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const cerebras = new Cerebras({
+const client = new Cerebras({
   maxRetries: 0, // default is 2
 });
 
@@ -139,7 +167,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const cerebras = new Cerebras({
+const client = new Cerebras({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -163,7 +191,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const cerebras = new Cerebras();
+const client = new Cerebras();
 
 const response = await cerebras.chat.completions
   .create({
@@ -244,7 +272,7 @@ import Cerebras from 'cerebras_cloud_sdk';
 ```
 
 To do the inverse, add `import "cerebras_cloud_sdk/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/Cerebras/cerebras-cloud-sdk-node/tree/staging/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/Cerebras/cerebras-cloud-sdk-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -280,7 +308,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const cerebras = new Cerebras({
+const client = new Cerebras({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 
