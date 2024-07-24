@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.3.0 (2024-07-24)
+
+Full Changelog: [v0.2.1...v0.3.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.2.1...v0.3.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#110](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/110)) ([56f8122](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/56f8122f2a5d18354f2ac7493a3425e8a4325b59))
+* **api:** OpenAPI spec update via Stainless API ([#96](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/96)) ([35dac8f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/35dac8fec45cb4c8e889d3a0f3f6e79fb3d36c80))
+* **api:** update via SDK Studio ([#101](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/101)) ([29f4d8c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/29f4d8ca67857fd2246152485bac548d7a34b7ba))
+* **api:** update via SDK Studio ([#105](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/105)) ([4a23ffc](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/4a23ffce027a55a6912aa56c817d6aa10cce8bac))
+* **api:** update via SDK Studio ([#106](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/106)) ([4214f6b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/4214f6b12eded76074d671114b621f0cac728183))
+* **api:** update via SDK Studio ([#109](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/109)) ([8c88dd1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8c88dd15b08118e9a71b5e9c8472f35e1789ce68))
+
+
+### Chores
+
+* go live ([#103](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/103)) ([c9a990e](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c9a990e8638b08142e6d7af09e882e77df19da4e))
+* **internal:** refactor release doctor script ([#98](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/98)) ([beced64](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/beced645af9c2ddc645247a82b23bcaa22abfc16))
+* **internal:** restore release-please configuration files ([#107](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/107)) ([de223ec](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/de223eccd4995851e911dd299d0f945fa8ab8e8e))
+* **tests:** update prism version ([#99](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/99)) ([9b32a66](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/9b32a6653d8e3f87ac55eb9c97ce1d9be86c9633))
+
 ## 0.2.1 (2024-07-19)
 
 Full Changelog: [v0.2.0...v0.2.1](https://github.com/Cerebras/cerebras-cloud-sdk-node/compare/v0.2.0...v0.2.1)

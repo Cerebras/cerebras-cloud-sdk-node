@@ -34,6 +34,7 @@ describe('resource completions', () => {
       temperature: 0,
       top_p: 0,
       user: 'user',
+      'X-Amz-Cf-Id': 'X-Amz-Cf-Id',
     });
   });
 });

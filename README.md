@@ -4,21 +4,33 @@
 
 This library provides convenient access to the Cerebras REST API from server-side TypeScript or JavaScript.
 
-<!--
-The REST API documentation can be found on [docs.cerebras.net](https://docs.cerebras.net).
--->
-The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [cloud.cerebras.ai/docs](https://cloud.cerebras.ai/docs). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
+## About Cerebras
+
+At Cerebras, we've developed the world's largest and fastest AI processor, the Wafer-Scale Engine-3 (WSE-3). The Cerebras CS-3 system, powered by the WSE-3, represents a new class of AI supercomputer that sets the standard for generative AI training and inference with unparalleled performance and scalability.
+
+With Cerebras as your inference provider, you can:
+- Achieve unprecedented speed for AI inference workloads
+- Build commercially with high throughput
+- Effortlessly scale your AI workloads with our seamless clustering technology
+
+Our CS-3 systems can be quickly and easily clustered to create the largest AI supercomputers in the world, making it simple to place and run the largest models. Leading corporations, research institutions, and governments are already using Cerebras solutions to develop proprietary models and train popular open-source models.
+
+Want to experience the power of Cerebras? Check out our [website](https://cerebras.net) for more resources and explore options for accessing our technology through the Cerebras Cloud or on-premise deployments!
+
 ## Installation
-<!--
-```sh
-npm install git+ssh://git@github.com:Cerebras/cerebras-cloud-sdk-node.git
 ```
--->
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install cerebras_cloud_sdk`
+npm install cerebras_cloud_sdk
+```
+
+## API Key
+Get an API Key from [cloud.cerebras.ai](https://cloud.cerebras.ai/) and add it to your environment variables:
+```
+export CEREBRAS_API_KEY="your-api-key-here"
+```
 
 ## Usage
 
@@ -33,7 +45,7 @@ const client = new Cerebras({
 });
 
 async function main() {
-  const completionCreateResponse = await cerebras.chat.completions.create({
+  const completionCreateResponse = await client.chat.completions.create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3-8b-8192',
   });
@@ -48,15 +60,17 @@ main();
 
 We provide support for streaming responses using Server Sent Events (SSE).
 
+Note that when streaming, `usage` and `time_info` will be information will only be included in the final chunk.
+
 ```ts
 import Cerebras from 'cerebras_cloud_sdk';
 
-const cerebras = new Cerebras({
+const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
 });
 
 async function main() {
-  const stream = await cerebras.chat.completions.create({
+  const stream = await client.chat.completions.create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3-8b-8192',
     stream: true,
@@ -90,7 +104,7 @@ async function main() {
     model: 'llama3-8b-8192',
   };
   const completionCreateResponse: Cerebras.Chat.CompletionCreateResponse =
-    await cerebras.chat.completions.create(params);
+    await client.chat.completions.create(params);
 }
 
 main();
@@ -331,9 +345,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-<!--
 We are keen for your feedback; please open an [issue](https://www.github.com/Cerebras/cerebras-cloud-sdk-node/issues) with questions, bugs, or suggestions.
--->
 
 ## Requirements
 
