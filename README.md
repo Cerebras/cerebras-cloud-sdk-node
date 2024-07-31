@@ -121,7 +121,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const completionCreateResponse = await cerebras.chat.completions
+  const completionCreateResponse = await client.chat.completions
     .create({
       messages: [{ role: 'user', content: 'This should cause an error!' }],
       model: 'some-model-that-doesnt-exist',
@@ -169,7 +169,7 @@ const client = new Cerebras({
 });
 
 // Or, configure per-request:
-await cerebras.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' }, {
+await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' }, {
   maxRetries: 5,
 });
 ```
@@ -186,7 +186,7 @@ const client = new Cerebras({
 });
 
 // Override per-request:
-await cerebras.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' }, {
+await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -207,7 +207,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new Cerebras();
 
-const response = await cerebras.chat.completions
+const response = await client.chat.completions
   .create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3-8b-8192',
@@ -216,7 +216,7 @@ const response = await cerebras.chat.completions
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: completionCreateResponse, response: raw } = await cerebras.chat.completions
+const { data: completionCreateResponse, response: raw } = await client.chat.completions
   .create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3-8b-8192',
@@ -327,7 +327,7 @@ const client = new Cerebras({
 });
 
 // Override per-request:
-await cerebras.chat.completions.create(
+await client.chat.completions.create(
   { messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),

@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.4.0 (2024-07-31)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#120](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/120)) ([db5837c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/db5837c7c81444bd347d1139a3aaca55757e7788))
+* **api:** OpenAPI spec update via Stainless API ([#127](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/127)) ([2cb80bf](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2cb80bfb7ddcd5c426d883df866e91bcd92f4032))
+* **api:** update via SDK Studio ([#114](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/114)) ([3c69854](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3c69854a3104888420b8f4f05097639a54ee13cf))
+* **api:** update via SDK Studio ([#123](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/123)) ([d174370](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/d174370b5cfa781e8fef63aeee3fa99f15c47382))
+* **api:** update via SDK Studio ([#124](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/124)) ([0a82f49](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/0a82f4910b37a03c677a88decb9418b1621c8e84))
+* **api:** update via SDK Studio ([#125](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/125)) ([c04dd57](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c04dd5727a963a6ca16d6e907a0b9079d21c9dc0))
+* **api:** update via SDK Studio ([#126](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/126)) ([cb504bd](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/cb504bdff0b0524fbc3682c1e98e23b1be9e3391))
+
+
+### Bug Fixes
+
+* **compat:** remove ReadableStream polyfill redundant since node v16 ([#115](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/115)) ([13c14b0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/13c14b0909337627a40134d921574515473c73e5))
+
+
+### Chores
+
+* **docs:** fix incorrect client var names ([#117](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/117)) ([02cb499](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/02cb499fdddc1e73c90a0866ba5812d6d3572334))
+* **internal:** add constant for default timeout ([#122](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/122)) ([bb8babf](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/bb8babf72b453ee61121af62c3651e50c5367a51))
+* **internal:** codegen related update ([#116](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/116)) ([fca545a](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/fca545aefb655cf993d1f50748669b243e16ee6d))
+* **internal:** codegen related update ([#118](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/118)) ([e5684b3](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/e5684b31679b3196b8d1251dffc710e509f4dbaf))
+* **internal:** fix custom code ([bdc8f82](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/bdc8f824efff083751c4bdda8326e60c48d1e895))
+
 ## 0.3.0 (2024-07-24)
 
 Full Changelog: [v0.2.1...v0.3.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.2.1...v0.3.0)

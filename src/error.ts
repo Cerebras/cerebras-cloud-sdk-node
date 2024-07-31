@@ -48,7 +48,7 @@ export class APIError extends CerebrasError {
     message: string | undefined,
     headers: Headers | undefined,
   ) {
-    if (!status) {
+    if (status === undefined) {
       return new APIConnectionError({ cause: castToError(errorResponse) });
     }
 

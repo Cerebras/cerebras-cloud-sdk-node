@@ -137,6 +137,7 @@ export class Cerebras extends Core.APIClient {
   }
 
   static Cerebras = this;
+  static DEFAULT_TIMEOUT = 60000; // 1 minute
 
   static CerebrasError = Errors.CerebrasError;
   static APIError = Errors.APIError;

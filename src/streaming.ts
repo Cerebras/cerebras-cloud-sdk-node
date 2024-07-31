@@ -49,7 +49,9 @@ export class Stream<Item> implements AsyncIterable<Item> {
             }
 
             if (data && data.error) {
-              throw new APIError(undefined, data.error, undefined, undefined);
+              // Status code of zero is generic error message.
+              const status = data.status_code || 0;
+              throw APIError.generate(status, data.error, undefined, undefined);
             }
 
             yield data;
@@ -64,7 +66,9 @@ export class Stream<Item> implements AsyncIterable<Item> {
             }
             // TODO: Is this where the error should be thrown?
             if (sse.event == 'error') {
-              throw new APIError(undefined, data.error, data.message, undefined);
+              // Status code of zero is generic error message.
+              const status = data.status_code || 0;
+              throw APIError.generate(status, data.error, undefined, undefined);
             }
             yield { event: sse.event, data: data } as any;
           }
