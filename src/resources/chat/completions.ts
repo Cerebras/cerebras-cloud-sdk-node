@@ -40,7 +40,7 @@ export interface ChatCompletion {
 
   created: number;
 
-  model: 'llama3-8b-8192' | 'llama3-70b-8192';
+  model: 'llama3.1-8b' | 'llama3.1-70b';
 
   object: 'chat.completion';
 
@@ -160,7 +160,7 @@ export namespace CompletionCreateResponse {
 
     created: number;
 
-    model: 'llama3-8b-8192' | 'llama3-70b-8192';
+    model: 'llama3.1-8b' | 'llama3.1-70b';
 
     object: 'chat.completion.chunk';
 
@@ -303,7 +303,7 @@ export interface CompletionCreateParams {
   /**
    * Body param:
    */
-  model: 'llama3-8b-8192' | 'llama3-70b-8192';
+  model: 'llama3.1-8b' | 'llama3.1-70b';
 
   /**
    * Body param: Number between -2.0 and 2.0. Positive values penalize new tokens
