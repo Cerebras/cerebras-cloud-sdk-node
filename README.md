@@ -47,7 +47,7 @@ const client = new Cerebras({
 async function main() {
   const completionCreateResponse = await client.chat.completions.create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
-    model: 'llama3-8b-8192',
+    model: 'llama3.1-8b',
   });
 
   console.log(completionCreateResponse);
@@ -72,7 +72,7 @@ const client = new Cerebras({
 async function main() {
   const stream = await client.chat.completions.create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
-    model: 'llama3-8b-8192',
+    model: 'llama3.1-8b',
     stream: true,
   });
   for await (const chunk of stream) {
@@ -101,7 +101,7 @@ const client = new Cerebras({
 async function main() {
   const params: Cerebras.Chat.CompletionCreateParams = {
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
-    model: 'llama3-8b-8192',
+    model: 'llama3.1-8b',
   };
   const completionCreateResponse: Cerebras.Chat.CompletionCreateResponse =
     await client.chat.completions.create(params);
@@ -169,7 +169,7 @@ const client = new Cerebras({
 });
 
 // Or, configure per-request:
-await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' }, {
+await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' }, {
   maxRetries: 5,
 });
 ```
@@ -186,7 +186,7 @@ const client = new Cerebras({
 });
 
 // Override per-request:
-await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' }, {
+await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -208,19 +208,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new Cerebras();
 
 const response = await client.chat.completions
-  .create({
-    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
-    model: 'llama3-8b-8192',
-  })
+  .create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: completionCreateResponse, response: raw } = await client.chat.completions
-  .create({
-    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
-    model: 'llama3-8b-8192',
-  })
+  .create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(completionCreateResponse);
@@ -328,7 +322,7 @@ const client = new Cerebras({
 
 // Override per-request:
 await client.chat.completions.create(
-  { messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3-8b-8192' },
+  { messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },

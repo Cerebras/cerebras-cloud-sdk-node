@@ -6,6 +6,14 @@ Full Changelog: [v0.4.0...v0.4.0](https://github.com/Cerebras/cerebras-cloud-sdk
 
 ### Features
 
+* **api:** OpenAPI spec update via Stainless API ([#133](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/133)) ([3f0786e](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3f0786e21942e5a1f5324220298e47141bdb0dfb))
+
+## 0.4.0 (2024-07-31)
+
+Full Changelog: [v0.4.0...v0.4.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.4.0...v0.4.0)
+
+### Features
+
 * **api:** OpenAPI spec update via Stainless API ([#129](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/129)) ([76b9bae](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/76b9bae7f83e8a2505029cf9073f4f96f371f5a3))
 
 ## 0.4.0 (2024-07-31)
