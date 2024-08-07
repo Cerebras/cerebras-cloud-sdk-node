@@ -156,8 +156,6 @@ export namespace CompletionCreateResponse {
   export interface ChatChunkResponse {
     id: string;
 
-    choices: Array<ChatChunkResponse.Choice>;
-
     created: number;
 
     model: 'llama3.1-8b' | 'llama3.1-70b';
@@ -165,6 +163,8 @@ export namespace CompletionCreateResponse {
     object: 'chat.completion.chunk';
 
     system_fingerprint: string;
+
+    choices?: Array<ChatChunkResponse.Choice> | null;
 
     service_tier?: string | null;
 
