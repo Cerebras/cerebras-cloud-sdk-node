@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.6.0 (2024-08-14)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** Update to 0.6.0 ([#150](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/150)) ([5845be4](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5845be44d9281fb969284434f2cd2d4386a68f50))
+* **api:** Update to 0.6.0 ([#152](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/152)) ([77e3075](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/77e30758abc71241b586170c58198ef17a6a2088))
+* **api:** Update URLs to use domain ([#144](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/144)) ([0cfbe7d](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/0cfbe7d4e4ba693c6fe3ebe064c4bd9aca91e293))
+* **api:** update via SDK Studio ([#137](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/137)) ([7cef846](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7cef84659671084117b890502951cafeb5bc5a86))
+* **api:** update via SDK Studio ([#139](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/139)) ([b77c283](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b77c28381624f875bf64526954651515620e0344))
+* **api:** update via SDK Studio ([#140](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/140)) ([11ff5ff](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/11ff5ffda5db6911392dee2de1b2006cbdd3fee7))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#149](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/149)) ([8ea0a70](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8ea0a70445d0a6a8101d8486cae783f0021f9948))
+* **examples:** minor formatting changes ([#151](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/151)) ([f62cebe](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/f62cebe49b979f570e965b42ebc25eab3cbfae2c))
+* force eslint to use non flat config ([#146](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/146)) ([5303df1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5303df15027eeca90e58b781c52275040e7aaf11))
+
 ## 0.5.0 (2024-08-07)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.4.0...v0.5.0)

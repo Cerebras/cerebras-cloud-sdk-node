@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Cerebras REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [cloud.cerebras.ai/docs](https://cloud.cerebras.ai/docs). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [inference-docs.cerebras.ai](https://inference-docs.cerebras.ai). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 

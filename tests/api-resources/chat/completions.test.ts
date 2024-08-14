@@ -25,7 +25,7 @@ describe('resource completions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
-      messages: [{ content: 'content', name: 'name', role: 'system' }],
+      messages: [{ content: 'content', role: 'system', name: 'name' }],
       model: 'llama3.1-8b',
       frequency_penalty: -2,
       logit_bias: {},
@@ -43,9 +43,9 @@ describe('resource completions', () => {
       temperature: 0,
       tool_choice: 'none',
       tools: [
-        { function: { description: 'description', name: 'name', parameters: {} }, type: 'type' },
-        { function: { description: 'description', name: 'name', parameters: {} }, type: 'type' },
-        { function: { description: 'description', name: 'name', parameters: {} }, type: 'type' },
+        { function: { name: 'name', description: 'description', parameters: {} }, type: 'type' },
+        { function: { name: 'name', description: 'description', parameters: {} }, type: 'type' },
+        { function: { name: 'name', description: 'description', parameters: {} }, type: 'type' },
       ],
       top_logprobs: 0,
       top_p: 0,
