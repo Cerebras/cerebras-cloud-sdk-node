@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.7.0 (2024-08-21)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** Tool calling ([#156](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/156)) ([7e55229](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7e55229923948ed8966f1cab8ae0ec18f4a7593f))
+* **api:** Tool calling ([#159](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/159)) ([7e828c5](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7e828c5f57a05574fe47338ff5bcf334f8f1d2d4))
+
 ## 0.6.0 (2024-08-14)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.5.0...v0.6.0)

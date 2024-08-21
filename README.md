@@ -36,8 +36,8 @@ export CEREBRAS_API_KEY="your-api-key-here"
 
 The full API of this library can be found in [api.md](api.md).
 
-<!-- prettier-ignore -->
-```js
+<!-- RUN TEST: Standard -->
+```ts
 import Cerebras from 'cerebras_cloud_sdk';
 
 const client = new Cerebras({
@@ -50,7 +50,7 @@ async function main() {
     model: 'llama3.1-8b',
   });
 
-  console.log(completionCreateResponse);
+  console.log(completionCreateResponse?.choices[0]?.message);
 }
 
 main();
@@ -62,6 +62,7 @@ We provide support for streaming responses using Server Sent Events (SSE).
 
 Note that when streaming, `usage` and `time_info` will be information will only be included in the final chunk.
 
+<!-- RUN TEST: Streaming -->
 ```ts
 import Cerebras from 'cerebras_cloud_sdk';
 
@@ -90,7 +91,7 @@ or call `stream.controller.abort()`.
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:
 
-<!-- prettier-ignore -->
+<!-- RUN TEST: Types -->
 ```ts
 import Cerebras from 'cerebras_cloud_sdk';
 
@@ -118,19 +119,26 @@ When the library is unable to connect to the API,
 or if the API returns a non-success status code (i.e., 4xx or 5xx response),
 a subclass of `APIError` will be thrown:
 
-<!-- prettier-ignore -->
+<!-- RUN TEST: Error -->
 ```ts
+import Cerebras from 'cerebras_cloud_sdk';
+
+const client = new Cerebras({
+  apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
+});
+
 async function main() {
   const completionCreateResponse = await client.chat.completions
     .create({
       messages: [{ role: 'user', content: 'This should cause an error!' }],
-      model: 'some-model-that-doesnt-exist',
+      model: 'some-model-that-doesnt-exist' as any, // Ask TS to ignore the obviously invalid model name... Do not do this!
     })
     .catch(async (err) => {
       if (err instanceof Cerebras.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.headers); // {server: 'nginx', ...}
+        console.log(err); // Full exception
       } else {
         throw err;
       }
@@ -161,8 +169,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 
 You can use the `maxRetries` option to configure or disable this:
 
-<!-- prettier-ignore -->
+<!-- RUN TEST: Retries -->
 ```js
+import Cerebras from 'cerebras_cloud_sdk';
+
 // Configure the default for all requests:
 const client = new Cerebras({
   maxRetries: 0, // default is 2
@@ -178,8 +188,10 @@ await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why 
 
 Requests time out after 1 minute by default. You can configure this with a `timeout` option:
 
-<!-- prettier-ignore -->
+<!-- RUN TEST: Timeout -->
 ```ts
+import Cerebras from 'cerebras_cloud_sdk';
+
 // Configure the default for all requests:
 const client = new Cerebras({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
@@ -203,8 +215,10 @@ The "raw" `Response` returned by `fetch()` can be accessed through the `.asRespo
 
 You can also use the `.withResponse()` method to get the raw `Response` along with the parsed data.
 
-<!-- prettier-ignore -->
+<!-- RUN TEST: Advanced -->
 ```ts
+import Cerebras from 'cerebras_cloud_sdk';
+
 const client = new Cerebras();
 
 const response = await client.chat.completions

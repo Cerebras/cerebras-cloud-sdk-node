@@ -10,12 +10,21 @@ export class Completions extends APIResource {
    * Chat
    */
   create(
+    params: CompletionCreateParamsNonStreaming,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<ChatCompletion>;
+  create(
+    params: CompletionCreateParamsStreaming,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>>;
+  create(
+    params: CompletionCreateParamsBase,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse> | ChatCompletion>;
+  create(
     params: CompletionCreateParams,
     options?: Core.RequestOptions,
-  ):
-    | Core.APIPromise<ChatCompletion>
-    | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>>
-    | Core.APIPromise<Stream<CompletionCreateResponse.ErrorChunkResponse>> {
+  ): Core.APIPromise<ChatCompletion> | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>> {
     const { 'X-Amz-Cf-Id': xAmzCfId, 'X-delay-time': xDelayTime, ...body } = params;
     return this._client.post('/v1/chat/completions', {
       body,
@@ -28,8 +37,7 @@ export class Completions extends APIResource {
       },
     }) as
       | Core.APIPromise<ChatCompletion>
-      | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>>
-      | Core.APIPromise<Stream<CompletionCreateResponse.ErrorChunkResponse>>;
+      | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>>;
   }
 }
 
@@ -68,7 +76,7 @@ export namespace ChatCompletion {
 
   export namespace Choice {
     export interface Message {
-      role: 'assistant';
+      role: 'assistant' | 'user' | 'system' | 'tool';
 
       content?: string | null;
 
@@ -190,7 +198,7 @@ export namespace CompletionCreateResponse {
       export interface Delta {
         content?: string | null;
 
-        role?: 'assistant' | null;
+        role?: 'assistant' | 'user' | 'system' | 'tool' | null;
 
         tool_calls?: Array<Delta.ToolCall> | null;
         [k: string]: unknown;
@@ -290,7 +298,19 @@ export namespace CompletionCreateResponse {
   }
 }
 
-export interface CompletionCreateParams {
+// This enables us to do matching against the parameter to overload the function and know what the
+// return type will be (whether with or without streaming).
+export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming;
+
+export interface CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase {
+  stream?: false | null;
+}
+
+export interface CompletionCreateParamsStreaming extends CompletionCreateParamsBase {
+  stream: true;
+}
+
+export interface CompletionCreateParamsBase {
   /**
    * Body param:
    */
@@ -298,6 +318,7 @@ export interface CompletionCreateParams {
     | CompletionCreateParams.SystemMessageRequest
     | CompletionCreateParams.UserMessageRequest
     | CompletionCreateParams.AssistantMessageRequest
+    | CompletionCreateParams.ToolMessageRequest
   >;
 
   /**
@@ -501,6 +522,17 @@ export namespace CompletionCreateParams {
     }
   }
 
+  export interface ToolMessageRequest {
+    content: string;
+
+    role: 'tool';
+
+    tool_call_id: string;
+
+    name?: string | null;
+    [k: string]: unknown;
+  }
+
   export interface ResponseFormat {
     type?: 'text' | 'json_object' | null;
     [k: string]: unknown;
@@ -553,4 +585,6 @@ export namespace Completions {
   export import ChatCompletion = CompletionsAPI.ChatCompletion;
   export import CompletionCreateResponse = CompletionsAPI.CompletionCreateResponse;
   export import CompletionCreateParams = CompletionsAPI.CompletionCreateParams;
+  export import CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming;
+  export import CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming;
 }
