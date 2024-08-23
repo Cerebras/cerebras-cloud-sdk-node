@@ -12,7 +12,7 @@ describe('resource completions', () => {
   test('create: only required params', async () => {
     const responsePromise = client.chat.completions.create({
       messages: [{ content: 'content', role: 'system' }],
-      model: 'llama3.1-8b',
+      model: 'model',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -26,7 +26,7 @@ describe('resource completions', () => {
   test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
       messages: [{ content: 'content', role: 'system', name: 'name' }],
-      model: 'llama3.1-8b',
+      model: 'model',
       frequency_penalty: -2,
       logit_bias: {},
       logprobs: true,
