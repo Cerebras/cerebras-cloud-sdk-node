@@ -1,6 +1,6 @@
 # Cerebras Node API Library
 
-[![NPM version](https://img.shields.io/npm/v/cerebras_cloud_sdk.svg)](https://npmjs.org/package/cerebras_cloud_sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/cerebras_cloud_sdk)
+[![NPM version](https://img.shields.io/npm/v/@cerebras/cerebras_cloud_sdk.svg)](https://npmjs.org/package/@cerebras/cerebras_cloud_sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@cerebras/cerebras_cloud_sdk)
 
 This library provides convenient access to the Cerebras REST API from server-side TypeScript or JavaScript.
 
@@ -38,7 +38,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- RUN TEST: Standard -->
 ```ts
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
@@ -64,7 +64,7 @@ Note that when streaming, `usage` and `time_info` will be information will only 
 
 <!-- RUN TEST: Streaming -->
 ```ts
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
@@ -93,7 +93,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- RUN TEST: Types -->
 ```ts
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
@@ -121,7 +121,7 @@ a subclass of `APIError` will be thrown:
 
 <!-- RUN TEST: Error -->
 ```ts
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
@@ -171,7 +171,7 @@ You can use the `maxRetries` option to configure or disable this:
 
 <!-- RUN TEST: Retries -->
 ```js
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 // Configure the default for all requests:
 const client = new Cerebras({
@@ -190,7 +190,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 
 <!-- RUN TEST: Timeout -->
 ```ts
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 // Configure the default for all requests:
 const client = new Cerebras({
@@ -217,7 +217,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- RUN TEST: Advanced -->
 ```ts
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 const client = new Cerebras();
 
@@ -289,11 +289,11 @@ add the following import before your first import `from "Cerebras"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'cerebras_cloud_sdk/shims/web';
-import Cerebras from 'cerebras_cloud_sdk';
+import '@cerebras/cerebras_cloud_sdk/shims/web';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 ```
 
-To do the inverse, add `import "cerebras_cloud_sdk/shims/node"` (which does import polyfills).
+To do the inverse, add `import "@cerebras/cerebras_cloud_sdk/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/Cerebras/cerebras-cloud-sdk-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -303,7 +303,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Cerebras from 'cerebras_cloud_sdk';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
 const client = new Cerebras({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {

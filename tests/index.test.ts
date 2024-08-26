@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Cerebras from 'cerebras_cloud_sdk';
-import { APIUserAbortError } from 'cerebras_cloud_sdk';
-import { Headers } from 'cerebras_cloud_sdk/core';
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
+import { APIUserAbortError } from '@cerebras/cerebras_cloud_sdk';
+import { Headers } from '@cerebras/cerebras_cloud_sdk/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {

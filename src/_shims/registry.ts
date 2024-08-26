@@ -42,12 +42,12 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'cerebras_cloud_sdk/shims/${shims.kind}'\` before importing anything else from cerebras_cloud_sdk`,
+      `you must \`import '@cerebras/cerebras_cloud_sdk/shims/${shims.kind}'\` before importing anything else from @cerebras/cerebras_cloud_sdk`,
     );
   }
   if (kind) {
     throw new Error(
-      `can't \`import 'cerebras_cloud_sdk/shims/${shims.kind}'\` after \`import 'cerebras_cloud_sdk/shims/${kind}'\``,
+      `can't \`import '@cerebras/cerebras_cloud_sdk/shims/${shims.kind}'\` after \`import '@cerebras/cerebras_cloud_sdk/shims/${kind}'\``,
     );
   }
   auto = options.auto;

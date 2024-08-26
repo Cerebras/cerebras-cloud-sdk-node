@@ -1,5 +1,5 @@
 {
-  "name": "cerebras_cloud_sdk",
+  "name": "@cerebras/cerebras_cloud_sdk",
   "version": "1.0.0",
   "description": "The official TypeScript library for the Cerebras API",
   "author": "Cerebras <support@cerebras.ai>",
@@ -59,8 +59,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "cerebras_cloud_sdk": ".",
-    "cerebras_cloud_sdk/*": "./src/*"
+    "@cerebras/cerebras_cloud_sdk": ".",
+    "@cerebras/cerebras_cloud_sdk/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'cerebras_cloud_sdk/uploads';
-import { File } from 'cerebras_cloud_sdk/_shims/index';
+import { toFile, type ResponseLike } from '@cerebras/cerebras_cloud_sdk/uploads';
+import { File } from '@cerebras/cerebras_cloud_sdk/_shims/index';
 
 class MyClass {
   name: string = 'foo';

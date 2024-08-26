@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "cerebras_cloud_sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "cerebras_cloud_sdk/*": ["src/*"],
-      "cerebras_cloud_sdk": ["src/index.ts"],
+      "@cerebras/cerebras_cloud_sdk/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "@cerebras/cerebras_cloud_sdk/*": ["src/*"],
+      "@cerebras/cerebras_cloud_sdk": ["src/index.ts"],
     },
     "noEmit": true,
 

@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Cerebras } from 'cerebras_cloud_sdk';
+import { Cerebras } from '@cerebras/cerebras_cloud_sdk';
 
 const { stringifyQuery } = Cerebras.prototype as any;
 

@@ -7,9 +7,9 @@ const config: JestConfigWithTsJest = {
     '^.+\\.(t|j)sx?$': ['@swc/jest', { sourceMaps: 'inline' }],
   },
   moduleNameMapper: {
-    '^cerebras_cloud_sdk$': '<rootDir>/src/index.ts',
-    '^cerebras_cloud_sdk/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
-    '^cerebras_cloud_sdk/(.*)$': '<rootDir>/src/$1',
+    '^@cerebras/cerebras_cloud_sdk$': '<rootDir>/src/index.ts',
+    '^@cerebras/cerebras_cloud_sdk/_shims/auto/(.*)$': '<rootDir>/src/_shims/auto/$1-node',
+    '^@cerebras/cerebras_cloud_sdk/(.*)$': '<rootDir>/src/$1',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/ecosystem-tests/',

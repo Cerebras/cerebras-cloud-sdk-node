@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from 'cerebras_cloud_sdk/core';
-import { Blob } from 'cerebras_cloud_sdk/_shims/index';
-import { toFile } from 'cerebras_cloud_sdk';
+import { multipartFormRequestOptions, createForm } from '@cerebras/cerebras_cloud_sdk/core';
+import { Blob } from '@cerebras/cerebras_cloud_sdk/_shims/index';
+import { toFile } from '@cerebras/cerebras_cloud_sdk';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

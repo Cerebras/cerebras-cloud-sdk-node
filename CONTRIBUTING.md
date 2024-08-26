@@ -55,12 +55,12 @@ cd cerebras-cloud-sdk-node
 # With yarn
 yarn link
 cd ../my-package
-yarn link cerebras_cloud_sdk
+yarn link @cerebras/cerebras_cloud_sdk
 
 # With pnpm
 pnpm link --global
 cd ../my-package
-pnpm link -—global cerebras_cloud_sdk
+pnpm link -—global @cerebras/cerebras_cloud_sdk
 ```
 
 ## Running tests

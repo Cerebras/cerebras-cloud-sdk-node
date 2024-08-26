@@ -9,9 +9,9 @@ export function getRuntime({ manuallyImported }: { manuallyImported?: boolean } 
   const recommendation =
     manuallyImported ?
       `You may need to use polyfills`
-    : `Add one of these imports before your first \`import … from 'cerebras_cloud_sdk'\`:
-- \`import 'cerebras_cloud_sdk/shims/node'\` (if you're running on Node)
-- \`import 'cerebras_cloud_sdk/shims/web'\` (otherwise)
+    : `Add one of these imports before your first \`import … from '@cerebras/cerebras_cloud_sdk'\`:
+- \`import '@cerebras/cerebras_cloud_sdk/shims/node'\` (if you're running on Node)
+- \`import '@cerebras/cerebras_cloud_sdk/shims/web'\` (otherwise)
 `;
 
   let _fetch, _Request, _Response, _Headers;
