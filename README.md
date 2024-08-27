@@ -23,7 +23,7 @@ Want to experience the power of Cerebras? Check out our [website](https://cerebr
 
 ## Installation
 ```
-npm install cerebras_cloud_sdk
+npm install @cerebras/cerebras_cloud_sdk
 ```
 
 ## API Key
