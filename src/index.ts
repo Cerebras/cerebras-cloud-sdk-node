@@ -120,6 +120,7 @@ export class Cerebras extends Core.APIClient {
   }
 
   chat: API.Chat = new API.Chat(this);
+  models: API.Models = new API.Models(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -180,6 +181,12 @@ export namespace Cerebras {
   export import RequestOptions = Core.RequestOptions;
 
   export import Chat = API.Chat;
+
+  export import Models = API.Models;
+  export import ModelRetrieveResponse = API.ModelRetrieveResponse;
+  export import ModelListResponse = API.ModelListResponse;
+  export import ModelRetrieveParams = API.ModelRetrieveParams;
+  export import ModelListParams = API.ModelListParams;
 }
 
 export default Cerebras;

@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.1.0 (2024-09-04)
+
+Full Changelog: [v1.0.1...v1.1.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.0.1...v1.1.0)
+
+### Features
+
+* **api:** Add models endpoint ([#183](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/183)) ([279a578](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/279a57891048e0271db239ce9d81402de70bcfb7))
+* **api:** manual updates ([#181](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/181)) ([4b170d6](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/4b170d64b94c025b131cf9b4e52545becf397163))
+* **api:** Models endpoint ([#185](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/185)) ([a6b5bba](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a6b5bba931a8205664dd5d94df547004f0286b92))
+* **api:** Update models endpoint ([#186](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/186)) ([6af31e3](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6af31e3ac262020d888fe60980333a98cee716b4))
+* **api:** update via SDK Studio ([5d3d525](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5d3d525084456bb5af03bd82fb560410fa84e81a))
+* **api:** update via SDK Studio ([#39](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/39)) ([434443b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/434443bf1227787607116c6358a00c8d2909eb53))
+* **api:** update via SDK Studio ([#41](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/41)) ([30b7f2f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/30b7f2fc19bc0f6a026e877b1c04080a369463a9))
+* **api:** update via SDK Studio ([#42](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/42)) ([855b1e7](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/855b1e72b350687f41d2ba5920094ff79af496ca))
+* **api:** update via SDK Studio ([#44](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/44)) ([cb10328](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/cb103287777b77f03781142c50a75879827841ab))
+
+
+### Bug Fixes
+
+* **client:** correct File construction from node-fetch Responses ([#188](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/188)) ([bf66c09](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/bf66c091e7a64f91c9ff7651cf345f1481513857))
+
+
+### Chores
+
+* **ci:** check for build errors ([#182](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/182)) ([d9a616c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/d9a616c52ee1b07b34b9a8ddec08aa404116ec86))
+* **ci:** install deps via ./script/bootstrap ([#187](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/187)) ([a4dd68e](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a4dd68e036c7b8811225dad8980a7241be20fd68))
+* **internal:** dependency updates ([#189](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/189)) ([3ed8eba](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3ed8eba81eabc9bb8e2d12eb5b419bce079755b7))
+* run tsc as part of lint script ([#184](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/184)) ([b73e1b6](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b73e1b6188207e5bbc8ea47260541199ecbd1ae4))
+
 ## 1.0.0 (2024-08-25)
 
 Full Changelog: [v0.8.0...v1.0.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v0.8.0...v1.0.0)
