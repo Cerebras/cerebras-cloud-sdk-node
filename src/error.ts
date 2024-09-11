@@ -101,7 +101,7 @@ export class APIUserAbortError extends APIError {
 export class APIConnectionError extends APIError {
   override readonly status: undefined = undefined;
 
-  constructor({ message, cause }: { message?: string; cause?: Error | undefined }) {
+  constructor({ message, cause }: { message?: string | undefined; cause?: Error | undefined }) {
     super(undefined, undefined, message || 'Connection error.', undefined);
     // in some environments the 'cause' property is already declared
     // @ts-ignore

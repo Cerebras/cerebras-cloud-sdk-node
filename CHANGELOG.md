@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0 (2024-09-11)
+
+Full Changelog: [v1.1.0...v1.2.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.1.0...v1.2.0)
+
+### Bug Fixes
+
+* **errors:** pass message through to APIConnectionError ([#196](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/196)) ([8feddfc](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8feddfcd81497b716f9ce4632c6d30bee500ac5f))
+* **uploads:** avoid making redundant memory copies ([#192](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/192)) ([c18d0f6](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c18d0f6ed1310c7410a4e36fd3ea3d7479421122))
+
+
+### Chores
+
+* better object fallback behaviour for casting errors ([#198](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/198)) ([626e861](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/626e861f6b277b127d3e4f2ae1843fc525f4ff45))
+* **internal:** codegen related update ([#194](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/194)) ([90f1ab7](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/90f1ab750d1651054b9c6361984045e096399f94))
+* **internal:** codegen related update ([#195](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/195)) ([e4657a0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/e4657a05416df7acf69d13025f6308203a4bfce7))
+* **internal:** codegen related update ([#199](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/199)) ([78d5522](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/78d55227eb6e1f7dc1b0bfac894e0300bd93b20b))
+
 ## 1.1.0 (2024-09-04)
 
 Full Changelog: [v1.0.1...v1.1.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.0.1...v1.1.0)

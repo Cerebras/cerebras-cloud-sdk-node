@@ -45,7 +45,7 @@ const client = new Cerebras({
 });
 
 async function main() {
-  const completionCreateResponse = await client.chat.completions.create({
+  const completion = await client.chat.completions.create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3.1-8b',
   });
@@ -104,8 +104,7 @@ async function main() {
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3.1-8b',
   };
-  const completionCreateResponse: Cerebras.Chat.CompletionCreateResponse =
-    await client.chat.completions.create(params);
+  const completion: Cerebras.Chat.CompletionCreateResponse = await client.chat.completions.create(params);
 }
 
 main();
@@ -128,7 +127,7 @@ const client = new Cerebras({
 });
 
 async function main() {
-  const completionCreateResponse = await client.chat.completions
+  const completion = await client.chat.completions
     .create({
       messages: [{ role: 'user', content: 'This should cause an error!' }],
       model: 'some-model-that-doesnt-exist' as any, // Ask TS to ignore the obviously invalid model name... Do not do this!
@@ -227,11 +226,11 @@ const response = await client.chat.completions
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: completionCreateResponse, response: raw } = await client.chat.completions
+const { data: completion, response: raw } = await client.chat.completions
   .create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(completionCreateResponse);
+console.log(completion);
 ```
 
 ### Making custom/undocumented requests
