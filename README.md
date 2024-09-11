@@ -50,7 +50,7 @@ async function main() {
     model: 'llama3.1-8b',
   });
 
-  console.log(completionCreateResponse?.choices[0]?.message);
+  console.log(completion?.choices[0]?.message);
 }
 
 main();
