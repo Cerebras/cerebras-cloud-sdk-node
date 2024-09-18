@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.3.0 (2024-09-18)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.2.0...v1.3.0)
+
+### Bug Fixes
+
+* **types:** remove leftover polyfill usage ([#208](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/208)) ([93be156](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/93be15618eeabe97e7f710940a20eb69b5a76de0))
+
+
+### Chores
+
+* **internal:** add dev dependency ([#207](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/207)) ([d14f607](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/d14f607d94e74d0d7e762c3304b114f146cf6d50))
+
+
+### Documentation
+
+* update CONTRIBUTING.md ([#205](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/205)) ([f380c53](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/f380c5333ac869fb935f617bd702b8b871b823a4))
+
 ## 1.2.0 (2024-09-11)
 
 Full Changelog: [v1.2.0...v1.2.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.2.0...v1.2.0)
