@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.0 (2024-09-25)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.3.0...v1.4.0)
+
+### Chores
+
+* **internal:** codegen related update ([#211](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/211)) ([7bbd460](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7bbd460b64b4b7313d47879be9e81accd03c9c37))
+
 ## 1.3.0 (2024-09-18)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.2.0...v1.3.0)
