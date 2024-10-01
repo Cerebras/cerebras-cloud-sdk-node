@@ -354,9 +354,16 @@ export interface CompletionCreateParamsBase {
   logprobs?: boolean | null;
 
   /**
+   * Body param: An upper bound for the number of tokens that can be generated for a
+   * completion, including visible output tokens and reasoning tokens.
+   */
+  max_completion_tokens?: number | null;
+
+  /**
    * Body param: The maximum number of tokens that can be generated in the chat
    * completion. The total length of input tokens and generated tokens is limited by
-   * the model's context length.
+   * the model's context length. This value is now deprecated in favor of
+   * max_completion_tokens.
    */
   max_tokens?: number | null;
 

@@ -30,6 +30,7 @@ describe('resource completions', () => {
       frequency_penalty: -2,
       logit_bias: {},
       logprobs: true,
+      max_completion_tokens: 0,
       max_tokens: 0,
       n: 0,
       parallel_tool_calls: true,
