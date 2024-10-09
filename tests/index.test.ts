@@ -228,7 +228,12 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Cerebras({ apiKey: 'My API Key', timeout: 10, fetch: testFetch });
+    const client = new Cerebras({
+      apiKey: 'My API Key',
+      timeout: 10,
+      fetch: testFetch,
+      warmTCPConnection: false,
+    });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -258,7 +263,12 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Cerebras({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
+    const client = new Cerebras({
+      apiKey: 'My API Key',
+      fetch: testFetch,
+      maxRetries: 4,
+      warmTCPConnection: false,
+    });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
 
@@ -338,7 +348,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Cerebras({ apiKey: 'My API Key', fetch: testFetch });
+    const client = new Cerebras({ apiKey: 'My API Key', fetch: testFetch, warmTCPConnection: false });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -365,7 +375,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Cerebras({ apiKey: 'My API Key', fetch: testFetch });
+    const client = new Cerebras({ apiKey: 'My API Key', fetch: testFetch, warmTCPConnection: false });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);

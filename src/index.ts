@@ -67,6 +67,15 @@ export interface ClientOptions {
    * param to `undefined` in request options.
    */
   defaultQuery?: Core.DefaultQuery;
+
+  /**
+   * When true, a request is sent to `/models` in the constructor to open a TCP
+   * connection with the API server. This way, the first "real" request will have
+   * less latency since it can reuse the already existing socket connection.
+   *
+   * @default true
+   */
+  warmTCPConnection?: boolean;
 }
 
 /**
@@ -88,10 +97,12 @@ export class Cerebras extends Core.APIClient {
    * @param {number} [opts.maxRetries=2] - The maximum number of times the client will retry a request.
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
+   * @param {boolean | undefined} opts.warmTCPConnection - Whether to warm TCP connection in the constructor.
    */
   constructor({
     baseURL = Core.readEnv('CEREBRAS_BASE_URL'),
     apiKey = Core.readEnv('CEREBRAS_API_KEY'),
+    warmTCPConnection = true,
     ...opts
   }: ClientOptions = {}) {
     if (apiKey === undefined) {
@@ -117,6 +128,26 @@ export class Cerebras extends Core.APIClient {
     this._options = options;
 
     this.apiKey = apiKey;
+
+    if (warmTCPConnection) {
+      // Since this runs async, it's possible for DEBUG messages to
+      // be printed after test ends, which will cause a warming.
+      //
+      // Doesn't seem to be an easy way to block until this promise is fulfilled.
+      (async () => {
+        try {
+          for (let i = 0; i < 5; i++) {
+            await this.models.list(
+              {},
+              {
+                timeout: 1000,
+                maxRetries: 0,
+              },
+            );
+          }
+        } catch (e) {}
+      })();
+    }
   }
 
   chat: API.Chat = new API.Chat(this);
