@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.0 (2024-10-16)
+
+Full Changelog: [v1.6.0...v1.7.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.6.0...v1.7.0)
+
+### Features
+
+* **api:** api update ([#221](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/221)) ([7a21a0e](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7a21a0e10b2727be42e24b36112cae5cf2881c5e))
+
 ## 1.6.0 (2024-10-09)
 
 Full Changelog: [v1.5.0...v1.6.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.5.0...v1.6.0)

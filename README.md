@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Cerebras REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [inference-docs.cerebras.ai](https://inference-docs.cerebras.ai/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [inference-docs.cerebras.ai](https://inference-docs.cerebras.ai). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -362,6 +362,9 @@ The following runtimes are supported:
 
 Note that React Native is not supported at this time.
 
-<!--
 If you are interested in other runtime environments, please open or upvote an issue on GitHub.
--->
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
+

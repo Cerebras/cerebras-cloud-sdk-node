@@ -210,9 +210,9 @@ export namespace CompletionCreateResponse {
 
           function: ToolCall.Function;
 
-          index: number;
-
           type: 'function';
+
+          index?: number | null;
           [k: string]: unknown;
         }
 
