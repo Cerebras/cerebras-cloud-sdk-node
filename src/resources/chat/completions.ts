@@ -368,6 +368,20 @@ export interface CompletionCreateParamsBase {
   max_tokens?: number | null;
 
   /**
+   * Body param: The minimum number of tokens to generate for a completion. If not
+   * specified or set to 0, the model will generate as many tokens as it deems
+   * necessary. Setting to -1 sets to max sequence length.
+   */
+  min_completion_tokens?: number | null;
+
+  /**
+   * Body param: The minimum number of tokens to generate for a completion. If not
+   * specified or set to 0, the model will generate as many tokens as it deems
+   * necessary. Setting to -1 sets to max sequence length.
+   */
+  min_tokens?: number | null;
+
+  /**
    * Body param: How many chat completion choices to generate for each input message.
    * Note that you will be charged based on the number of generated tokens across all
    * of the choices. Keep n as 1 to minimize costs.
