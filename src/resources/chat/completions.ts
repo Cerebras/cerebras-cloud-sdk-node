@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CompletionsAPI from './completions';
 import { Stream } from '../../streaming';
 
 export class Completions extends APIResource {
@@ -602,10 +601,12 @@ export namespace CompletionCreateParams {
   }
 }
 
-export namespace Completions {
-  export import ChatCompletion = CompletionsAPI.ChatCompletion;
-  export import CompletionCreateResponse = CompletionsAPI.CompletionCreateResponse;
-  export import CompletionCreateParams = CompletionsAPI.CompletionCreateParams;
-  export import CompletionCreateParamsNonStreaming = CompletionsAPI.CompletionCreateParamsNonStreaming;
-  export import CompletionCreateParamsStreaming = CompletionsAPI.CompletionCreateParamsStreaming;
+export declare namespace Completions {
+  export {
+    type ChatCompletion as ChatCompletion,
+    type CompletionCreateResponse as CompletionCreateResponse,
+    type CompletionCreateParams as CompletionCreateParams,
+    type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
+    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
+  };
 }

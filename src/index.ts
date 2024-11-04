@@ -1,10 +1,18 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import * as Errors from './error';
-import * as Uploads from './uploads';
 import { type Agent } from './_shims/index';
 import * as Core from './core';
+import * as Errors from './error';
+import * as Uploads from './uploads';
 import * as API from './resources/index';
+import {
+  ModelListParams,
+  ModelListResponse,
+  ModelRetrieveParams,
+  ModelRetrieveResponse,
+  Models,
+} from './resources/models';
+import { Chat } from './resources/chat/chat';
 
 export interface ClientOptions {
   /**
@@ -189,7 +197,7 @@ export class Cerebras extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-export const {
+export {
   CerebrasError,
   APIError,
   APIConnectionError,
@@ -203,21 +211,26 @@ export const {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} = Errors;
+} from './error';
 
 export import toFile = Uploads.toFile;
 export import fileFromPath = Uploads.fileFromPath;
 
-export namespace Cerebras {
-  export import RequestOptions = Core.RequestOptions;
+Cerebras.Chat = Chat;
+Cerebras.Models = Models;
 
-  export import Chat = API.Chat;
+export declare namespace Cerebras {
+  export type RequestOptions = Core.RequestOptions;
 
-  export import Models = API.Models;
-  export import ModelRetrieveResponse = API.ModelRetrieveResponse;
-  export import ModelListResponse = API.ModelListResponse;
-  export import ModelRetrieveParams = API.ModelRetrieveParams;
-  export import ModelListParams = API.ModelListParams;
+  export { Chat as Chat };
+
+  export {
+    Models as Models,
+    type ModelRetrieveResponse as ModelRetrieveResponse,
+    type ModelListResponse as ModelListResponse,
+    type ModelRetrieveParams as ModelRetrieveParams,
+    type ModelListParams as ModelListParams,
+  };
 }
 
 export default Cerebras;

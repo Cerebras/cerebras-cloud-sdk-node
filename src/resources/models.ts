@@ -3,7 +3,6 @@
 import { APIResource } from '../resource';
 import { isRequestOptions } from '../core';
 import * as Core from '../core';
-import * as ModelsAPI from './models';
 
 export class Models extends APIResource {
   /**
@@ -89,9 +88,11 @@ export interface ModelListParams {
   'X-Amz-Cf-Id'?: string;
 }
 
-export namespace Models {
-  export import ModelRetrieveResponse = ModelsAPI.ModelRetrieveResponse;
-  export import ModelListResponse = ModelsAPI.ModelListResponse;
-  export import ModelRetrieveParams = ModelsAPI.ModelRetrieveParams;
-  export import ModelListParams = ModelsAPI.ModelListParams;
+export declare namespace Models {
+  export {
+    type ModelRetrieveResponse as ModelRetrieveResponse,
+    type ModelListResponse as ModelListResponse,
+    type ModelRetrieveParams as ModelRetrieveParams,
+    type ModelListParams as ModelListParams,
+  };
 }

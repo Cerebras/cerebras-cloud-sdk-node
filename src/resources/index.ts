@@ -2,9 +2,9 @@
 
 export { Chat } from './chat/chat';
 export {
-  ModelRetrieveResponse,
-  ModelListResponse,
-  ModelRetrieveParams,
-  ModelListParams,
   Models,
+  type ModelRetrieveResponse,
+  type ModelListResponse,
+  type ModelRetrieveParams,
+  type ModelListParams,
 } from './models';
