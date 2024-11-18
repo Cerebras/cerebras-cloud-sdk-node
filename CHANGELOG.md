@@ -1,5 +1,34 @@
 # Changelog
 
+## 1.12.0 (2024-11-18)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **api:** api update ([#260](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/260)) ([c199392](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c199392fc6c0953990b27dbe92b65b0ff4bc11ef))
+* **api:** api update ([#269](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/269)) ([8436e64](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8436e641710505c19eaa4b3e047dd3923956082b))
+* **api:** api update ([#271](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/271)) ([0f91652](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/0f91652358f26c39337b53cde8a97aa3c1bd7266))
+* **api:** api update ([#273](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/273)) ([2819b6c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2819b6ce7a0fdb6afde9c366ef1acce0df19a56e))
+* **api:** manual updates ([#259](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/259)) ([93bc8cb](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/93bc8cbee7079f7194c877ab47494f183d40f468))
+* **api:** manual updates ([#261](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/261)) ([6534ff4](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6534ff4d8d04b63c93d8499fb41da0fb542858ae))
+* **api:** manual updates ([#262](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/262)) ([9f65baf](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/9f65bafd5d5ca49065454d50c587efc3442e2276))
+* **api:** manual updates ([#264](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/264)) ([a256fd9](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a256fd9319d104fdbe6420bd8fb939b927e2ae9d))
+* **api:** manual updates ([#265](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/265)) ([b281898](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b281898a25794524fea1d9e7a521566c4544ed63))
+* **api:** manual updates ([#266](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/266)) ([f688ad9](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/f688ad97c082a0b83af21d104e249aaa42a476a2))
+* **api:** manual updates ([#268](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/268)) ([c8899e2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c8899e2a1453549dc02e943dd464ecb0ac2bff19))
+* **api:** manual updates ([#277](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/277)) ([a085d89](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a085d89ea77f90adf6fd01c90674953c91879e05))
+* **api:** manual updates ([#279](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/279)) ([818d672](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/818d672bd3370680bda19c6bcc604406ad3bdf5e))
+* **api:** manual updates ([#281](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/281)) ([8d303f5](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8d303f5131ae315ab3a992c5d5293090794ab48f))
+* **api:** manual updates ([#283](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/283)) ([4232bd5](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/4232bd520ffa848c28ec41b67a0b984220da3a62))
+
+
+### Chores
+
+* rebuild project due to codegen change ([#257](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/257)) ([76b8aa2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/76b8aa2e707c8ffa29fb1191a983fb6abb1e56cf))
+* rebuild project due to codegen change ([#263](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/263)) ([480555b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/480555b644ad704f502495d91e80a14cbd5c09b9))
+* rebuild project due to codegen change ([#275](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/275)) ([e1f92cc](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/e1f92cc429a4ec49285c69ab2831fb9e3ee7f213))
+
 ## 1.11.0 (2024-11-11)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.10.0...v1.11.0)

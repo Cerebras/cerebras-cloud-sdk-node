@@ -5,11 +5,20 @@
 Types:
 
 - <code><a href="./src/resources/chat/completions.ts">ChatCompletion</a></code>
-- <code><a href="./src/resources/chat/completions.ts">CompletionCreateResponse</a></code>
 
 Methods:
 
-- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> CompletionCreateResponse</code>
+- <code title="post /v1/chat/completions">client.chat.completions.<a href="./src/resources/chat/completions.ts">create</a>({ ...params }) -> ChatCompletion</code>
+
+# Completions
+
+Types:
+
+- <code><a href="./src/resources/completions.ts">Completion</a></code>
+
+Methods:
+
+- <code title="post /v1/completions">client.completions.<a href="./src/resources/completions.ts">create</a>({ ...params }) -> Completion</code>
 
 # Models
 

@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Cerebras REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [inference-docs.cerebras.ai](https://inference-docs.cerebras.ai). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [inference-docs.cerebras.ai](https://inference-docs.cerebras.ai/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
 
@@ -36,7 +36,8 @@ export CEREBRAS_API_KEY="your-api-key-here"
 
 The full API of this library can be found in [api.md](api.md).
 
-<!-- RUN TEST: Standard -->
+### Chat Completion
+<!-- RUN TEST: ChatStandard -->
 ```ts
 import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
@@ -45,12 +46,33 @@ const client = new Cerebras({
 });
 
 async function main() {
-  const completion = await client.chat.completions.create({
+  const chatCompletion = await client.chat.completions.create({
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3.1-8b',
   });
 
-  console.log(completion?.choices[0]?.message);
+  console.log(chatCompletion?.choices[0]?.message);
+}
+
+main();
+```
+
+### Text Completion
+<!-- RUN TEST: TextStandard -->
+```ts
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
+
+const client = new Cerebras({
+  apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
+});
+
+async function main() {
+  const completion = await client.completions.create({
+    prompt: "It was a dark and stormy ",
+    model: 'llama3.1-8b',
+  });
+
+  console.log(completion?.choices[0]?.text);
 }
 
 main();
@@ -62,7 +84,8 @@ We provide support for streaming responses using Server Sent Events (SSE).
 
 Note that when streaming, `usage` and `time_info` will be information will only be included in the final chunk.
 
-<!-- RUN TEST: Streaming -->
+### Chat Completion
+<!-- RUN TEST: ChatStreaming -->
 ```ts
 import Cerebras from '@cerebras/cerebras_cloud_sdk';
 
@@ -78,6 +101,30 @@ async function main() {
   });
   for await (const chunk of stream) {
     process.stdout.write(chunk.choices[0]?.delta?.content || '');
+  }
+}
+
+main();
+```
+
+### Text Completion
+<!-- RUN TEST: TextStreaming -->
+```ts
+import Cerebras from '@cerebras/cerebras_cloud_sdk';
+
+const client = new Cerebras({
+  apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
+});
+
+async function main() {
+  const stream = await client.completions.create({
+    prompt: "It was a dark and stormy ",
+    model: 'llama3.1-8b',
+    max_tokens: 10,
+    stream: true,
+  });
+  for await (const chunk of stream) {
+    process.stdout.write(chunk.choices[0]?.text || '');
   }
 }
 
@@ -100,11 +147,11 @@ const client = new Cerebras({
 });
 
 async function main() {
-  const params: Cerebras.Chat.CompletionCreateParams = {
+  const params: Cerebras.Chat.ChatCompletionCreateParams = {
     messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3.1-8b',
   };
-  const completion: Cerebras.Chat.CompletionCreateResponse = await client.chat.completions.create(params);
+  const chatCompletion: Cerebras.Chat.ChatCompletion = await client.chat.completions.create(params);
 }
 
 main();
@@ -127,7 +174,7 @@ const client = new Cerebras({
 });
 
 async function main() {
-  const completion = await client.chat.completions
+  const chatCompletion = await client.chat.completions
     .create({
       messages: [{ role: 'user', content: 'This should cause an error!' }],
       model: 'some-model-that-doesnt-exist' as any, // Ask TS to ignore the obviously invalid model name... Do not do this!
@@ -226,11 +273,11 @@ const response = await client.chat.completions
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: completion, response: raw } = await client.chat.completions
+const { data: chatCompletion, response: raw } = await client.chat.completions
   .create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(completion);
+console.log(chatCompletion);
 ```
 
 ### Making custom/undocumented requests
@@ -359,6 +406,15 @@ We are keen for your feedback; please open an [issue](https://www.github.com/Cer
 TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
+
+- Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
+- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Deno v1.28.0 or higher, using `import Cerebras from "npm:@cerebras/cerebras_cloud_sdk"`.
+- Bun 1.0 or later.
+- Cloudflare Workers.
+- Vercel Edge Runtime.
+- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
+- Nitro v2.6 or greater.
 
 Note that React Native is not supported at this time.
 

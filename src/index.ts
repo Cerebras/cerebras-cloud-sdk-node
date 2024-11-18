@@ -5,6 +5,7 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Completion, CompletionCreateParams, Completions } from './resources/completions';
 import {
   ModelListParams,
   ModelListResponse,
@@ -13,6 +14,7 @@ import {
   Models,
 } from './resources/models';
 import { Chat } from './resources/chat/chat';
+import { ChatCompletion, ChatCompletionCreateParams } from './resources/chat/completions';
 
 export interface ClientOptions {
   /**
@@ -159,6 +161,7 @@ export class Cerebras extends Core.APIClient {
   }
 
   chat: API.Chat = new API.Chat(this);
+  completions: API.Completions = new API.Completions(this);
   models: API.Models = new API.Models(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
@@ -197,6 +200,34 @@ export class Cerebras extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
+Cerebras.Chat = Chat;
+Cerebras.Completions = Completions;
+Cerebras.Models = Models;
+export declare namespace Cerebras {
+  export type RequestOptions = Core.RequestOptions;
+
+  export {
+    Chat as Chat,
+    type ChatCompletion as ChatCompletion,
+    type ChatCompletionCreateParams as ChatCompletionCreateParams,
+  };
+
+  export {
+    Completions as Completions,
+    type Completion as Completion,
+    type CompletionCreateParams as CompletionCreateParams,
+  };
+
+  export {
+    Models as Models,
+    type ModelRetrieveResponse as ModelRetrieveResponse,
+    type ModelListResponse as ModelListResponse,
+    type ModelRetrieveParams as ModelRetrieveParams,
+    type ModelListParams as ModelListParams,
+  };
+}
+
+export { toFile, fileFromPath } from './uploads';
 export {
   CerebrasError,
   APIError,
@@ -212,25 +243,5 @@ export {
   PermissionDeniedError,
   UnprocessableEntityError,
 } from './error';
-
-export import toFile = Uploads.toFile;
-export import fileFromPath = Uploads.fileFromPath;
-
-Cerebras.Chat = Chat;
-Cerebras.Models = Models;
-
-export declare namespace Cerebras {
-  export type RequestOptions = Core.RequestOptions;
-
-  export { Chat as Chat };
-
-  export {
-    Models as Models,
-    type ModelRetrieveResponse as ModelRetrieveResponse,
-    type ModelListResponse as ModelListResponse,
-    type ModelRetrieveParams as ModelRetrieveParams,
-    type ModelListParams as ModelListParams,
-  };
-}
 
 export default Cerebras;

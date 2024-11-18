@@ -9,21 +9,21 @@ export class Completions extends APIResource {
    * Chat
    */
   create(
-    params: CompletionCreateParamsNonStreaming,
+    params: ChatCompletionCreateParamsNonStreaming,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ChatCompletion>;
   create(
-    params: CompletionCreateParamsStreaming,
+    params: ChatCompletionCreateParamsStreaming,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>>;
+  ): Core.APIPromise<Stream<ChatCompletion>>;
   create(
-    params: CompletionCreateParamsBase,
+    params: ChatCompletionCreateParamsBase,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse> | ChatCompletion>;
+  ): Core.APIPromise<Stream<ChatCompletion> | ChatCompletion>;
   create(
-    params: CompletionCreateParams,
+    params: ChatCompletionCreateParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<ChatCompletion> | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>> {
+  ): Core.APIPromise<ChatCompletion> | Core.APIPromise<Stream<ChatCompletion>> {
     const { 'X-Amz-Cf-Id': xAmzCfId, 'X-delay-time': xDelayTime, ...body } = params;
     return this._client.post('/v1/chat/completions', {
       body,
@@ -34,132 +34,130 @@ export class Completions extends APIResource {
         ...(xDelayTime?.toString() != null ? { 'X-delay-time': xDelayTime?.toString() } : undefined),
         ...options?.headers,
       },
-    }) as
-      | Core.APIPromise<ChatCompletion>
-      | Core.APIPromise<Stream<CompletionCreateResponse.ChatChunkResponse>>;
+    }) as Core.APIPromise<ChatCompletion> | Core.APIPromise<Stream<ChatCompletion>>;
   }
 }
 
-export interface ChatCompletion {
-  id: string;
-
-  choices: Array<ChatCompletion.Choice>;
-
-  created: number;
-
-  model: string;
-
-  object: 'chat.completion';
-
-  system_fingerprint: string;
-
-  time_info: ChatCompletion.TimeInfo;
-
-  usage: ChatCompletion.Usage;
-
-  service_tier?: string | null;
-  [k: string]: unknown;
-}
+export type ChatCompletion =
+  | ChatCompletion.ChatCompletionResponse
+  | ChatCompletion.ChatChunkResponse
+  | ChatCompletion.ErrorChunkResponse;
 
 export namespace ChatCompletion {
-  export interface Choice {
-    finish_reason: 'stop' | 'length' | 'content_filter' | 'tool_calls';
+  export interface ChatCompletionResponse {
+    id: string;
 
-    index: number;
+    choices: Array<ChatCompletionResponse.Choice>;
 
-    message: Choice.Message;
+    created: number;
 
-    logprobs?: Choice.Logprobs | null;
+    model: string;
+
+    object: 'chat.completion';
+
+    system_fingerprint: string;
+
+    time_info: ChatCompletionResponse.TimeInfo;
+
+    usage: ChatCompletionResponse.Usage;
+
+    service_tier?: string | null;
     [k: string]: unknown;
   }
 
-  export namespace Choice {
-    export interface Message {
-      role: 'assistant' | 'user' | 'system' | 'tool';
+  export namespace ChatCompletionResponse {
+    export interface Choice {
+      finish_reason: 'stop' | 'length' | 'content_filter' | 'tool_calls';
 
-      content?: string | null;
+      index: number;
 
-      tool_calls?: Array<Message.ToolCall> | null;
+      message: Choice.Message;
+
+      logprobs?: Choice.Logprobs | null;
       [k: string]: unknown;
     }
 
-    export namespace Message {
-      export interface ToolCall {
-        id: string;
+    export namespace Choice {
+      export interface Message {
+        role: 'assistant' | 'user' | 'system' | 'tool';
 
-        function: ToolCall.Function;
+        content?: string | null;
 
-        type: 'function';
+        tool_calls?: Array<Message.ToolCall> | null;
         [k: string]: unknown;
       }
 
-      export namespace ToolCall {
-        export interface Function {
-          arguments: string;
+      export namespace Message {
+        export interface ToolCall {
+          id: string;
 
-          name: string;
+          function: ToolCall.Function;
+
+          type: 'function';
           [k: string]: unknown;
         }
+
+        export namespace ToolCall {
+          export interface Function {
+            arguments: string;
+
+            name: string;
+            [k: string]: unknown;
+          }
+        }
       }
-    }
 
-    export interface Logprobs {
-      content: Logprobs.Content;
-      [k: string]: unknown;
-    }
-
-    export namespace Logprobs {
-      export interface Content {
-        token: string;
-
-        logprob: number;
-
-        top_logprobs: Content.TopLogprobs;
-
-        bytes?: Array<number> | null;
+      export interface Logprobs {
+        content: Logprobs.Content;
         [k: string]: unknown;
       }
 
-      export namespace Content {
-        export interface TopLogprobs {
+      export namespace Logprobs {
+        export interface Content {
           token: string;
 
           logprob: number;
 
+          top_logprobs: Content.TopLogprobs;
+
           bytes?: Array<number> | null;
           [k: string]: unknown;
         }
+
+        export namespace Content {
+          export interface TopLogprobs {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+            [k: string]: unknown;
+          }
+        }
       }
+    }
+
+    export interface TimeInfo {
+      completion_time?: number;
+
+      prompt_time?: number;
+
+      queue_time?: number;
+
+      total_time?: number;
+      [k: string]: unknown;
+    }
+
+    export interface Usage {
+      completion_tokens?: number;
+
+      prompt_tokens?: number;
+
+      total_tokens?: number;
+      [k: string]: unknown;
     }
   }
 
-  export interface TimeInfo {
-    completion_time?: number;
-
-    prompt_time?: number;
-
-    queue_time?: number;
-
-    total_time?: number;
-    [k: string]: unknown;
-  }
-
-  export interface Usage {
-    completion_tokens?: number;
-
-    prompt_tokens?: number;
-
-    total_tokens?: number;
-    [k: string]: unknown;
-  }
-}
-
-export type CompletionCreateResponse =
-  | ChatCompletion
-  | CompletionCreateResponse.ChatChunkResponse
-  | CompletionCreateResponse.ErrorChunkResponse;
-
-export namespace CompletionCreateResponse {
   export interface ChatChunkResponse {
     id: string;
 
@@ -299,25 +297,27 @@ export namespace CompletionCreateResponse {
 
 // This enables us to do matching against the parameter to overload the function and know what the
 // return type will be (whether with or without streaming).
-export type CompletionCreateParams = CompletionCreateParamsNonStreaming | CompletionCreateParamsStreaming;
+export type ChatCompletionCreateParams =
+  | ChatCompletionCreateParamsNonStreaming
+  | ChatCompletionCreateParamsStreaming;
 
-export interface CompletionCreateParamsNonStreaming extends CompletionCreateParamsBase {
+export interface ChatCompletionCreateParamsNonStreaming extends ChatCompletionCreateParamsBase {
   stream?: false | null;
 }
 
-export interface CompletionCreateParamsStreaming extends CompletionCreateParamsBase {
+export interface ChatCompletionCreateParamsStreaming extends ChatCompletionCreateParamsBase {
   stream: true;
 }
 
-export interface CompletionCreateParamsBase {
+export interface ChatCompletionCreateParamsBase {
   /**
    * Body param:
    */
   messages: Array<
-    | CompletionCreateParams.SystemMessageRequest
-    | CompletionCreateParams.UserMessageRequest
-    | CompletionCreateParams.AssistantMessageRequest
-    | CompletionCreateParams.ToolMessageRequest
+    | ChatCompletionCreateParams.SystemMessageRequest
+    | ChatCompletionCreateParams.UserMessageRequest
+    | ChatCompletionCreateParams.AssistantMessageRequest
+    | ChatCompletionCreateParams.ToolMessageRequest
   >;
 
   /**
@@ -402,7 +402,7 @@ export interface CompletionCreateParamsBase {
   /**
    * Body param:
    */
-  response_format?: CompletionCreateParams.ResponseFormat | null;
+  response_format?: ChatCompletionCreateParams.ResponseFormat | null;
 
   /**
    * Body param: If specified, our system will make a best effort to sample
@@ -430,7 +430,7 @@ export interface CompletionCreateParamsBase {
   /**
    * Body param:
    */
-  stream_options?: CompletionCreateParams.StreamOptions | null;
+  stream_options?: ChatCompletionCreateParams.StreamOptions | null;
 
   /**
    * Body param: What sampling temperature to use, between 0 and 1.5. Higher values
@@ -443,12 +443,12 @@ export interface CompletionCreateParamsBase {
   /**
    * Body param:
    */
-  tool_choice?: 'none' | 'auto' | 'required' | CompletionCreateParams.ChoiceObject | null;
+  tool_choice?: 'none' | 'auto' | 'required' | ChatCompletionCreateParams.ChoiceObject | null;
 
   /**
    * Body param:
    */
-  tools?: Array<CompletionCreateParams.Tool> | null;
+  tools?: Array<ChatCompletionCreateParams.Tool> | null;
 
   /**
    * Body param: An integer between 0 and 20 specifying the number of most likely
@@ -483,7 +483,7 @@ export interface CompletionCreateParamsBase {
   'X-delay-time'?: number;
 }
 
-export namespace CompletionCreateParams {
+export namespace ChatCompletionCreateParams {
   export interface SystemMessageRequest {
     content: string;
 
@@ -601,12 +601,23 @@ export namespace CompletionCreateParams {
   }
 }
 
+/**
+ * @deprecated Use ChatCompletionCreateParams instead
+ */
+export type CompletionCreateParams = ChatCompletionCreateParams;
+
+/**
+ * @deprecated Use ChatCompletion instead
+ */
+export type CompletionCreateResponse = ChatCompletion;
+
 export declare namespace Completions {
   export {
-    type ChatCompletion as ChatCompletion,
     type CompletionCreateResponse as CompletionCreateResponse,
+    type ChatCompletion as ChatCompletion,
     type CompletionCreateParams as CompletionCreateParams,
-    type CompletionCreateParamsNonStreaming as CompletionCreateParamsNonStreaming,
-    type CompletionCreateParamsStreaming as CompletionCreateParamsStreaming,
+    type ChatCompletionCreateParams as ChatCompletionCreateParams,
+    type ChatCompletionCreateParamsNonStreaming as ChatCompletionCreateParamsNonStreaming,
+    type ChatCompletionCreateParamsStreaming as ChatCompletionCreateParamsStreaming,
   };
 }

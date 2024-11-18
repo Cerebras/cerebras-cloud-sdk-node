@@ -4,8 +4,7 @@ export { Chat } from './chat';
 export {
   Completions,
   type ChatCompletion,
-  type CompletionCreateResponse,
-  type CompletionCreateParams,
-  type CompletionCreateParamsNonStreaming,
-  type CompletionCreateParamsStreaming,
+  type ChatCompletionCreateParams,
+  type ChatCompletionCreateParamsNonStreaming,
+  type ChatCompletionCreateParamsStreaming,
 } from './completions';
