@@ -32,6 +32,7 @@ describe('resource completions', () => {
       n: 0,
       presence_penalty: -2,
       prompt: 'string',
+      return_raw_tokens: true,
       seed: 0,
       stop: 'string',
       stream: true,

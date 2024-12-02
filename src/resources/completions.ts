@@ -64,11 +64,13 @@ export namespace Completion {
     export interface Choice {
       index: number;
 
-      text: string;
-
       finish_reason?: 'stop' | 'length' | 'content_filter' | null;
 
       logprobs?: Choice.Logprobs | null;
+
+      text?: string | null;
+
+      tokens?: Array<number> | null;
       [k: string]: unknown;
     }
 
@@ -232,6 +234,11 @@ export interface CompletionCreateParamsBase {
    * array of strings, array of tokens, or array of token arrays.
    */
   prompt?: string | Array<string> | Array<number> | Array<Array<number>>;
+
+  /**
+   * Body param: Return raw tokens instead of text
+   */
+  return_raw_tokens?: boolean | null;
 
   /**
    * Body param: If specified, our system will make a best effort to sample

@@ -146,16 +146,13 @@ export class Cerebras extends Core.APIClient {
       // Doesn't seem to be an easy way to block until this promise is fulfilled.
       (async () => {
         try {
-          for (let i = 0; i < 5; i++) {
-            await this.models.list(
-              {},
-              {
-                timeout: 1000,
-                maxRetries: 0,
-              },
-            );
-          }
-        } catch (e) {}
+          await this.get('/v1/tcp_warming', {
+            timeout: 1000,
+            maxRetries: 0,
+          });
+        } catch (e) {
+          Core.debug(`TCP Warming had exception: ${e}`);
+        }
       })();
     }
   }

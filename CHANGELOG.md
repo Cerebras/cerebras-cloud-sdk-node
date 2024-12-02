@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.13.0 (2024-12-02)
+
+Full Changelog: [v1.12.0...v1.13.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.12.0...v1.13.0)
+
+### Features
+
+* **api:** api update ([#291](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/291)) ([ca37383](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ca37383c0053c5a60e0deffcfc7febb29b569925))
+* **api:** manual updates ([#285](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/285)) ([f937a7c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/f937a7c1f3d7f5e2b8029f469d0f90f9a8980748))
+* **internal:** make git install file structure match npm ([#290](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/290)) ([85e0ef9](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/85e0ef906eb412d7eba01d177a76fa58ce24d6e6))
+
+
+### Chores
+
+* remove redundant word in comment ([#288](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/288)) ([7d6c22a](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7d6c22a56f7bdf30e251ab8ed1913fbf0e5acc31))
+
+
+### Documentation
+
+* remove suggestion to use `npm` call out ([#287](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/287)) ([d469dd0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/d469dd026d0a0b0b387346cd79b9d4c327e8ddef))
+
 ## 1.12.0 (2024-11-18)
 
 Full Changelog: [v1.11.0...v1.12.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.11.0...v1.12.0)
