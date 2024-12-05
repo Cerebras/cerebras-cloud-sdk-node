@@ -189,6 +189,11 @@ export interface CompletionCreateParamsBase {
   frequency_penalty?: number | null;
 
   /**
+   * Body param: The grammar root used for structured output generation.
+   */
+  grammar_root?: string | null;
+
+  /**
    * Body param: Modify the likelihood of specified tokens appearing in the
    * completion.
    *
@@ -214,6 +219,13 @@ export interface CompletionCreateParamsBase {
    * the model's context length.
    */
   max_tokens?: number | null;
+
+  /**
+   * Body param: The minimum number of tokens to generate for a completion. If not
+   * specified or set to 0, the model will generate as many tokens as it deems
+   * necessary. Setting to -1 sets to max sequence length.
+   */
+  min_tokens?: number | null;
 
   /**
    * Body param: How many chat completion choices to generate for each input message.
