@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.14.0 (2024-12-11)
+
+Full Changelog: [v1.13.1...v1.14.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.13.1...v1.14.0)
+
+### Chores
+
+* **internal:** bump cross-spawn to v7.0.6 ([#298](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/298)) ([0e3bd54](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/0e3bd54f810ee96d859c59d4918efb23b24dbfea))
+* **internal:** remove unnecessary getRequestClient function ([#296](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/296)) ([7314208](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/731420808e9d7f3c8577ac7696ca8f15327a81fe))
+
 ## 1.13.1 (2024-12-05)
 
 Full Changelog: [v1.13.0...v1.13.1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.13.0...v1.13.1)
