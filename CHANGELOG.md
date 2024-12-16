@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.15.0 (2024-12-16)
+
+Full Changelog: [v1.14.0...v1.15.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.14.0...v1.15.0)
+
+### Chores
+
+* **internal:** update isAbsoluteURL ([#302](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/302)) ([9ad4943](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/9ad49437a6ecc586008179c2d40a29c9cb30b00f))
+* **types:** nicer error class types + jsdocs ([#300](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/300)) ([a869288](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a8692885d10dfceab795de33c6c34c39af2ccdb2))
+
 ## 1.14.0 (2024-12-11)
 
 Full Changelog: [v1.13.1...v1.14.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.13.1...v1.14.0)
