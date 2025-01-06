@@ -24,12 +24,13 @@ export class Completions extends APIResource {
     params: CompletionCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<Completion> | Core.APIPromise<Stream<Completion.CompletionResponse>> {
-    const { 'X-Amz-Cf-Id': xAmzCfId, 'X-delay-time': xDelayTime, ...body } = params;
+    const { 'CF-RAY': cfRay, 'X-Amz-Cf-Id': xAmzCfId, 'X-delay-time': xDelayTime, ...body } = params;
     return this._client.post('/v1/completions', {
       body,
       ...options,
       stream: body.stream ?? false,
       headers: {
+        ...(cfRay != null ? { 'CF-RAY': cfRay } : undefined),
         ...(xAmzCfId != null ? { 'X-Amz-Cf-Id': xAmzCfId } : undefined),
         ...(xDelayTime?.toString() != null ? { 'X-delay-time': xDelayTime?.toString() } : undefined),
         ...options?.headers,
@@ -303,6 +304,11 @@ export interface CompletionCreateParamsBase {
    * Cerebras to monitor and detect abuse.
    */
   user?: string | null;
+
+  /**
+   * Header param:
+   */
+  'CF-RAY'?: string;
 
   /**
    * Header param:

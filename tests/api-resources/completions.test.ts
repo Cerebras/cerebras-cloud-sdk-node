@@ -43,6 +43,7 @@ describe('resource completions', () => {
       temperature: 0,
       top_p: 0,
       user: 'user',
+      'CF-RAY': 'CF-RAY',
       'X-Amz-Cf-Id': 'X-Amz-Cf-Id',
       'X-delay-time': 0,
     });

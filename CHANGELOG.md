@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.16.0 (2025-01-06)
+
+Full Changelog: [v1.15.0...v1.16.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.15.0...v1.16.0)
+
+### Features
+
+* **api:** JSON Schema ([#312](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/312)) ([84067bc](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/84067bcbbf78f46a57fd0c27a49638ae75fc727b))
+
+
+### Bug Fixes
+
+* **client:** normalize method ([#307](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/307)) ([be201b2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/be201b2d1230dbff73267e350a95f5a16950645c))
+
+
+### Chores
+
+* **internal:** codegen related update ([#308](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/308)) ([8414244](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/84142448cef18b7e0c87253e35b979f051fc2d47))
+* **internal:** codegen related update ([#309](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/309)) ([19457eb](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/19457eb67f82182c72953756b43759524624a2a1))
+* **internal:** codegen related update ([#311](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/311)) ([58a3840](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/58a3840d23b7250f52e85c128f590fcfbae8d9c3))
+* **internal:** fix some typos ([#305](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/305)) ([ad02170](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ad02170c921ea00b2acd312ff87063804b62bfbf))
+
+
+### Documentation
+
+* minor formatting changes ([#310](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/310)) ([3884710](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/38847104b363227becbebe4f1f6fbe57771a3dbd))
+
 ## 1.15.0 (2024-12-16)
 
 Full Changelog: [v1.14.0...v1.15.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.14.0...v1.15.0)

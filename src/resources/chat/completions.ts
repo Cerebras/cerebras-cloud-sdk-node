@@ -24,12 +24,13 @@ export class Completions extends APIResource {
     params: ChatCompletionCreateParams,
     options?: Core.RequestOptions,
   ): Core.APIPromise<ChatCompletion> | Core.APIPromise<Stream<ChatCompletion>> {
-    const { 'X-Amz-Cf-Id': xAmzCfId, 'X-delay-time': xDelayTime, ...body } = params;
+    const { 'CF-RAY': cfRay, 'X-Amz-Cf-Id': xAmzCfId, 'X-delay-time': xDelayTime, ...body } = params;
     return this._client.post('/v1/chat/completions', {
       body,
       ...options,
       stream: body.stream ?? false,
       headers: {
+        ...(cfRay != null ? { 'CF-RAY': cfRay } : undefined),
         ...(xAmzCfId != null ? { 'X-Amz-Cf-Id': xAmzCfId } : undefined),
         ...(xDelayTime?.toString() != null ? { 'X-delay-time': xDelayTime?.toString() } : undefined),
         ...options?.headers,
@@ -402,7 +403,11 @@ export interface ChatCompletionCreateParamsBase {
   /**
    * Body param:
    */
-  response_format?: ChatCompletionCreateParams.ResponseFormat | null;
+  response_format?:
+    | ChatCompletionCreateParams.ResponseFormatText
+    | ChatCompletionCreateParams.ResponseFormatJsonObject
+    | ChatCompletionCreateParams.ResponseFormatJsonSchema
+    | null;
 
   /**
    * Body param: If specified, our system will make a best effort to sample
@@ -471,6 +476,11 @@ export interface ChatCompletionCreateParamsBase {
    * Cerebras to monitor and detect abuse.
    */
   user?: string | null;
+
+  /**
+   * Header param:
+   */
+  'CF-RAY'?: string;
 
   /**
    * Header param:
@@ -553,9 +563,34 @@ export namespace ChatCompletionCreateParams {
     [k: string]: unknown;
   }
 
-  export interface ResponseFormat {
-    type?: 'text' | 'json_object' | null;
+  export interface ResponseFormatText {
+    type: 'text';
     [k: string]: unknown;
+  }
+
+  export interface ResponseFormatJsonObject {
+    type: 'json_object';
+    [k: string]: unknown;
+  }
+
+  export interface ResponseFormatJsonSchema {
+    json_schema: ResponseFormatJsonSchema.JsonSchema;
+
+    type: 'json_schema';
+    [k: string]: unknown;
+  }
+
+  export namespace ResponseFormatJsonSchema {
+    export interface JsonSchema {
+      name: string;
+
+      description?: string | null;
+
+      schema?: unknown | null;
+
+      strict?: boolean | null;
+      [k: string]: unknown;
+    }
   }
 
   export interface StreamOptions {

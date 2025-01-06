@@ -22,10 +22,14 @@ export class Models extends APIResource {
     if (isRequestOptions(params)) {
       return this.retrieve(modelId, {}, params);
     }
-    const { 'X-Amz-Cf-Id': xAmzCfId } = params;
+    const { 'CF-RAY': cfRay, 'X-Amz-Cf-Id': xAmzCfId } = params;
     return this._client.get(`/v1/models/${modelId}`, {
       ...options,
-      headers: { ...(xAmzCfId != null ? { 'X-Amz-Cf-Id': xAmzCfId } : undefined), ...options?.headers },
+      headers: {
+        ...(cfRay != null ? { 'CF-RAY': cfRay } : undefined),
+        ...(xAmzCfId != null ? { 'X-Amz-Cf-Id': xAmzCfId } : undefined),
+        ...options?.headers,
+      },
     });
   }
 
@@ -41,10 +45,14 @@ export class Models extends APIResource {
     if (isRequestOptions(params)) {
       return this.list({}, params);
     }
-    const { 'X-Amz-Cf-Id': xAmzCfId } = params;
+    const { 'CF-RAY': cfRay, 'X-Amz-Cf-Id': xAmzCfId } = params;
     return this._client.get('/v1/models', {
       ...options,
-      headers: { ...(xAmzCfId != null ? { 'X-Amz-Cf-Id': xAmzCfId } : undefined), ...options?.headers },
+      headers: {
+        ...(cfRay != null ? { 'CF-RAY': cfRay } : undefined),
+        ...(xAmzCfId != null ? { 'X-Amz-Cf-Id': xAmzCfId } : undefined),
+        ...options?.headers,
+      },
     });
   }
 }
@@ -81,10 +89,14 @@ export namespace ModelListResponse {
 }
 
 export interface ModelRetrieveParams {
+  'CF-RAY'?: string;
+
   'X-Amz-Cf-Id'?: string;
 }
 
 export interface ModelListParams {
+  'CF-RAY'?: string;
+
   'X-Amz-Cf-Id'?: string;
 }
 
