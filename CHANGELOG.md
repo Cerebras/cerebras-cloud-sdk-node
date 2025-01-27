@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.19.0 (2025-01-27)
+
+Full Changelog: [v1.18.0...v1.19.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.18.0...v1.19.0)
+
+### Features
+
+* **api:** v1.19.0 ([#323](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/323)) ([c1eaf29](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c1eaf29660f17cba7e5b47fa60ab8142aa924c3a))
+
+
+### Chores
+
+* **internal:** codegen related update ([#319](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/319)) ([f2e0470](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/f2e04709574232c03dbcf5d4b3e9505ae041fcdb))
+* **internal:** codegen related update ([#322](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/322)) ([9646334](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/9646334a35c5f03fd851cbddfe6cf2dae713f636))
+
 ## 1.18.0 (2025-01-20)
 
 Full Changelog: [v1.16.0...v1.18.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.16.0...v1.18.0)
