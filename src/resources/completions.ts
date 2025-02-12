@@ -77,32 +77,14 @@ export namespace Completion {
 
     export namespace Choice {
       export interface Logprobs {
-        content: Logprobs.Content;
+        text_offset?: Array<number> | null;
+
+        token_logprobs?: Array<number> | null;
+
+        tokens?: Array<string> | null;
+
+        top_logprobs?: Array<Record<string, number>> | null;
         [k: string]: unknown;
-      }
-
-      export namespace Logprobs {
-        export interface Content {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Content.TopLogprobs;
-
-          bytes?: Array<number> | null;
-          [k: string]: unknown;
-        }
-
-        export namespace Content {
-          export interface TopLogprobs {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-            [k: string]: unknown;
-          }
-        }
       }
     }
 

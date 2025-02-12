@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.21.0 (2025-02-12)
+
+Full Changelog: [v1.20.0...v1.21.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.20.0...v1.21.0)
+
+### Features
+
+* **api:** Update schema for logprobs ([#330](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/330)) ([3af844d](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3af844d1bdaea293a1536b2d8fa8a092402a06d9))
+* **client:** send `X-Stainless-Timeout` header ([#328](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/328)) ([46885fb](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/46885fb9740b71449e597581953bb65b052070f5))
+
 ## 1.20.0 (2025-02-03)
 
 Full Changelog: [v1.19.0...v1.20.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.19.0...v1.20.0)

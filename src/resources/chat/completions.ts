@@ -109,7 +109,9 @@ export namespace ChatCompletion {
       }
 
       export interface Logprobs {
-        content: Logprobs.Content;
+        content: Array<Logprobs.Content> | null;
+
+        refusal: Array<Logprobs.Refusal> | null;
         [k: string]: unknown;
       }
 
@@ -119,14 +121,36 @@ export namespace ChatCompletion {
 
           logprob: number;
 
-          top_logprobs: Content.TopLogprobs;
+          top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
           [k: string]: unknown;
         }
 
         export namespace Content {
-          export interface TopLogprobs {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+            [k: string]: unknown;
+          }
+        }
+
+        export interface Refusal {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Refusal.TopLogprob>;
+
+          bytes?: Array<number> | null;
+          [k: string]: unknown;
+        }
+
+        export namespace Refusal {
+          export interface TopLogprob {
             token: string;
 
             logprob: number;
@@ -225,7 +249,9 @@ export namespace ChatCompletion {
       }
 
       export interface Logprobs {
-        content: Logprobs.Content;
+        content: Array<Logprobs.Content> | null;
+
+        refusal: Array<Logprobs.Refusal> | null;
         [k: string]: unknown;
       }
 
@@ -235,14 +261,36 @@ export namespace ChatCompletion {
 
           logprob: number;
 
-          top_logprobs: Content.TopLogprobs;
+          top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
           [k: string]: unknown;
         }
 
         export namespace Content {
-          export interface TopLogprobs {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+            [k: string]: unknown;
+          }
+        }
+
+        export interface Refusal {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Refusal.TopLogprob>;
+
+          bytes?: Array<number> | null;
+          [k: string]: unknown;
+        }
+
+        export namespace Refusal {
+          export interface TopLogprob {
             token: string;
 
             logprob: number;
