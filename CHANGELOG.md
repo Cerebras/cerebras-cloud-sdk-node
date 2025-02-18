@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.22.0 (2025-02-18)
+
+Full Changelog: [v1.21.0...v1.22.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.21.0...v1.22.0)
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#332](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/332)) ([5ec938b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5ec938bbb293149e99c95913cb68867093e65279))
+
 ## 1.21.0 (2025-02-12)
 
 Full Changelog: [v1.20.0...v1.21.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.20.0...v1.21.0)
