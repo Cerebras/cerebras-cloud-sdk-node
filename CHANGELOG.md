@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.23.0 (2025-02-24)
+
+Full Changelog: [v1.22.0...v1.23.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.22.0...v1.23.0)
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#335](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/335)) ([ca5c528](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ca5c528f896c56675653fa388d8cb427edccf0cb))
+
 ## 1.22.0 (2025-02-18)
 
 Full Changelog: [v1.21.0...v1.22.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.21.0...v1.22.0)
