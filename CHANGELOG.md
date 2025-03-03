@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.24.0 (2025-03-03)
+
+Full Changelog: [v1.23.0...v1.24.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.23.0...v1.24.0)
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#338](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/338)) ([efa73de](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/efa73de7de94258f7bdb2af841a4471784c4216e))
+
 ## 1.23.0 (2025-02-24)
 
 Full Changelog: [v1.22.0...v1.23.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.22.0...v1.23.0)
