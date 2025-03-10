@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.25.0 (2025-03-10)
+
+Full Changelog: [v1.24.0...v1.25.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.24.0...v1.25.0)
+
+### Features
+
+* **api:** manual updates ([#342](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/342)) ([b80f9c7](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b80f9c7c6b02e9c75096fbf0c2e418537538e5b4))
+
 ## 1.24.0 (2025-03-03)
 
 Full Changelog: [v1.23.0...v1.24.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.23.0...v1.24.0)
