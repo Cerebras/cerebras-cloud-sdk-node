@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.26.0 (2025-03-17)
+
+Full Changelog: [v1.25.0...v1.26.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.25.0...v1.26.0)
+
+### Features
+
+* **api:** v1.26.0 ([#349](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/349)) ([3a9c428](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3a9c428aa4fba480d6f25343210fdb233a57eb8a))
+
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#348](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/348)) ([3eed3db](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3eed3dbe2e332dc5699e71adcc20d9ae4734e5bd))
+
+
+### Chores
+
+* **internal:** codegen related update ([#345](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/345)) ([6c6e616](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6c6e616769b03b7458565b583a1648205cb1165e))
+* **internal:** remove extra empty newlines ([#347](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/347)) ([58e2ec7](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/58e2ec7d5c5960a3c407343cabce814ddd0d1d5f))
+
 ## 1.25.0 (2025-03-10)
 
 Full Changelog: [v1.24.0...v1.25.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.24.0...v1.25.0)
