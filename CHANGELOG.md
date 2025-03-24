@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.27.0 (2025-03-24)
+
+Full Changelog: [v1.26.0...v1.27.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.26.0...v1.27.0)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#354](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/354)) ([7ec8d98](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7ec8d98c9109d276ff0b301b49a9340a0e485cf2))
+
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#351](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/351)) ([7da6f53](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7da6f53e66150e001db37ea041d68937dd295309))
+* **exports:** stop using path fallbacks ([#353](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/353)) ([7317a5c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7317a5cdd421061ea533c53e1b26cf17c6fb4c00))
+
 ## 1.26.0 (2025-03-17)
 
 Full Changelog: [v1.25.0...v1.26.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.25.0...v1.26.0)
