@@ -1,2 +1,4 @@
 configured_endpoints: 4
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/cerebras%2Fcerebras-cloud-03337461f428d3a766a8cafb551b0544067e09c727334feb8eabf2e651b9edb3.yml
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/cerebras%2Fcerebras-cloud-b5e56137d68ad3901ede48c15e1056ef712259eb84faf7fd80671ec8d99e2418.yml
+openapi_spec_hash: f3dc706cdd3b9587f9df77f827130189
+config_hash: 524c038fba9c9b850e7ec8eee16f5c42

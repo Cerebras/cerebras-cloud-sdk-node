@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.28.0 (2025-03-31)
+
+Full Changelog: [v1.27.0...v1.28.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.27.0...v1.28.0)
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#356](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/356)) ([2d0dc2b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2d0dc2be3d0aa63e731d0cced7f42f63a7d78e29))
+
 ## 1.27.0 (2025-03-24)
 
 Full Changelog: [v1.26.0...v1.27.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.26.0...v1.27.0)
