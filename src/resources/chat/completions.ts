@@ -63,6 +63,7 @@ export namespace ChatCompletion {
     usage: ChatCompletionResponse.Usage;
 
     service_tier?: string | null;
+
     [k: string]: unknown;
   }
 
@@ -75,6 +76,7 @@ export namespace ChatCompletion {
       message: Choice.Message;
 
       logprobs?: Choice.Logprobs | null;
+
       [k: string]: unknown;
     }
 
@@ -85,6 +87,7 @@ export namespace ChatCompletion {
         content?: string | null;
 
         tool_calls?: Array<Message.ToolCall> | null;
+
         [k: string]: unknown;
       }
 
@@ -95,6 +98,7 @@ export namespace ChatCompletion {
           function: ToolCall.Function;
 
           type: 'function';
+
           [k: string]: unknown;
         }
 
@@ -103,6 +107,7 @@ export namespace ChatCompletion {
             arguments: string;
 
             name: string;
+
             [k: string]: unknown;
           }
         }
@@ -112,6 +117,7 @@ export namespace ChatCompletion {
         content: Array<Logprobs.Content> | null;
 
         refusal: Array<Logprobs.Refusal> | null;
+
         [k: string]: unknown;
       }
 
@@ -124,6 +130,7 @@ export namespace ChatCompletion {
           top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
+
           [k: string]: unknown;
         }
 
@@ -134,6 +141,7 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
+
             [k: string]: unknown;
           }
         }
@@ -146,6 +154,7 @@ export namespace ChatCompletion {
           top_logprobs: Array<Refusal.TopLogprob>;
 
           bytes?: Array<number> | null;
+
           [k: string]: unknown;
         }
 
@@ -156,6 +165,7 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
+
             [k: string]: unknown;
           }
         }
@@ -170,6 +180,7 @@ export namespace ChatCompletion {
       queue_time?: number;
 
       total_time?: number;
+
       [k: string]: unknown;
     }
 
@@ -179,6 +190,7 @@ export namespace ChatCompletion {
       prompt_tokens?: number;
 
       total_tokens?: number;
+
       [k: string]: unknown;
     }
   }
@@ -201,6 +213,7 @@ export namespace ChatCompletion {
     time_info?: ChatChunkResponse.TimeInfo | null;
 
     usage?: ChatChunkResponse.Usage | null;
+
     [k: string]: unknown;
   }
 
@@ -213,6 +226,7 @@ export namespace ChatCompletion {
       finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls' | null;
 
       logprobs?: Choice.Logprobs | null;
+
       [k: string]: unknown;
     }
 
@@ -223,6 +237,7 @@ export namespace ChatCompletion {
         role?: 'assistant' | 'user' | 'system' | 'tool' | null;
 
         tool_calls?: Array<Delta.ToolCall> | null;
+
         [k: string]: unknown;
       }
 
@@ -235,6 +250,7 @@ export namespace ChatCompletion {
           type: 'function';
 
           index?: number | null;
+
           [k: string]: unknown;
         }
 
@@ -243,6 +259,7 @@ export namespace ChatCompletion {
             arguments: string;
 
             name: string;
+
             [k: string]: unknown;
           }
         }
@@ -252,6 +269,7 @@ export namespace ChatCompletion {
         content: Array<Logprobs.Content> | null;
 
         refusal: Array<Logprobs.Refusal> | null;
+
         [k: string]: unknown;
       }
 
@@ -264,6 +282,7 @@ export namespace ChatCompletion {
           top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
+
           [k: string]: unknown;
         }
 
@@ -274,6 +293,7 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
+
             [k: string]: unknown;
           }
         }
@@ -286,6 +306,7 @@ export namespace ChatCompletion {
           top_logprobs: Array<Refusal.TopLogprob>;
 
           bytes?: Array<number> | null;
+
           [k: string]: unknown;
         }
 
@@ -296,6 +317,7 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
+
             [k: string]: unknown;
           }
         }
@@ -310,6 +332,7 @@ export namespace ChatCompletion {
       queue_time?: number;
 
       total_time?: number;
+
       [k: string]: unknown;
     }
 
@@ -319,6 +342,7 @@ export namespace ChatCompletion {
       prompt_tokens?: number;
 
       total_tokens?: number;
+
       [k: string]: unknown;
     }
   }
@@ -327,6 +351,7 @@ export namespace ChatCompletion {
     error: ErrorChunkResponse.Error;
 
     status_code: number;
+
     [k: string]: unknown;
   }
 
@@ -339,6 +364,7 @@ export namespace ChatCompletion {
       param?: string | null;
 
       type?: string | null;
+
       [k: string]: unknown;
     }
   }
@@ -548,6 +574,7 @@ export namespace ChatCompletionCreateParams {
     role: 'system';
 
     name?: string | null;
+
     [k: string]: unknown;
   }
 
@@ -557,6 +584,7 @@ export namespace ChatCompletionCreateParams {
     role: 'user';
 
     name?: string | null;
+
     [k: string]: unknown;
   }
 
@@ -565,6 +593,7 @@ export namespace ChatCompletionCreateParams {
       text: string;
 
       type: 'text';
+
       [k: string]: unknown;
     }
   }
@@ -577,6 +606,7 @@ export namespace ChatCompletionCreateParams {
     name?: string | null;
 
     tool_calls?: Array<AssistantMessageRequest.ToolCall> | null;
+
     [k: string]: unknown;
   }
 
@@ -587,6 +617,7 @@ export namespace ChatCompletionCreateParams {
       function: ToolCall.Function;
 
       type: 'function';
+
       [k: string]: unknown;
     }
 
@@ -595,6 +626,7 @@ export namespace ChatCompletionCreateParams {
         arguments: string;
 
         name: string;
+
         [k: string]: unknown;
       }
     }
@@ -608,16 +640,19 @@ export namespace ChatCompletionCreateParams {
     tool_call_id: string;
 
     name?: string | null;
+
     [k: string]: unknown;
   }
 
   export interface ResponseFormatText {
     type: 'text';
+
     [k: string]: unknown;
   }
 
   export interface ResponseFormatJsonObject {
     type: 'json_object';
+
     [k: string]: unknown;
   }
 
@@ -625,6 +660,7 @@ export namespace ChatCompletionCreateParams {
     json_schema: ResponseFormatJsonSchema.JsonSchema;
 
     type: 'json_schema';
+
     [k: string]: unknown;
   }
 
@@ -637,12 +673,14 @@ export namespace ChatCompletionCreateParams {
       schema?: unknown | null;
 
       strict?: boolean | null;
+
       [k: string]: unknown;
     }
   }
 
   export interface StreamOptions {
     include_usage?: boolean | null;
+
     [k: string]: unknown;
   }
 
@@ -650,12 +688,14 @@ export namespace ChatCompletionCreateParams {
     function: ChoiceObject.Function;
 
     type: string;
+
     [k: string]: unknown;
   }
 
   export namespace ChoiceObject {
     export interface Function {
       name: string;
+
       [k: string]: unknown;
     }
   }
@@ -664,6 +704,7 @@ export namespace ChatCompletionCreateParams {
     function: Tool.Function;
 
     type: string;
+
     [k: string]: unknown;
   }
 
@@ -679,6 +720,7 @@ export namespace ChatCompletionCreateParams {
        * define the parameters.
        */
       parameters?: unknown | null;
+
       [k: string]: unknown;
     }
   }

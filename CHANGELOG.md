@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.29.0 (2025-04-07)
+
+Full Changelog: [v1.28.0...v1.29.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.28.0...v1.29.0)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#362](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/362)) ([a2d68cc](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a2d68cc537e32b710f11ef5af5d3d4afd1e615ad))
+* **client:** send `X-Stainless-Timeout` in seconds ([#359](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/359)) ([4dc6873](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/4dc6873f4f2dda7a2bd29d041561b5d9a8626a6a))
+* **mcp:** remove unused tools.ts ([#364](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/364)) ([031bfa8](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/031bfa895f7b04315aaa7c891db945795f27ce15))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#361](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/361)) ([bd9ddea](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/bd9ddea0a76ac105182c8ba2d6f351ce769355e7))
+* **internal:** improve index signature formatting ([#363](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/363)) ([fb9e1f2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/fb9e1f2f932e110512d9404438946266d2621e4f))
+
 ## 1.28.0 (2025-03-31)
 
 Full Changelog: [v1.27.0...v1.28.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.27.0...v1.28.0)

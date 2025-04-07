@@ -58,6 +58,7 @@ export namespace Completion {
     time_info?: CompletionResponse.TimeInfo | null;
 
     usage?: CompletionResponse.Usage | null;
+
     [k: string]: unknown;
   }
 
@@ -72,6 +73,7 @@ export namespace Completion {
       text?: string | null;
 
       tokens?: Array<number> | null;
+
       [k: string]: unknown;
     }
 
@@ -84,6 +86,7 @@ export namespace Completion {
         tokens?: Array<string> | null;
 
         top_logprobs?: Array<Record<string, number>> | null;
+
         [k: string]: unknown;
       }
     }
@@ -96,6 +99,7 @@ export namespace Completion {
       queue_time?: number;
 
       total_time?: number;
+
       [k: string]: unknown;
     }
 
@@ -105,6 +109,7 @@ export namespace Completion {
       prompt_tokens?: number;
 
       total_tokens?: number;
+
       [k: string]: unknown;
     }
   }
@@ -113,6 +118,7 @@ export namespace Completion {
     error: ErrorChunkResponse.Error;
 
     status_code: number;
+
     [k: string]: unknown;
   }
 
@@ -125,6 +131,7 @@ export namespace Completion {
       param?: string | null;
 
       type?: string | null;
+
       [k: string]: unknown;
     }
   }
@@ -306,6 +313,7 @@ export interface CompletionCreateParamsBase {
 export namespace CompletionCreateParams {
   export interface StreamOptions {
     include_usage?: boolean | null;
+
     [k: string]: unknown;
   }
 }

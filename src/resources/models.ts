@@ -65,6 +65,7 @@ export interface ModelRetrieveResponse {
   object?: 'model';
 
   owned_by?: string;
+
   [k: string]: unknown;
 }
 
@@ -72,6 +73,7 @@ export interface ModelListResponse {
   data: Array<ModelListResponse.Data>;
 
   object?: 'list';
+
   [k: string]: unknown;
 }
 
@@ -84,6 +86,7 @@ export namespace ModelListResponse {
     object?: 'model';
 
     owned_by?: string;
+
     [k: string]: unknown;
   }
 }
