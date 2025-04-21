@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.31.0 (2025-04-21)
+
+Full Changelog: [v1.30.0...v1.31.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.30.0...v1.31.0)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#362](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/362)) ([d47701a](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/d47701a1037c4eab73d505d23e4f6c7ff6802a77))
+* **mcp:** remove unused tools.ts ([#364](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/364)) ([138d5a0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/138d5a00df88c1215977cd3f7467c03a57fd1739))
+
+
+### Chores
+
+* **client:** minor internal fixes ([2a7555f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2a7555ffe3c49d40b4d24db9fc0bf79c40c3c44a))
+* **internal:** reduce CI branch coverage ([a0c338e](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a0c338e9015ca8642e6445b74259b12e722d7e8e))
+* **internal:** upload builds and expand CI branch coverage ([7e12aa7](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7e12aa7789597116dd5c586adc5c700b5fe761fc))
+
 ## 1.30.0 (2025-04-14)
 
 Full Changelog: [v1.29.0...v1.30.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.29.0...v1.30.0)
