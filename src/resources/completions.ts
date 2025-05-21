@@ -7,6 +7,13 @@ import { Stream } from '../streaming';
 export class Completions extends APIResource {
   /**
    * Completions
+   *
+   * @example
+   * ```ts
+   * const completion = await client.completions.create({
+   *   model: 'model',
+   * });
+   * ```
    */
   create(
     params: CompletionCreateParamsNonStreaming,
@@ -108,9 +115,19 @@ export namespace Completion {
 
       prompt_tokens?: number;
 
+      prompt_tokens_details?: Usage.PromptTokensDetails;
+
       total_tokens?: number;
 
       [k: string]: unknown;
+    }
+
+    export namespace Usage {
+      export interface PromptTokensDetails {
+        cached_tokens?: number;
+
+        [k: string]: unknown;
+      }
     }
   }
 

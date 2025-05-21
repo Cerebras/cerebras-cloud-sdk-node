@@ -7,6 +7,16 @@ import { Stream } from '../../streaming';
 export class Completions extends APIResource {
   /**
    * Chat
+   *
+   * @example
+   * ```ts
+   * const chatCompletion = await client.chat.completions.create(
+   *   {
+   *     messages: [{ content: 'content', role: 'system' }],
+   *     model: 'model',
+   *   },
+   * );
+   * ```
    */
   create(
     params: ChatCompletionCreateParamsNonStreaming,
@@ -189,9 +199,19 @@ export namespace ChatCompletion {
 
       prompt_tokens?: number;
 
+      prompt_tokens_details?: Usage.PromptTokensDetails;
+
       total_tokens?: number;
 
       [k: string]: unknown;
+    }
+
+    export namespace Usage {
+      export interface PromptTokensDetails {
+        cached_tokens?: number;
+
+        [k: string]: unknown;
+      }
     }
   }
 
@@ -341,9 +361,19 @@ export namespace ChatCompletion {
 
       prompt_tokens?: number;
 
+      prompt_tokens_details?: Usage.PromptTokensDetails;
+
       total_tokens?: number;
 
       [k: string]: unknown;
+    }
+
+    export namespace Usage {
+      export interface PromptTokensDetails {
+        cached_tokens?: number;
+
+        [k: string]: unknown;
+      }
     }
   }
 

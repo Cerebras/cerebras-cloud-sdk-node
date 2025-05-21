@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.35.0 (2025-05-21)
+
+Full Changelog: [v1.31.0...v1.35.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.31.0...v1.35.0)
+
+### Features
+
+* **api:** v1.35.0 ([cba80e9](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/cba80e98c27b2bb4f538f1de56b44d7654632ba3))
+
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#362](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/362)) ([6469a77](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6469a771c72512e15a14880587c076a633b945a6))
+* **mcp:** remove unused tools.ts ([#364](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/issues/364)) ([7494314](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/74943148ffaa1a7cfb251155cbca867e0f19e5ff))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([b5d2028](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b5d202801137a81c2697e32a25673cebac4da3ff))
+* **ci:** bump node version for release workflows ([b753dda](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b753dda7465e30a18ed6f7533de2b616f6700aa9))
+* **ci:** only use depot for staging repos ([89fe6d2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/89fe6d2889a4bb7c88c1701bb4539d34f3cf7edb))
+* **internal:** codegen related update ([2893151](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2893151d0487590419f016dfb93975934bd6690e))
+* **internal:** reduce CI branch coverage ([5e97cca](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5e97ccad57713787de40ef2d52c9859aa1ba03e1))
+* **internal:** upload builds and expand CI branch coverage ([b6427a2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b6427a24aeb5e22eb675d36b4332eeb87922b8f0))
+
+
+### Documentation
+
+* add examples to tsdocs ([54843af](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/54843afeb83aebe9f0dfc92ccea2e3141c88faca))
+* **readme:** fix typo ([a21c3de](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a21c3dee72d8d62a5ff66cfd434ef82752e25d3b))
+
 ## 1.31.0 (2025-04-21)
 
 Full Changelog: [v1.30.0...v1.31.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.30.0...v1.31.0)
