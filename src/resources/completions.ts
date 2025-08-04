@@ -92,7 +92,7 @@ export namespace Completion {
 
         tokens?: Array<string> | null;
 
-        top_logprobs?: Array<Record<string, number>> | null;
+        top_logprobs?: Array<{ [key: string]: number }> | null;
 
         [k: string]: unknown;
       }

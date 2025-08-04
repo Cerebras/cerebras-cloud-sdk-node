@@ -151,15 +151,11 @@ const client = new Cerebras({
   apiKey: process.env['CEREBRAS_API_KEY'], // This is the default and can be omitted
 });
 
-async function main() {
-  const params: Cerebras.Chat.ChatCompletionCreateParams = {
-    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
-    model: 'llama3.1-8b',
-  };
-  const chatCompletion: Cerebras.Chat.ChatCompletion = await client.chat.completions.create(params);
-}
-
-main();
+const params: Cerebras.Chat.ChatCompletionCreateParams = {
+  messages: [{ role: 'user', content: 'Why is fast inference important?' }],
+  model: 'llama3.1-8b',
+};
+const chatCompletion: Cerebras.Chat.ChatCompletion = await client.chat.completions.create(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.

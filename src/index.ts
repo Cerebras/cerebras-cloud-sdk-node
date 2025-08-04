@@ -35,6 +35,8 @@ export interface ClientOptions {
    *
    * Note that request timeouts are retried by default, so in a worst-case scenario you may wait
    * much longer than this timeout before the promise succeeds or fails.
+   *
+   * @unit milliseconds
    */
   timeout?: number | undefined;
 
@@ -129,6 +131,7 @@ export class Cerebras extends Core.APIClient {
 
     super({
       baseURL: options.baseURL!,
+      baseURLOverridden: baseURL ? baseURL !== 'https://api.cerebras.ai' : false,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -160,6 +163,13 @@ export class Cerebras extends Core.APIClient {
   chat: API.Chat = new API.Chat(this);
   completions: API.Completions = new API.Completions(this);
   models: API.Models = new API.Models(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== 'https://api.cerebras.ai';
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;

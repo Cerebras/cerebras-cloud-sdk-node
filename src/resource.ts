@@ -2,7 +2,7 @@
 
 import type { Cerebras } from './index';
 
-export class APIResource {
+export abstract class APIResource {
   protected _client: Cerebras;
 
   constructor(client: Cerebras) {
