@@ -96,15 +96,23 @@ export namespace ChatCompletion {
 
         content?: string | null;
 
+        reasoning?: string | null;
+
         tool_calls?: Array<Message.ToolCall> | null;
 
         [k: string]: unknown;
       }
 
       export namespace Message {
+        /**
+         * Non-streaming only. Represents a function call in an assistant tool call.
+         */
         export interface ToolCall {
           id: string;
 
+          /**
+           * Non-streaming only. Represents a function call in an assistant tool call.
+           */
           function: ToolCall.Function;
 
           type: 'function';
@@ -113,6 +121,9 @@ export namespace ChatCompletion {
         }
 
         export namespace ToolCall {
+          /**
+           * Non-streaming only. Represents a function call in an assistant tool call.
+           */
           export interface Function {
             arguments: string;
 
@@ -254,6 +265,8 @@ export namespace ChatCompletion {
       export interface Delta {
         content?: string | null;
 
+        reasoning?: string | null;
+
         role?: 'assistant' | 'user' | 'system' | 'tool' | null;
 
         tool_calls?: Array<Delta.ToolCall> | null;
@@ -262,12 +275,18 @@ export namespace ChatCompletion {
       }
 
       export namespace Delta {
+        /**
+         * Streaming only. Represents a function call in an assistant tool call.
+         */
         export interface ToolCall {
-          id: string;
-
+          /**
+           * Streaming only. Represents a function in an assistant tool call.
+           */
           function: ToolCall.Function;
 
           type: 'function';
+
+          id?: string | null;
 
           index?: number | null;
 
@@ -275,10 +294,13 @@ export namespace ChatCompletion {
         }
 
         export namespace ToolCall {
+          /**
+           * Streaming only. Represents a function in an assistant tool call.
+           */
           export interface Function {
-            arguments: string;
+            arguments?: string | null;
 
-            name: string;
+            name?: string | null;
 
             [k: string]: unknown;
           }
@@ -505,6 +527,14 @@ export interface ChatCompletionCreateParamsBase {
   presence_penalty?: number | null;
 
   /**
+   * Body param: Constrains effort on reasoning for reasoning models. Currently
+   * supported values are low, medium, and high. Reducing reasoning effort can result
+   * in faster responses and fewer tokens used on reasoning in a response. If set to
+   * None, the model will use the default reasoning effort for the model.
+   */
+  reasoning_effort?: 'low' | 'medium' | 'high' | null;
+
+  /**
    * Body param:
    */
   response_format?:
@@ -629,11 +659,13 @@ export namespace ChatCompletionCreateParams {
   }
 
   export interface AssistantMessageRequest {
-    role: 'assistant';
-
     content?: string | null;
 
     name?: string | null;
+
+    reasoning?: string | null;
+
+    role?: 'assistant';
 
     tool_calls?: Array<AssistantMessageRequest.ToolCall> | null;
 
@@ -641,9 +673,15 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace AssistantMessageRequest {
+    /**
+     * Non-streaming only. Represents a function call in an assistant tool call.
+     */
     export interface ToolCall {
       id: string;
 
+      /**
+       * Non-streaming only. Represents a function call in an assistant tool call.
+       */
       function: ToolCall.Function;
 
       type: 'function';
@@ -652,6 +690,9 @@ export namespace ChatCompletionCreateParams {
     }
 
     export namespace ToolCall {
+      /**
+       * Non-streaming only. Represents a function call in an assistant tool call.
+       */
       export interface Function {
         arguments: string;
 

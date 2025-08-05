@@ -37,6 +37,7 @@ describe('resource completions', () => {
       n: 0,
       parallel_tool_calls: true,
       presence_penalty: -2,
+      reasoning_effort: 'low',
       response_format: { type: 'text' },
       seed: 0,
       service_tier: 'auto',
