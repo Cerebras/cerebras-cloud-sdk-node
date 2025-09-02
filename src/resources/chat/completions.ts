@@ -12,7 +12,7 @@ export class Completions extends APIResource {
    * ```ts
    * const chatCompletion = await client.chat.completions.create(
    *   {
-   *     messages: [{ content: 'content', role: 'system' }],
+   *     messages: [{ content: 'string', role: 'system' }],
    *     model: 'model',
    *   },
    * );
@@ -629,13 +629,23 @@ export interface ChatCompletionCreateParamsBase {
 
 export namespace ChatCompletionCreateParams {
   export interface SystemMessageRequest {
-    content: string;
+    content: string | Array<SystemMessageRequest.UnionMember1>;
 
     role: 'system';
 
     name?: string | null;
 
     [k: string]: unknown;
+  }
+
+  export namespace SystemMessageRequest {
+    export interface UnionMember1 {
+      text: string;
+
+      type: 'text';
+
+      [k: string]: unknown;
+    }
   }
 
   export interface UserMessageRequest {
@@ -659,7 +669,7 @@ export namespace ChatCompletionCreateParams {
   }
 
   export interface AssistantMessageRequest {
-    content?: string | null;
+    content?: string | Array<AssistantMessageRequest.UnionMember1> | null;
 
     name?: string | null;
 
@@ -673,6 +683,14 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace AssistantMessageRequest {
+    export interface UnionMember1 {
+      text: string;
+
+      type: 'text';
+
+      [k: string]: unknown;
+    }
+
     /**
      * Non-streaming only. Represents a function call in an assistant tool call.
      */
@@ -704,8 +722,6 @@ export namespace ChatCompletionCreateParams {
   }
 
   export interface ToolMessageRequest {
-    content: string;
-
     role: 'tool';
 
     tool_call_id: string;

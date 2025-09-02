@@ -1,48 +1,22 @@
 # Changelog
 
-## 1.46.0 (2025-08-05)
+## 1.50.0 (2025-09-02)
 
-Full Changelog: [v1.45.0...v1.46.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.45.0...v1.46.0)
-
-### Features
-
-* **api:** v1.46.0 ([c841452](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c841452ec08c1a5383992aa994e4f6573d69cdd0))
-
-## 1.45.0 (2025-08-04)
-
-Full Changelog: [v1.35.0...v1.45.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.35.0...v1.45.0)
+Full Changelog: [v1.46.0...v1.50.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.46.0...v1.50.0)
 
 ### Features
 
-* **client:** add support for endpoint-specific base URLs ([027afc1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/027afc1254ea4f21fcc630774023eab26b2a1677))
-
-
-### Bug Fixes
-
-* **client:** don't send `Content-Type` for bodyless methods ([c51ccd4](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c51ccd4b412fd95dd845b68743e0056e423ab508))
-* publish script — handle NPM errors correctly ([8adf8ab](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8adf8ab9fecce15c6e4373693638a014791d74b4))
-* publish script — handle NPM errors correctly ([2095062](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/20950628d890b49f131acbf936789ffd3e6e967f))
+* **api:** v.1.50.0 ([6d967cd](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6d967cdd9951bd9f587d9ced1a6fb46db816aba7))
 
 
 ### Chores
 
-* change publish docs url ([0a684a2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/0a684a21706059bcee293298351bd982cfdf4fdd))
-* change publish docs url ([5eaf942](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5eaf942c1f98e1f7a69398f89ca85d5c69b4073d))
-* **ci:** enable for pull requests ([ae91d3f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ae91d3ffae2407ab6ab187d12fdd179062057797))
-* **ci:** only run for pushes and fork pull requests ([702c0df](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/702c0dfa8a3341b39859a094b38cb180a27b1a09))
-* **docs:** grammar improvements ([d0bfbc0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/d0bfbc056dc5b8758a21f4cbceabc7ab50f6a726))
-* **docs:** use top-level-await in example snippets ([13ecf05](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/13ecf056f5a4d420c7f51dc91a327e308a7f7a7f))
-* improve publish-npm script --latest tag logic ([627c842](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/627c8423b162437b38ba0d8f1f2a052b7f7c39af))
-* improve publish-npm script --latest tag logic ([47ad563](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/47ad56320858064a4bec85fe48aacaee882b5ff3))
-* **internal:** make base APIResource abstract ([db12a11](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/db12a1122736b1b155079abbe6ae6a543227ad84))
-* **internal:** remove redundant imports config ([2b13058](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2b13058e0890a21dc5c1729fed073e9e8d61d0b7))
-* make some internal functions async ([56aad16](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/56aad161058783b301b7b871abe82cf42cb46642))
-* mention unit type in timeout docs ([58cea65](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/58cea65a43a0a0b08602c09e3a085c771d65c19f))
-
-
-### Refactors
-
-* **types:** replace Record with mapped types ([7a2cfcf](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7a2cfcfc1d3d040a1ed5af2ce29dd34f981a9f26))
+* **deps:** update dependency node-fetch to v2.6.13 ([a221eb2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a221eb2d939436894646a52f4df0b22e1a859850))
+* **internal:** formatting change ([0afe177](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/0afe177cdc84ffb5529250694bff5c62901f1cea))
+* **internal:** move publish config ([0b7b6a9](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/0b7b6a9a8650e195f513d3ce064d89b924a6cdb9))
+* **internal:** update comment in script ([8b88fe7](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8b88fe7947d31676e43fb14de4203ca7a741af1f))
+* update @stainless-api/prism-cli to v5.15.0 ([90422b2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/90422b2f64fdaa7e7ff0ded4578e6dbba2604a0e))
+* update CI script ([5e81a9a](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5e81a9ab601deadd7782bfc159b952b295515747))
 
 ## 1.35.0 (2025-05-21)
 

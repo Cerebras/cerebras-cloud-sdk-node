@@ -210,6 +210,7 @@ export class Cerebras extends Core.APIClient {
 Cerebras.Chat = Chat;
 Cerebras.Completions = Completions;
 Cerebras.Models = Models;
+
 export declare namespace Cerebras {
   export type RequestOptions = Core.RequestOptions;
 
