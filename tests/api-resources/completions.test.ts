@@ -28,7 +28,7 @@ describe('resource completions', () => {
       frequency_penalty: -2,
       grammar_root: 'grammar_root',
       logit_bias: {},
-      logprobs: true,
+      logprobs: 0,
       max_tokens: 0,
       min_tokens: 0,
       n: 0,

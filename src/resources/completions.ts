@@ -214,11 +214,13 @@ export interface CompletionCreateParamsBase {
   logit_bias?: unknown | null;
 
   /**
-   * Body param: Whether to return log probabilities of the output tokens or not. If
-   * true, returns the log probabilities of each output token returned in the content
-   * of message.
+   * Body param: Include the log probabilities on the logprobs most likely output
+   * tokens, as well the chosen tokens. For example, if logprobs is 5, the API will
+   * return a list of the 5 most likely tokens. The API will always return the
+   * logprob of the sampled token, so there may be up to logprobs+1 elements in the
+   * response.
    */
-  logprobs?: boolean | null;
+  logprobs?: number | boolean | null;
 
   /**
    * Body param: The maximum number of tokens that can be generated in the chat

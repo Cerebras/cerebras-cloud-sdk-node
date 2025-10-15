@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@cerebras/cerebras_cloud_sdk/*": ["dist/src/*"],
-      "@cerebras/cerebras_cloud_sdk": ["dist/src/index.ts"],
+      "@cerebras/cerebras_cloud_sdk/*": ["./dist/src/*"],
+      "@cerebras/cerebras_cloud_sdk": ["./dist/src/index.ts"]
     },
     "noEmit": false,
     "declaration": true,

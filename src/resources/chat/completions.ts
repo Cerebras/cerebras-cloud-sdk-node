@@ -453,6 +453,12 @@ export interface ChatCompletionCreateParamsBase {
   model: string;
 
   /**
+   * Body param: Disables reasoning for reasoning models. If set to True, the model
+   * will not use any reasoning in its response.
+   */
+  disable_reasoning?: boolean | null;
+
+  /**
    * Body param: Number between -2.0 and 2.0. Positive values penalize new tokens
    * based on their existing frequency in the text so far, decreasing the model's
    * likelihood to repeat the same line verbatim.
@@ -553,7 +559,7 @@ export interface ChatCompletionCreateParamsBase {
   /**
    * Body param:
    */
-  service_tier?: 'auto' | 'default' | null;
+  service_tier?: 'auto' | 'default' | 'flex' | 'priority' | null;
 
   /**
    * Body param: Up to 4 sequences where the API will stop generating further tokens.

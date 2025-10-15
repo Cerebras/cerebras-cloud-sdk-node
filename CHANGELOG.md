@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.56.1 (2025-10-15)
+
+Full Changelog: [v1.50.0...v1.56.1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.50.0...v1.56.1)
+
+### Features
+
+* **api:** v1.56.1 ([c1255dc](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c1255dc6123b8e2b5384da6677b0bc7b24f187a1))
+
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([570639b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/570639bc1bb740dbeba40ad222ccde7d64eac2e2))
+
+
+### Performance Improvements
+
+* faster formatting ([b323254](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b3232548c41385b5f9d7dccc985ac4cec83b9774))
+
+
+### Chores
+
+* ci build action ([9f7db8f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/9f7db8fae6525d1add879a7d31116c02062be962))
+* do not install brew dependencies in ./scripts/bootstrap by default ([e2d11b4](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/e2d11b4424f8ed4e20853b94a5eb338b25ac3b9b))
+* **internal:** codegen related update ([92016ef](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/92016ef762bb4332c34c894104692c51b77d6355))
+* **internal:** fix incremental formatting in some cases ([7517a1c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7517a1c48a72bdd3a9915b783587bf5e90223952))
+* **internal:** ignore .eslintcache ([6ef2b3f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6ef2b3f09430a6a17ac4a809d93315878a5b4173))
+* **internal:** remove .eslintcache ([96a45b3](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/96a45b3df40dfd7fa229ece4d24fae24822b8a42))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([2386ef1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2386ef199c285a00f53176c8627f4e1230a2d760))
+* **internal:** use npm pack for build uploads ([dcf2d35](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/dcf2d35c874263f3afc0f6cbda88fac102e79ca5))
+
 ## 1.50.0 (2025-09-02)
 
 Full Changelog: [v1.46.0...v1.50.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.46.0...v1.50.0)
