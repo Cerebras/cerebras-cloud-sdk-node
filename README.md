@@ -52,8 +52,8 @@ const client = new Cerebras({
 
 async function main() {
   const chatCompletion = await client.chat.completions.create({
-    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
     model: 'llama3.1-8b',
+    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
   });
 
   console.log(chatCompletion?.choices[0]?.message);
@@ -152,8 +152,8 @@ const client = new Cerebras({
 });
 
 const params: Cerebras.Chat.ChatCompletionCreateParams = {
-  messages: [{ role: 'user', content: 'Why is fast inference important?' }],
   model: 'llama3.1-8b',
+  messages: [{ role: 'user', content: 'Why is fast inference important?' }],
 };
 const chatCompletion: Cerebras.Chat.ChatCompletion = await client.chat.completions.create(params);
 ```
@@ -177,8 +177,8 @@ const client = new Cerebras({
 async function main() {
   const chatCompletion = await client.chat.completions
     .create({
-      messages: [{ role: 'user', content: 'This should cause an error!' }],
-      model: 'some-model-that-doesnt-exist' as any, // Ask TS to ignore the obviously invalid model name... Do not do this!
+      model: 'some-model-that-doesnt-exist' as any,
+      messages: [{ role: 'user', content: 'This should cause an error!' }], // Ask TS to ignore the obviously invalid model name... Do not do this!
     })
     .catch(async (err) => {
       if (err instanceof Cerebras.APIError) {
@@ -226,7 +226,7 @@ const client = new Cerebras({
 });
 
 // Or, configure per-request:
-await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' }, {
+await client.chat.completions.create({ model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] }, {
   maxRetries: 5,
 });
 ```
@@ -245,7 +245,7 @@ const client = new Cerebras({
 });
 
 // Override per-request:
-await client.chat.completions.create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' }, {
+await client.chat.completions.create({ model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] }, {
   timeout: 5 * 1000,
 });
 ```
@@ -269,13 +269,13 @@ import Cerebras from '@cerebras/cerebras_cloud_sdk';
 const client = new Cerebras();
 
 const response = await client.chat.completions
-  .create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' })
+  .create({ model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: chatCompletion, response: raw } = await client.chat.completions
-  .create({ messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' })
+  .create({ model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(chatCompletion);
@@ -383,7 +383,7 @@ const client = new Cerebras({
 
 // Override per-request:
 await client.chat.completions.create(
-  { messages: [{ role: 'user', content: 'Why is fast inference important?' }], model: 'llama3.1-8b' },
+  { model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },

@@ -11,10 +11,7 @@ export class Completions extends APIResource {
    * @example
    * ```ts
    * const chatCompletion = await client.chat.completions.create(
-   *   {
-   *     messages: [{ content: 'string', role: 'system' }],
-   *     model: 'model',
-   *   },
+   *   { model: 'model' },
    * );
    * ```
    */
@@ -105,13 +102,13 @@ export namespace ChatCompletion {
 
       export namespace Message {
         /**
-         * Non-streaming only. Represents a function call in an assistant tool call.
+         * A tool call for an assistant.
          */
         export interface ToolCall {
           id: string;
 
           /**
-           * Non-streaming only. Represents a function call in an assistant tool call.
+           * A function call for an assistant tool.
            */
           function: ToolCall.Function;
 
@@ -122,7 +119,7 @@ export namespace ChatCompletion {
 
         export namespace ToolCall {
           /**
-           * Non-streaming only. Represents a function call in an assistant tool call.
+           * A function call for an assistant tool.
            */
           export interface Function {
             arguments: string;
@@ -208,9 +205,11 @@ export namespace ChatCompletion {
     export interface Usage {
       completion_tokens?: number;
 
+      completion_tokens_details?: Usage.CompletionTokensDetails | null;
+
       prompt_tokens?: number;
 
-      prompt_tokens_details?: Usage.PromptTokensDetails;
+      prompt_tokens_details?: Usage.PromptTokensDetails | null;
 
       total_tokens?: number;
 
@@ -218,6 +217,14 @@ export namespace ChatCompletion {
     }
 
     export namespace Usage {
+      export interface CompletionTokensDetails {
+        accepted_prediction_tokens?: number | null;
+
+        rejected_prediction_tokens?: number | null;
+
+        [k: string]: unknown;
+      }
+
       export interface PromptTokensDetails {
         cached_tokens?: number;
 
@@ -233,7 +240,7 @@ export namespace ChatCompletion {
 
     model: string;
 
-    object: 'chat.completion.chunk';
+    object: 'chat.completion.chunk' | 'text_completion';
 
     system_fingerprint: string;
 
@@ -250,13 +257,17 @@ export namespace ChatCompletion {
 
   export namespace ChatChunkResponse {
     export interface Choice {
-      delta: Choice.Delta;
-
       index: number;
+
+      delta?: Choice.Delta | null;
 
       finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls' | null;
 
       logprobs?: Choice.Logprobs | null;
+
+      text?: string | null;
+
+      tokens?: Array<number> | null;
 
       [k: string]: unknown;
     }
@@ -268,6 +279,8 @@ export namespace ChatCompletion {
         reasoning?: string | null;
 
         role?: 'assistant' | 'user' | 'system' | 'tool' | null;
+
+        tokens?: Array<number> | null;
 
         tool_calls?: Array<Delta.ToolCall> | null;
 
@@ -381,9 +394,11 @@ export namespace ChatCompletion {
     export interface Usage {
       completion_tokens?: number;
 
+      completion_tokens_details?: Usage.CompletionTokensDetails | null;
+
       prompt_tokens?: number;
 
-      prompt_tokens_details?: Usage.PromptTokensDetails;
+      prompt_tokens_details?: Usage.PromptTokensDetails | null;
 
       total_tokens?: number;
 
@@ -391,6 +406,14 @@ export namespace ChatCompletion {
     }
 
     export namespace Usage {
+      export interface CompletionTokensDetails {
+        accepted_prediction_tokens?: number | null;
+
+        rejected_prediction_tokens?: number | null;
+
+        [k: string]: unknown;
+      }
+
       export interface PromptTokensDetails {
         cached_tokens?: number;
 
@@ -409,6 +432,8 @@ export namespace ChatCompletion {
 
   export namespace ErrorChunkResponse {
     export interface Error {
+      id?: string | null;
+
       code?: string | null;
 
       message?: string | null;
@@ -437,16 +462,6 @@ export interface ChatCompletionCreateParamsStreaming extends ChatCompletionCreat
 }
 
 export interface ChatCompletionCreateParamsBase {
-  /**
-   * Body param:
-   */
-  messages: Array<
-    | ChatCompletionCreateParams.SystemMessageRequest
-    | ChatCompletionCreateParams.UserMessageRequest
-    | ChatCompletionCreateParams.AssistantMessageRequest
-    | ChatCompletionCreateParams.ToolMessageRequest
-  >;
-
   /**
    * Body param:
    */
@@ -500,6 +515,16 @@ export interface ChatCompletionCreateParamsBase {
   max_tokens?: number | null;
 
   /**
+   * Body param:
+   */
+  messages?: Array<
+    | ChatCompletionCreateParams.SystemMessageRequest
+    | ChatCompletionCreateParams.UserMessageRequest
+    | ChatCompletionCreateParams.AssistantMessageRequest
+    | ChatCompletionCreateParams.ToolMessageRequest
+  > | null;
+
+  /**
    * Body param: The minimum number of tokens to generate for a completion. If not
    * specified or set to 0, the model will generate as many tokens as it deems
    * necessary. Setting to -1 sets to max sequence length.
@@ -526,6 +551,14 @@ export interface ChatCompletionCreateParamsBase {
   parallel_tool_calls?: boolean | null;
 
   /**
+   * Body param: Configuration for a Predicted Output, which can greatly improve
+   * response times when large parts of the model response are known ahead of time.
+   * This is most common when regenerating a file with only minor changes to most of
+   * the content.
+   */
+  prediction?: ChatCompletionCreateParams.Prediction | null;
+
+  /**
    * Body param: Number between -2.0 and 2.0. Positive values penalize new tokens
    * based on whether they appear in the text so far, increasing the model's
    * likelihood to talk about new topics.
@@ -541,7 +574,7 @@ export interface ChatCompletionCreateParamsBase {
   reasoning_effort?: 'low' | 'medium' | 'high' | null;
 
   /**
-   * Body param:
+   * Body param: A response format for text.
    */
   response_format?:
     | ChatCompletionCreateParams.ResponseFormatText
@@ -573,7 +606,7 @@ export interface ChatCompletionCreateParamsBase {
   stream?: boolean | null;
 
   /**
-   * Body param:
+   * Body param: Options for streaming.
    */
   stream_options?: ChatCompletionCreateParams.StreamOptions | null;
 
@@ -586,7 +619,7 @@ export interface ChatCompletionCreateParamsBase {
   temperature?: number | null;
 
   /**
-   * Body param:
+   * Body param: A choice object.
    */
   tool_choice?: 'none' | 'auto' | 'required' | ChatCompletionCreateParams.ChoiceObject | null;
 
@@ -634,52 +667,155 @@ export interface ChatCompletionCreateParamsBase {
 }
 
 export namespace ChatCompletionCreateParams {
+  /**
+   * A message request from the system.
+   */
   export interface SystemMessageRequest {
-    content: string | Array<SystemMessageRequest.UnionMember1>;
-
-    role: 'system';
+    content:
+      | string
+      | Array<
+          | SystemMessageRequest.TextContent
+          | SystemMessageRequest.ImageURLContent
+          | SystemMessageRequest.ImageContent
+        >;
 
     name?: string | null;
+
+    role?: 'system';
 
     [k: string]: unknown;
   }
 
   export namespace SystemMessageRequest {
-    export interface UnionMember1 {
+    /**
+     * Text content for a message.
+     */
+    export interface TextContent {
       text: string;
 
       type: 'text';
 
       [k: string]: unknown;
     }
+
+    /**
+     * Image URL content for a message.
+     */
+    export interface ImageURLContent {
+      /**
+       * Image URL
+       */
+      image_url: ImageURLContent.ImageURL;
+
+      type: 'image_url';
+
+      [k: string]: unknown;
+    }
+
+    export namespace ImageURLContent {
+      /**
+       * Image URL
+       */
+      export interface ImageURL {
+        url: string;
+
+        detail?: string | null;
+
+        [k: string]: unknown;
+      }
+    }
+
+    /**
+     * Image URL content for a message.
+     */
+    export interface ImageContent {
+      image: string;
+
+      type: 'image';
+
+      [k: string]: unknown;
+    }
   }
 
+  /**
+   * A message request from the user.
+   */
   export interface UserMessageRequest {
-    content: string | Array<UserMessageRequest.UnionMember1>;
-
-    role: 'user';
+    content:
+      | string
+      | Array<
+          | UserMessageRequest.TextContent
+          | UserMessageRequest.ImageURLContent
+          | UserMessageRequest.ImageContent
+        >;
 
     name?: string | null;
+
+    role?: 'user';
 
     [k: string]: unknown;
   }
 
   export namespace UserMessageRequest {
-    export interface UnionMember1 {
+    /**
+     * Text content for a message.
+     */
+    export interface TextContent {
       text: string;
 
       type: 'text';
 
       [k: string]: unknown;
     }
+
+    /**
+     * Image URL content for a message.
+     */
+    export interface ImageURLContent {
+      /**
+       * Image URL
+       */
+      image_url: ImageURLContent.ImageURL;
+
+      type: 'image_url';
+
+      [k: string]: unknown;
+    }
+
+    export namespace ImageURLContent {
+      /**
+       * Image URL
+       */
+      export interface ImageURL {
+        url: string;
+
+        detail?: string | null;
+
+        [k: string]: unknown;
+      }
+    }
+
+    /**
+     * Image URL content for a message.
+     */
+    export interface ImageContent {
+      image: string;
+
+      type: 'image';
+
+      [k: string]: unknown;
+    }
   }
 
+  /**
+   * A message request from an assistant.
+   */
   export interface AssistantMessageRequest {
     content?: string | Array<AssistantMessageRequest.UnionMember1> | null;
 
     name?: string | null;
 
-    reasoning?: string | null;
+    reasoning?: string | Array<AssistantMessageRequest.UnionMember1> | null;
 
     role?: 'assistant';
 
@@ -689,6 +825,9 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace AssistantMessageRequest {
+    /**
+     * Text content for a message.
+     */
     export interface UnionMember1 {
       text: string;
 
@@ -698,13 +837,13 @@ export namespace ChatCompletionCreateParams {
     }
 
     /**
-     * Non-streaming only. Represents a function call in an assistant tool call.
+     * A tool call for an assistant.
      */
     export interface ToolCall {
       id: string;
 
       /**
-       * Non-streaming only. Represents a function call in an assistant tool call.
+       * A function call for an assistant tool.
        */
       function: ToolCall.Function;
 
@@ -715,7 +854,7 @@ export namespace ChatCompletionCreateParams {
 
     export namespace ToolCall {
       /**
-       * Non-streaming only. Represents a function call in an assistant tool call.
+       * A function call for an assistant tool.
        */
       export interface Function {
         arguments: string;
@@ -727,29 +866,85 @@ export namespace ChatCompletionCreateParams {
     }
   }
 
+  /**
+   * A message request from a tool.
+   */
   export interface ToolMessageRequest {
-    role: 'tool';
+    content: string | Array<ToolMessageRequest.UnionMember1>;
 
     tool_call_id: string;
 
     name?: string | null;
 
+    role?: 'tool';
+
     [k: string]: unknown;
   }
 
+  export namespace ToolMessageRequest {
+    /**
+     * Text content for a message.
+     */
+    export interface UnionMember1 {
+      text: string;
+
+      type: 'text';
+
+      [k: string]: unknown;
+    }
+  }
+
+  /**
+   * Configuration for a Predicted Output, which can greatly improve response times
+   * when large parts of the model response are known ahead of time. This is most
+   * common when regenerating a file with only minor changes to most of the content.
+   */
+  export interface Prediction {
+    content: string | Array<Prediction.UnionMember1>;
+
+    type: 'content';
+
+    [k: string]: unknown;
+  }
+
+  export namespace Prediction {
+    /**
+     * Text content for a message.
+     */
+    export interface UnionMember1 {
+      text: string;
+
+      type: 'text';
+
+      [k: string]: unknown;
+    }
+  }
+
+  /**
+   * A response format for text.
+   */
   export interface ResponseFormatText {
     type: 'text';
 
     [k: string]: unknown;
   }
 
+  /**
+   * A response format for a JSON object.
+   */
   export interface ResponseFormatJsonObject {
     type: 'json_object';
 
     [k: string]: unknown;
   }
 
+  /**
+   * A response format for a JSON schema.
+   */
   export interface ResponseFormatJsonSchema {
+    /**
+     * A JSON Schema object.
+     */
     json_schema: ResponseFormatJsonSchema.JsonSchema;
 
     type: 'json_schema';
@@ -758,6 +953,9 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace ResponseFormatJsonSchema {
+    /**
+     * A JSON Schema object.
+     */
     export interface JsonSchema {
       name: string;
 
@@ -771,13 +969,22 @@ export namespace ChatCompletionCreateParams {
     }
   }
 
+  /**
+   * Options for streaming.
+   */
   export interface StreamOptions {
     include_usage?: boolean | null;
 
     [k: string]: unknown;
   }
 
+  /**
+   * A choice object.
+   */
   export interface ChoiceObject {
+    /**
+     * A function for a choice object.
+     */
     function: ChoiceObject.Function;
 
     type: string;
@@ -786,6 +993,9 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace ChoiceObject {
+    /**
+     * A function for a choice object.
+     */
     export interface Function {
       name: string;
 
@@ -793,7 +1003,13 @@ export namespace ChatCompletionCreateParams {
     }
   }
 
+  /**
+   * A tool object
+   */
   export interface Tool {
+    /**
+     * A function object.
+     */
     function: Tool.Function;
 
     type: string;
@@ -802,6 +1018,9 @@ export namespace ChatCompletionCreateParams {
   }
 
   export namespace Tool {
+    /**
+     * A function object.
+     */
     export interface Function {
       name: string;
 
@@ -813,6 +1032,8 @@ export namespace ChatCompletionCreateParams {
        * define the parameters.
        */
       parameters?: unknown | null;
+
+      strict?: boolean;
 
       [k: string]: unknown;
     }

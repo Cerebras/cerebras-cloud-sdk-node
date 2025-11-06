@@ -12,6 +12,7 @@ export class Completions extends APIResource {
    * ```ts
    * const completion = await client.completions.create({
    *   model: 'model',
+   *   prompt: 'string',
    * });
    * ```
    */
@@ -46,7 +47,10 @@ export class Completions extends APIResource {
   }
 }
 
-export type Completion = Completion.CompletionResponse | Completion.ErrorChunkResponse;
+export type Completion =
+  | Completion.CompletionResponse
+  | Completion.CompletionChunkResponse
+  | Completion.ErrorChunkResponse;
 
 export namespace Completion {
   export interface CompletionResponse {
@@ -113,9 +117,11 @@ export namespace Completion {
     export interface Usage {
       completion_tokens?: number;
 
+      completion_tokens_details?: Usage.CompletionTokensDetails | null;
+
       prompt_tokens?: number;
 
-      prompt_tokens_details?: Usage.PromptTokensDetails;
+      prompt_tokens_details?: Usage.PromptTokensDetails | null;
 
       total_tokens?: number;
 
@@ -123,6 +129,157 @@ export namespace Completion {
     }
 
     export namespace Usage {
+      export interface CompletionTokensDetails {
+        accepted_prediction_tokens?: number | null;
+
+        rejected_prediction_tokens?: number | null;
+
+        [k: string]: unknown;
+      }
+
+      export interface PromptTokensDetails {
+        cached_tokens?: number;
+
+        [k: string]: unknown;
+      }
+    }
+  }
+
+  export interface CompletionChunkResponse {
+    id: string;
+
+    created: number;
+
+    model: string;
+
+    object: 'chat.completion.chunk' | 'text_completion';
+
+    system_fingerprint: string;
+
+    choices?: Array<CompletionChunkResponse.Choice> | null;
+
+    service_tier?: string | null;
+
+    time_info?: CompletionChunkResponse.TimeInfo | null;
+
+    usage?: CompletionChunkResponse.Usage | null;
+
+    [k: string]: unknown;
+  }
+
+  export namespace CompletionChunkResponse {
+    export interface Choice {
+      index: number;
+
+      delta?: Choice.Delta | null;
+
+      finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls' | null;
+
+      logprobs?: Choice.Logprobs | null;
+
+      text?: string | null;
+
+      tokens?: Array<number> | null;
+
+      [k: string]: unknown;
+    }
+
+    export namespace Choice {
+      export interface Delta {
+        content?: string | null;
+
+        reasoning?: string | null;
+
+        role?: 'assistant' | 'user' | 'system' | 'tool' | null;
+
+        tokens?: Array<number> | null;
+
+        tool_calls?: Array<Delta.ToolCall> | null;
+
+        [k: string]: unknown;
+      }
+
+      export namespace Delta {
+        /**
+         * Streaming only. Represents a function call in an assistant tool call.
+         */
+        export interface ToolCall {
+          /**
+           * Streaming only. Represents a function in an assistant tool call.
+           */
+          function: ToolCall.Function;
+
+          type: 'function';
+
+          id?: string | null;
+
+          index?: number | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace ToolCall {
+          /**
+           * Streaming only. Represents a function in an assistant tool call.
+           */
+          export interface Function {
+            arguments?: string | null;
+
+            name?: string | null;
+
+            [k: string]: unknown;
+          }
+        }
+      }
+
+      export interface Logprobs {
+        text_offset?: Array<number> | null;
+
+        token_logprobs?: Array<number> | null;
+
+        tokens?: Array<string> | null;
+
+        top_logprobs?: Array<{ [key: string]: number }> | null;
+
+        [k: string]: unknown;
+      }
+    }
+
+    export interface TimeInfo {
+      completion_time?: number;
+
+      prompt_time?: number;
+
+      queue_time?: number;
+
+      total_time?: number;
+
+      [k: string]: unknown;
+    }
+
+    export interface Usage {
+      completion_tokens?: number;
+
+      completion_tokens_details?: Usage.CompletionTokensDetails | null;
+
+      prompt_tokens?: number;
+
+      prompt_tokens_details?: Usage.PromptTokensDetails | null;
+
+      total_tokens?: number;
+
+      [k: string]: unknown;
+    }
+
+    export namespace Usage {
+      export interface CompletionTokensDetails {
+        accepted_prediction_tokens?: number | null;
+
+        rejected_prediction_tokens?: number | null;
+
+        [k: string]: unknown;
+      }
+
       export interface PromptTokensDetails {
         cached_tokens?: number;
 
@@ -141,6 +298,8 @@ export namespace Completion {
 
   export namespace ErrorChunkResponse {
     export interface Error {
+      id?: string | null;
+
       code?: string | null;
 
       message?: string | null;
@@ -171,6 +330,12 @@ export interface CompletionCreateParamsBase {
    * Body param:
    */
   model: string;
+
+  /**
+   * Body param: The prompt(s) to generate completions for, encoded as a string,
+   * array of strings, array of tokens, or array of token arrays.
+   */
+  prompt: string | Array<string> | Array<number> | Array<Array<number>>;
 
   /**
    * Body param: Generates `best_of` completions server-side and returns the "best"
@@ -220,7 +385,7 @@ export interface CompletionCreateParamsBase {
    * logprob of the sampled token, so there may be up to logprobs+1 elements in the
    * response.
    */
-  logprobs?: number | boolean | null;
+  logprobs?: number | null;
 
   /**
    * Body param: The maximum number of tokens that can be generated in the chat
@@ -251,12 +416,6 @@ export interface CompletionCreateParamsBase {
   presence_penalty?: number | null;
 
   /**
-   * Body param: The prompt(s) to generate completions for, encoded as a string,
-   * array of strings, array of tokens, or array of token arrays.
-   */
-  prompt?: string | Array<string> | Array<number> | Array<Array<number>>;
-
-  /**
    * Body param: Return raw tokens instead of text
    */
   return_raw_tokens?: boolean | null;
@@ -280,7 +439,7 @@ export interface CompletionCreateParamsBase {
   stream?: boolean | null;
 
   /**
-   * Body param:
+   * Body param: Options for streaming.
    */
   stream_options?: CompletionCreateParams.StreamOptions | null;
 
@@ -330,6 +489,9 @@ export interface CompletionCreateParamsBase {
 }
 
 export namespace CompletionCreateParams {
+  /**
+   * Options for streaming.
+   */
   export interface StreamOptions {
     include_usage?: boolean | null;
 

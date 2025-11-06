@@ -10,7 +10,7 @@ const client = new Cerebras({
 
 describe('resource completions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.completions.create({ model: 'model' });
+    const responsePromise = client.completions.create({ model: 'model', prompt: 'string' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,6 +23,7 @@ describe('resource completions', () => {
   test('create: required and optional params', async () => {
     const response = await client.completions.create({
       model: 'model',
+      prompt: 'string',
       best_of: 0,
       echo: true,
       frequency_penalty: -2,
@@ -33,7 +34,6 @@ describe('resource completions', () => {
       min_tokens: 0,
       n: 0,
       presence_penalty: -2,
-      prompt: 'string',
       return_raw_tokens: true,
       seed: 0,
       stop: 'string',

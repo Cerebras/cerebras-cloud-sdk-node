@@ -10,10 +10,7 @@ const client = new Cerebras({
 
 describe('resource completions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.chat.completions.create({
-      messages: [{ content: 'string', role: 'system' }],
-      model: 'model',
-    });
+    const responsePromise = client.chat.completions.create({ model: 'model' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -25,7 +22,6 @@ describe('resource completions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
-      messages: [{ content: 'string', role: 'system', name: 'name' }],
       model: 'model',
       disable_reasoning: true,
       frequency_penalty: -2,
@@ -33,10 +29,12 @@ describe('resource completions', () => {
       logprobs: true,
       max_completion_tokens: 0,
       max_tokens: 0,
+      messages: [{ content: 'string', name: 'name', role: 'system' }],
       min_completion_tokens: 0,
       min_tokens: 0,
       n: 0,
       parallel_tool_calls: true,
+      prediction: { content: 'string', type: 'content' },
       presence_penalty: -2,
       reasoning_effort: 'low',
       response_format: { type: 'text' },
@@ -47,7 +45,12 @@ describe('resource completions', () => {
       stream_options: { include_usage: true },
       temperature: 0,
       tool_choice: 'none',
-      tools: [{ function: { name: 'name', description: 'description', parameters: {} }, type: 'type' }],
+      tools: [
+        {
+          function: { name: 'name', description: 'description', parameters: {}, strict: true },
+          type: 'type',
+        },
+      ],
       top_logprobs: 0,
       top_p: 0,
       user: 'user',
