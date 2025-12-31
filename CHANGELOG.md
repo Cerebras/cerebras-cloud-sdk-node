@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.64.1 (2025-12-31)
+
+Full Changelog: [v1.59.0...v1.64.1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.59.0...v1.64.1)
+
+### Features
+
+* **api:** v1.65.0 ([2b0ee1f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2b0ee1f632f2feae55d28a9f87aa1add7a51aca1))
+
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([3441751](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3441751a32c18b3acb5b193634a8a3f4207cd1ac))
+* **mcp:** return correct lines on typescript errors ([815d7db](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/815d7db1022b3d93e5fff121cd028196d6e00f6a))
+
+
+### Chores
+
+* **internal:** codegen related update ([9ce1d99](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/9ce1d99d1fdfdd0fe9d05f98e535b178215e2f56))
+* **internal:** codegen related update ([5805bd2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5805bd26db3ef279594366659c8c43591f6b36b4))
+* **internal:** codegen related update ([1f58bae](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/1f58bae5abcf39b143ad4b6c104125e4f090632d))
+
 ## 1.59.0 (2025-11-06)
 
 Full Changelog: [v1.56.1...v1.59.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.56.1...v1.59.0)

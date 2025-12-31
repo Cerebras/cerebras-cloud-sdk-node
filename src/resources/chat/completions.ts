@@ -84,6 +84,8 @@ export namespace ChatCompletion {
 
       logprobs?: Choice.Logprobs | null;
 
+      reasoning_logprobs?: Choice.ReasoningLogprobs | null;
+
       [k: string]: unknown;
     }
 
@@ -140,6 +142,64 @@ export namespace ChatCompletion {
       }
 
       export namespace Logprobs {
+        export interface Content {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Content.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Content {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
+
+        export interface Refusal {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Refusal.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Refusal {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
+      }
+
+      export interface ReasoningLogprobs {
+        content: Array<ReasoningLogprobs.Content> | null;
+
+        refusal: Array<ReasoningLogprobs.Refusal> | null;
+
+        [k: string]: unknown;
+      }
+
+      export namespace ReasoningLogprobs {
         export interface Content {
           token: string;
 
@@ -265,6 +325,8 @@ export namespace ChatCompletion {
 
       logprobs?: Choice.Logprobs | null;
 
+      reasoning_logprobs?: Choice.ReasoningLogprobs | null;
+
       text?: string | null;
 
       tokens?: Array<number> | null;
@@ -329,6 +391,64 @@ export namespace ChatCompletion {
       }
 
       export namespace Logprobs {
+        export interface Content {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Content.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Content {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
+
+        export interface Refusal {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Refusal.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Refusal {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
+      }
+
+      export interface ReasoningLogprobs {
+        content: Array<ReasoningLogprobs.Content> | null;
+
+        refusal: Array<ReasoningLogprobs.Refusal> | null;
+
+        [k: string]: unknown;
+      }
+
+      export namespace ReasoningLogprobs {
         export interface Content {
           token: string;
 
@@ -468,6 +588,12 @@ export interface ChatCompletionCreateParamsBase {
   model: string;
 
   /**
+   * Body param: When True, removes reasoning content from messages that appear
+   * before the latest user message.
+   */
+  clear_thinking?: boolean | null;
+
+  /**
    * Body param: Disables reasoning for reasoning models. If set to True, the model
    * will not use any reasoning in its response.
    */
@@ -491,7 +617,7 @@ export interface ChatCompletionCreateParamsBase {
    * increase likelihood of selection; values like -100 or 100 should result in a ban
    * or exclusive selection of the relevant token.
    */
-  logit_bias?: unknown | null;
+  logit_bias?: { [key: string]: number } | null;
 
   /**
    * Body param: Whether to return log probabilities of the output tokens or not. If
@@ -572,6 +698,19 @@ export interface ChatCompletionCreateParamsBase {
    * None, the model will use the default reasoning effort for the model.
    */
   reasoning_effort?: 'low' | 'medium' | 'high' | null;
+
+  /**
+   * Body param: Determines how reasoning is returned in the response. If set to
+   * `parsed`, the reasoning will be returned in the `reasoning` field of the
+   * response message as a string. If set to `raw`, the reasoning will be returned in
+   * the `content` field of the response message with special tokens. If set to
+   * `hidden`, the reasoning will not be returned in the response. If set to `none`,
+   * the model's default behavior will be used. If set to `text_parsed`, the
+   * reasoning will be returned in the `reasoning` field of the response message as a
+   * string, similar to `parsed`, but logprobs will not be separated into
+   * `reasoning_logprobs` and `logprobs`.
+   */
+  reasoning_format?: 'none' | 'parsed' | 'text_parsed' | 'raw' | 'hidden';
 
   /**
    * Body param: A response format for text.

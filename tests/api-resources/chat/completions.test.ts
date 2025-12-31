@@ -23,9 +23,10 @@ describe('resource completions', () => {
   test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
       model: 'model',
+      clear_thinking: true,
       disable_reasoning: true,
       frequency_penalty: -2,
-      logit_bias: {},
+      logit_bias: { foo: 0 },
       logprobs: true,
       max_completion_tokens: 0,
       max_tokens: 0,
@@ -37,6 +38,7 @@ describe('resource completions', () => {
       prediction: { content: 'string', type: 'content' },
       presence_penalty: -2,
       reasoning_effort: 'low',
+      reasoning_format: 'none',
       response_format: { type: 'text' },
       seed: 0,
       service_tier: 'auto',

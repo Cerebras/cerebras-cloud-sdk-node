@@ -81,6 +81,8 @@ export namespace Completion {
 
       logprobs?: Choice.Logprobs | null;
 
+      reasoning_logprobs?: Choice.ReasoningLogprobs | null;
+
       text?: string | null;
 
       tokens?: Array<number> | null;
@@ -99,6 +101,64 @@ export namespace Completion {
         top_logprobs?: Array<{ [key: string]: number }> | null;
 
         [k: string]: unknown;
+      }
+
+      export interface ReasoningLogprobs {
+        content: Array<ReasoningLogprobs.Content> | null;
+
+        refusal: Array<ReasoningLogprobs.Refusal> | null;
+
+        [k: string]: unknown;
+      }
+
+      export namespace ReasoningLogprobs {
+        export interface Content {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Content.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Content {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
+
+        export interface Refusal {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Refusal.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Refusal {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
       }
     }
 
@@ -177,6 +237,8 @@ export namespace Completion {
 
       logprobs?: Choice.Logprobs | null;
 
+      reasoning_logprobs?: Choice.ReasoningLogprobs | null;
+
       text?: string | null;
 
       tokens?: Array<number> | null;
@@ -242,6 +304,64 @@ export namespace Completion {
         top_logprobs?: Array<{ [key: string]: number }> | null;
 
         [k: string]: unknown;
+      }
+
+      export interface ReasoningLogprobs {
+        content: Array<ReasoningLogprobs.Content> | null;
+
+        refusal: Array<ReasoningLogprobs.Refusal> | null;
+
+        [k: string]: unknown;
+      }
+
+      export namespace ReasoningLogprobs {
+        export interface Content {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Content.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Content {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
+
+        export interface Refusal {
+          token: string;
+
+          logprob: number;
+
+          top_logprobs: Array<Refusal.TopLogprob>;
+
+          bytes?: Array<number> | null;
+
+          [k: string]: unknown;
+        }
+
+        export namespace Refusal {
+          export interface TopLogprob {
+            token: string;
+
+            logprob: number;
+
+            bytes?: Array<number> | null;
+
+            [k: string]: unknown;
+          }
+        }
       }
     }
 
@@ -376,7 +496,7 @@ export interface CompletionCreateParamsBase {
    * increase likelihood of selection; values like -100 or 100 should result in a ban
    * or exclusive selection of the relevant token.
    */
-  logit_bias?: unknown | null;
+  logit_bias?: { [key: string]: number } | null;
 
   /**
    * Body param: Include the log probabilities on the logprobs most likely output
@@ -414,6 +534,15 @@ export interface CompletionCreateParamsBase {
    * likelihood to talk about new topics.
    */
   presence_penalty?: number | null;
+
+  /**
+   * Body param: Determines how reasoning is returned in the response. If set to
+   * `parsed`, the reasoning will be returned in the `reasoning` field of the
+   * response message as a string. If set to `raw`, the reasoning will be returned in
+   * the `content` field of the response message with special tokens. If set to
+   * `hidden`, the reasoning will not be returned in the response.
+   */
+  reasoning_format?: 'none' | 'parsed' | 'text_parsed' | 'raw' | 'hidden';
 
   /**
    * Body param: Return raw tokens instead of text
