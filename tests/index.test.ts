@@ -340,7 +340,11 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Cerebras({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
+    const client = new Cerebras({
+      apiKey: 'My API Key',
+      fetch: testFetch,
+      maxRetries: 4,
+    });
 
     expect(
       await client.request({
@@ -402,7 +406,11 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Cerebras({ apiKey: 'My API Key', fetch: testFetch, maxRetries: 4 });
+    const client = new Cerebras({
+      apiKey: 'My API Key',
+      fetch: testFetch,
+      maxRetries: 4,
+    });
 
     expect(
       await client.request({

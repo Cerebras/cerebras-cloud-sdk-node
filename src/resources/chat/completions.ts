@@ -583,7 +583,7 @@ export interface ChatCompletionCreateParamsStreaming extends ChatCompletionCreat
 
 export interface ChatCompletionCreateParamsBase {
   /**
-   * Body param:
+   * Body param
    */
   model: string;
 
@@ -641,7 +641,7 @@ export interface ChatCompletionCreateParamsBase {
   max_tokens?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   messages?: Array<
     | ChatCompletionCreateParams.SystemMessageRequest
@@ -672,7 +672,7 @@ export interface ChatCompletionCreateParamsBase {
   n?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   parallel_tool_calls?: boolean | null;
 
@@ -729,7 +729,7 @@ export interface ChatCompletionCreateParamsBase {
   seed?: number | null;
 
   /**
-   * Body param:
+   * Body param
    */
   service_tier?: 'auto' | 'default' | 'flex' | 'priority' | null;
 
@@ -740,7 +740,7 @@ export interface ChatCompletionCreateParamsBase {
   stop?: string | Array<string> | null;
 
   /**
-   * Body param:
+   * Body param
    */
   stream?: boolean | null;
 
@@ -763,7 +763,7 @@ export interface ChatCompletionCreateParamsBase {
   tool_choice?: 'none' | 'auto' | 'required' | ChatCompletionCreateParams.ChoiceObject | null;
 
   /**
-   * Body param:
+   * Body param
    */
   tools?: Array<ChatCompletionCreateParams.Tool> | null;
 
@@ -790,17 +790,17 @@ export interface ChatCompletionCreateParamsBase {
   user?: string | null;
 
   /**
-   * Header param:
+   * Header param
    */
   'CF-RAY'?: string;
 
   /**
-   * Header param:
+   * Header param
    */
   'X-Amz-Cf-Id'?: string;
 
   /**
-   * Header param:
+   * Header param
    */
   'X-delay-time'?: number;
 }

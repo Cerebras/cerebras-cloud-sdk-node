@@ -30,7 +30,13 @@ describe('resource completions', () => {
       logprobs: true,
       max_completion_tokens: 0,
       max_tokens: 0,
-      messages: [{ content: 'string', name: 'name', role: 'system' }],
+      messages: [
+        {
+          content: 'string',
+          name: 'name',
+          role: 'system',
+        },
+      ],
       min_completion_tokens: 0,
       min_tokens: 0,
       n: 0,
@@ -49,7 +55,12 @@ describe('resource completions', () => {
       tool_choice: 'none',
       tools: [
         {
-          function: { name: 'name', description: 'description', parameters: {}, strict: true },
+          function: {
+            name: 'name',
+            description: 'description',
+            parameters: {},
+            strict: true,
+          },
           type: 'type',
         },
       ],

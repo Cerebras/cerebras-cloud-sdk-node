@@ -447,7 +447,7 @@ export interface CompletionCreateParamsStreaming extends CompletionCreateParamsB
 
 export interface CompletionCreateParamsBase {
   /**
-   * Body param:
+   * Body param
    */
   model: string;
 
@@ -563,7 +563,7 @@ export interface CompletionCreateParamsBase {
   stop?: string | Array<string> | null;
 
   /**
-   * Body param:
+   * Body param
    */
   stream?: boolean | null;
 
@@ -602,17 +602,17 @@ export interface CompletionCreateParamsBase {
   user?: string | null;
 
   /**
-   * Header param:
+   * Header param
    */
   'CF-RAY'?: string;
 
   /**
-   * Header param:
+   * Header param
    */
   'X-Amz-Cf-Id'?: string;
 
   /**
-   * Header param:
+   * Header param
    */
   'X-delay-time'?: number;
 }

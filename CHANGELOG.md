@@ -1,5 +1,46 @@
 # Changelog
 
+## 1.79.0 (2026-04-09)
+
+Full Changelog: [v1.64.1...v1.79.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.64.1...v1.79.0)
+
+### Bug Fixes
+
+* **client:** preserve URL params already embedded in path ([f82aa9f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/f82aa9f3a21518ea5fc4c5ba7c99e01d2890c4db))
+* **docs/contributing:** correct pnpm link command ([7f4f421](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/7f4f421622d7aecc1c14546b584fc8d518ee0db0))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([ac6ff6a](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ac6ff6a3232d330996119e34a3a59405a4e1ba48))
+* **ci:** skip lint on metadata-only changes ([6dcbdce](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6dcbdce53d312d8b39c1a741c3288ef3c7596075))
+* **ci:** skip uploading artifacts on stainless-internal branches ([96616c2](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/96616c2f60fa5c7a6ce2b01fd3c8e69c72677973))
+* **ci:** upgrade `actions/github-script` ([ede1db6](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ede1db6f17dcc88362d7ab271d1e0ba63da4824e))
+* **client:** do not parse responses with empty content-length ([502b72c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/502b72c65d855162fcfc978332e402d4bc0bbcd8))
+* fix typo in descriptions ([917f069](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/917f0693845f56d2b1b30fd22f90dc5d76a26037))
+* **internal:** codegen related update ([2372e7c](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2372e7c3c3ea1ebfd3186f1e76eb5aaf441f954d))
+* **internal:** codegen related update ([6fac0b1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/6fac0b176ac4efcae6dcbb380d4e609bfadc57b6))
+* **internal:** codegen related update ([a2a4310](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/a2a4310d552e600d2668ff929a358111c79d486f))
+* **internal:** move stringifyQuery implementation to internal function ([889bc6f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/889bc6f4714ee47495beddfef84c10b2fbbec93e))
+* **internal:** tweak CI branches ([18a1e44](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/18a1e44d96bdbbd7eea68fb5e65b41e309695336))
+* **internal:** update `actions/checkout` version ([956b2d3](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/956b2d30c544c88df53c49dbe933ba98d27c6077))
+* **internal:** update gitignore ([40e5e54](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/40e5e5466d10546dde936f47a562119cbf3f16d4))
+* **internal:** update multipart form array serialization ([ec42fd5](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ec42fd54b0e42ed521d94e5abd819632f464aea2))
+* **internal:** upgrade babel, qs, js-yaml ([5e2dacd](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5e2dacd2b6803d850c35687bdbef0a3fbd0bc19e))
+* **test:** do not count install time for mock server timeout ([61a13db](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/61a13db01fff174a7d6c5c2608d481745b112e51))
+* **tests:** bump steady to v0.19.4 ([ee1ff53](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/ee1ff53b5a79712a6e27602252548d4c49fc0b82))
+* **tests:** bump steady to v0.19.5 ([8f0f517](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/8f0f51785e4fa964a22961ad541855703360b5d4))
+* **tests:** bump steady to v0.19.6 ([73ca81b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/73ca81ba748b3d2ad6af37d5f06c9510a38752ae))
+* **tests:** bump steady to v0.19.7 ([12d887e](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/12d887e15b1a261744176f4632e3878ac89c1f13))
+* **tests:** bump steady to v0.20.1 ([b41d8fa](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/b41d8fa99368865b48d10a26315009c32e8ee06e))
+* **tests:** bump steady to v0.20.2 ([cc486d9](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/cc486d9bb7be6c15095e158769e37ca859e6e75e))
+* update mock server docs ([5534c46](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/5534c46bafda3f80090dc4302b1780bf9055e009))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([663fc8f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/663fc8f9a0a4afaa151ad9d96e84b89ccaf42d58))
+
 ## 1.64.1 (2025-12-31)
 
 Full Changelog: [v1.59.0...v1.64.1](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.59.0...v1.64.1)

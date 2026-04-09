@@ -269,13 +269,19 @@ import Cerebras from '@cerebras/cerebras_cloud_sdk';
 const client = new Cerebras();
 
 const response = await client.chat.completions
-  .create({ model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] })
+  .create({
+    model: 'llama3.1-8b',
+    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
+  })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: chatCompletion, response: raw } = await client.chat.completions
-  .create({ model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] })
+  .create({
+    model: 'llama3.1-8b',
+    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(chatCompletion);
@@ -383,7 +389,10 @@ const client = new Cerebras({
 
 // Override per-request:
 await client.chat.completions.create(
-  { model: 'llama3.1-8b', messages: [{ role: 'user', content: 'Why is fast inference important?' }] },
+  {
+    model: 'llama3.1-8b',
+    messages: [{ role: 'user', content: 'Why is fast inference important?' }],
+  },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },
