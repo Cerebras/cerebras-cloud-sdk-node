@@ -32,7 +32,11 @@ describe('resource models', () => {
     await expect(
       client.models.retrieve(
         'model_id',
-        { 'CF-RAY': 'CF-RAY', 'X-Amz-Cf-Id': 'X-Amz-Cf-Id' },
+        {
+          format: 'default',
+          'CF-RAY': 'CF-RAY',
+          'X-Amz-Cf-Id': 'X-Amz-Cf-Id',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Cerebras.NotFoundError);
@@ -60,7 +64,11 @@ describe('resource models', () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.models.list(
-        { 'CF-RAY': 'CF-RAY', 'X-Amz-Cf-Id': 'X-Amz-Cf-Id' },
+        {
+          format: 'default',
+          'CF-RAY': 'CF-RAY',
+          'X-Amz-Cf-Id': 'X-Amz-Cf-Id',
+        },
         { path: '/_stainless_unknown_path' },
       ),
     ).rejects.toThrow(Cerebras.NotFoundError);

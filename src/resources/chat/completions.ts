@@ -11,7 +11,17 @@ export class Completions extends APIResource {
    * @example
    * ```ts
    * const chatCompletion = await client.chat.completions.create(
-   *   { model: 'model' },
+   *   {
+   *     messages: [
+   *       {
+   *         content:
+   *           'You are a helpful assistant running on a CS-3 hardware at Cerebras Systems',
+   *         role: 'system',
+   *       },
+   *       { content: 'What is Generative AI?', role: 'user' },
+   *     ],
+   *     model: 'gpt-oss-120b',
+   *   },
    * );
    * ```
    */
@@ -65,28 +75,29 @@ export namespace ChatCompletion {
 
     system_fingerprint: string;
 
-    time_info: ChatCompletionResponse.TimeInfo;
-
-    usage: ChatCompletionResponse.Usage;
-
     service_tier?: string | null;
 
-    [k: string]: unknown;
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
+    time_info?: ChatCompletionResponse.TimeInfo | null;
+
+    usage?: ChatCompletionResponse.Usage | null;
   }
 
   export namespace ChatCompletionResponse {
     export interface Choice {
-      finish_reason: 'stop' | 'length' | 'content_filter' | 'tool_calls';
-
       index: number;
 
       message: Choice.Message;
 
+      finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls' | null;
+
       logprobs?: Choice.Logprobs | null;
 
       reasoning_logprobs?: Choice.ReasoningLogprobs | null;
-
-      [k: string]: unknown;
     }
 
     export namespace Choice {
@@ -98,47 +109,41 @@ export namespace ChatCompletion {
         reasoning?: string | null;
 
         tool_calls?: Array<Message.ToolCall> | null;
-
-        [k: string]: unknown;
       }
 
       export namespace Message {
         /**
-         * A tool call for an assistant.
+         * Streaming only. Represents a function call in an assistant tool call.
          */
         export interface ToolCall {
-          id: string;
-
           /**
-           * A function call for an assistant tool.
+           * Streaming only. Represents a function in an assistant tool call.
            */
           function: ToolCall.Function;
 
           type: 'function';
 
-          [k: string]: unknown;
+          id?: string | null;
+
+          index?: number | null;
         }
 
         export namespace ToolCall {
           /**
-           * A function call for an assistant tool.
+           * Streaming only. Represents a function in an assistant tool call.
            */
           export interface Function {
-            arguments: string;
+            arguments?: string | null;
 
-            name: string;
-
-            [k: string]: unknown;
+            name?: string | null;
           }
         }
       }
 
       export interface Logprobs {
-        content: Array<Logprobs.Content> | null;
+        content?: Array<Logprobs.Content> | null;
 
-        refusal: Array<Logprobs.Refusal> | null;
-
-        [k: string]: unknown;
+        refusal?: Array<Logprobs.Refusal> | null;
       }
 
       export namespace Logprobs {
@@ -150,8 +155,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Content {
@@ -161,8 +164,6 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
 
@@ -174,8 +175,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Refusal.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Refusal {
@@ -185,18 +184,14 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
       }
 
       export interface ReasoningLogprobs {
-        content: Array<ReasoningLogprobs.Content> | null;
+        content?: Array<ReasoningLogprobs.Content> | null;
 
-        refusal: Array<ReasoningLogprobs.Refusal> | null;
-
-        [k: string]: unknown;
+        refusal?: Array<ReasoningLogprobs.Refusal> | null;
       }
 
       export namespace ReasoningLogprobs {
@@ -208,8 +203,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Content {
@@ -219,8 +212,6 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
 
@@ -232,8 +223,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Refusal.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Refusal {
@@ -243,23 +232,26 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
       }
     }
 
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
     export interface TimeInfo {
-      completion_time?: number;
+      completion_time?: number | null;
 
-      prompt_time?: number;
+      created?: number | null;
 
-      queue_time?: number;
+      prompt_time?: number | null;
 
-      total_time?: number;
+      queue_time?: number | null;
 
-      [k: string]: unknown;
+      total_time?: number | null;
     }
 
     export interface Usage {
@@ -267,28 +259,26 @@ export namespace ChatCompletion {
 
       completion_tokens_details?: Usage.CompletionTokensDetails | null;
 
+      image_tokens?: number | null;
+
       prompt_tokens?: number;
 
       prompt_tokens_details?: Usage.PromptTokensDetails | null;
 
       total_tokens?: number;
-
-      [k: string]: unknown;
     }
 
     export namespace Usage {
       export interface CompletionTokensDetails {
         accepted_prediction_tokens?: number | null;
 
-        rejected_prediction_tokens?: number | null;
+        reasoning_tokens?: number | null;
 
-        [k: string]: unknown;
+        rejected_prediction_tokens?: number | null;
       }
 
       export interface PromptTokensDetails {
         cached_tokens?: number;
-
-        [k: string]: unknown;
       }
     }
   }
@@ -300,7 +290,7 @@ export namespace ChatCompletion {
 
     model: string;
 
-    object: 'chat.completion.chunk' | 'text_completion';
+    object: 'chat.completion.chunk';
 
     system_fingerprint: string;
 
@@ -308,11 +298,14 @@ export namespace ChatCompletion {
 
     service_tier?: string | null;
 
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
     time_info?: ChatChunkResponse.TimeInfo | null;
 
     usage?: ChatChunkResponse.Usage | null;
-
-    [k: string]: unknown;
   }
 
   export namespace ChatChunkResponse {
@@ -327,11 +320,15 @@ export namespace ChatCompletion {
 
       reasoning_logprobs?: Choice.ReasoningLogprobs | null;
 
+      /**
+       * @deprecated
+       */
       text?: string | null;
 
+      /**
+       * @deprecated
+       */
       tokens?: Array<number> | null;
-
-      [k: string]: unknown;
     }
 
     export namespace Choice {
@@ -342,11 +339,12 @@ export namespace ChatCompletion {
 
         role?: 'assistant' | 'user' | 'system' | 'tool' | null;
 
+        /**
+         * @deprecated
+         */
         tokens?: Array<number> | null;
 
         tool_calls?: Array<Delta.ToolCall> | null;
-
-        [k: string]: unknown;
       }
 
       export namespace Delta {
@@ -364,8 +362,6 @@ export namespace ChatCompletion {
           id?: string | null;
 
           index?: number | null;
-
-          [k: string]: unknown;
         }
 
         export namespace ToolCall {
@@ -376,18 +372,14 @@ export namespace ChatCompletion {
             arguments?: string | null;
 
             name?: string | null;
-
-            [k: string]: unknown;
           }
         }
       }
 
       export interface Logprobs {
-        content: Array<Logprobs.Content> | null;
+        content?: Array<Logprobs.Content> | null;
 
-        refusal: Array<Logprobs.Refusal> | null;
-
-        [k: string]: unknown;
+        refusal?: Array<Logprobs.Refusal> | null;
       }
 
       export namespace Logprobs {
@@ -399,8 +391,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Content {
@@ -410,8 +400,6 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
 
@@ -423,8 +411,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Refusal.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Refusal {
@@ -434,18 +420,14 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
       }
 
       export interface ReasoningLogprobs {
-        content: Array<ReasoningLogprobs.Content> | null;
+        content?: Array<ReasoningLogprobs.Content> | null;
 
-        refusal: Array<ReasoningLogprobs.Refusal> | null;
-
-        [k: string]: unknown;
+        refusal?: Array<ReasoningLogprobs.Refusal> | null;
       }
 
       export namespace ReasoningLogprobs {
@@ -457,8 +439,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Content.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Content {
@@ -468,8 +448,6 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
 
@@ -481,8 +459,6 @@ export namespace ChatCompletion {
           top_logprobs: Array<Refusal.TopLogprob>;
 
           bytes?: Array<number> | null;
-
-          [k: string]: unknown;
         }
 
         export namespace Refusal {
@@ -492,23 +468,26 @@ export namespace ChatCompletion {
             logprob: number;
 
             bytes?: Array<number> | null;
-
-            [k: string]: unknown;
           }
         }
       }
     }
 
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
     export interface TimeInfo {
-      completion_time?: number;
+      completion_time?: number | null;
 
-      prompt_time?: number;
+      created?: number | null;
 
-      queue_time?: number;
+      prompt_time?: number | null;
 
-      total_time?: number;
+      queue_time?: number | null;
 
-      [k: string]: unknown;
+      total_time?: number | null;
     }
 
     export interface Usage {
@@ -516,28 +495,26 @@ export namespace ChatCompletion {
 
       completion_tokens_details?: Usage.CompletionTokensDetails | null;
 
+      image_tokens?: number | null;
+
       prompt_tokens?: number;
 
       prompt_tokens_details?: Usage.PromptTokensDetails | null;
 
       total_tokens?: number;
-
-      [k: string]: unknown;
     }
 
     export namespace Usage {
       export interface CompletionTokensDetails {
         accepted_prediction_tokens?: number | null;
 
-        rejected_prediction_tokens?: number | null;
+        reasoning_tokens?: number | null;
 
-        [k: string]: unknown;
+        rejected_prediction_tokens?: number | null;
       }
 
       export interface PromptTokensDetails {
         cached_tokens?: number;
-
-        [k: string]: unknown;
       }
     }
   }
@@ -546,8 +523,6 @@ export namespace ChatCompletion {
     error: ErrorChunkResponse.Error;
 
     status_code: number;
-
-    [k: string]: unknown;
   }
 
   export namespace ErrorChunkResponse {
@@ -561,8 +536,6 @@ export namespace ChatCompletion {
       param?: string | null;
 
       type?: string | null;
-
-      [k: string]: unknown;
     }
   }
 }
@@ -582,6 +555,17 @@ export interface ChatCompletionCreateParamsStreaming extends ChatCompletionCreat
 }
 
 export interface ChatCompletionCreateParamsBase {
+  /**
+   * Body param
+   */
+  messages: Array<
+    | ChatCompletionCreateParams.SystemMessageRequest
+    | ChatCompletionCreateParams.DeveloperMessageRequest
+    | ChatCompletionCreateParams.UserMessageRequest
+    | ChatCompletionCreateParams.AssistantMessageRequest
+    | ChatCompletionCreateParams.ToolMessageRequest
+  >;
+
   /**
    * Body param
    */
@@ -641,16 +625,6 @@ export interface ChatCompletionCreateParamsBase {
   max_tokens?: number | null;
 
   /**
-   * Body param
-   */
-  messages?: Array<
-    | ChatCompletionCreateParams.SystemMessageRequest
-    | ChatCompletionCreateParams.UserMessageRequest
-    | ChatCompletionCreateParams.AssistantMessageRequest
-    | ChatCompletionCreateParams.ToolMessageRequest
-  > | null;
-
-  /**
    * Body param: The minimum number of tokens to generate for a completion. If not
    * specified or set to 0, the model will generate as many tokens as it deems
    * necessary. Setting to -1 sets to max sequence length.
@@ -663,6 +637,14 @@ export interface ChatCompletionCreateParamsBase {
    * necessary. Setting to -1 sets to max sequence length.
    */
   min_tokens?: number | null;
+
+  /**
+   * Body param: Model-specific parameters. The accepted keys and values are defined
+   * per-model by the model's `model_parameters` schema. The schema is used
+   * downstream to validate the contents of this field. Unsupported for models that
+   * declare none.
+   */
+  model_parameters?: { [key: string]: unknown } | null;
 
   /**
    * Body param: How many chat completion choices to generate for each input message.
@@ -692,12 +674,20 @@ export interface ChatCompletionCreateParamsBase {
   presence_penalty?: number | null;
 
   /**
-   * Body param: Constrains effort on reasoning for reasoning models. Currently
-   * supported values are low, medium, and high. Reducing reasoning effort can result
-   * in faster responses and fewer tokens used on reasoning in a response. If set to
-   * None, the model will use the default reasoning effort for the model.
+   * Body param: An optional opaque string. The requests with the same prompt cache
+   * key would highly likely share the same prompt prefixes. Examples would be IDs of
+   * chat conversations, IDs of users, the hashes of system prompts, etc.
    */
-  reasoning_effort?: 'low' | 'medium' | 'high' | null;
+  prompt_cache_key?: string | null;
+
+  /**
+   * Body param: Constrains effort on reasoning for reasoning models. Currently
+   * supported values are none, low, medium, and high. Reducing reasoning effort can
+   * result in faster responses and fewer tokens used on reasoning in a response. If
+   * set to None, the model will use the default reasoning effort for the model. If
+   * set to 'none', the model will not reason
+   */
+  reasoning_effort?: 'none' | 'low' | 'medium' | 'high' | null;
 
   /**
    * Body param: Determines how reasoning is returned in the response. If set to
@@ -750,7 +740,7 @@ export interface ChatCompletionCreateParamsBase {
   stream_options?: ChatCompletionCreateParams.StreamOptions | null;
 
   /**
-   * Body param: What sampling temperature to use, between 0 and 1.5. Higher values
+   * Body param: What sampling temperature to use, between 0 and 2. Higher values
    * like 0.8 will make the output more random, while lower values like 0.2 will make
    * it more focused and deterministic. We generally recommend altering this or
    * `top_p` but not both.
@@ -758,7 +748,7 @@ export interface ChatCompletionCreateParamsBase {
   temperature?: number | null;
 
   /**
-   * Body param: A choice object.
+   * Body param: A tool choice object.
    */
   tool_choice?: 'none' | 'auto' | 'required' | ChatCompletionCreateParams.ChoiceObject | null;
 
@@ -821,8 +811,6 @@ export namespace ChatCompletionCreateParams {
     name?: string | null;
 
     role?: 'system';
-
-    [k: string]: unknown;
   }
 
   export namespace SystemMessageRequest {
@@ -833,8 +821,6 @@ export namespace ChatCompletionCreateParams {
       text: string;
 
       type: 'text';
-
-      [k: string]: unknown;
     }
 
     /**
@@ -847,8 +833,6 @@ export namespace ChatCompletionCreateParams {
       image_url: ImageURLContent.ImageURL;
 
       type: 'image_url';
-
-      [k: string]: unknown;
     }
 
     export namespace ImageURLContent {
@@ -859,8 +843,6 @@ export namespace ChatCompletionCreateParams {
         url: string;
 
         detail?: string | null;
-
-        [k: string]: unknown;
       }
     }
 
@@ -871,8 +853,67 @@ export namespace ChatCompletionCreateParams {
       image: string;
 
       type: 'image';
+    }
+  }
 
-      [k: string]: unknown;
+  /**
+   * A message request from the developer: Currently only for openai models, where
+   * they are functionally the same as system
+   */
+  export interface DeveloperMessageRequest {
+    content:
+      | string
+      | Array<
+          | DeveloperMessageRequest.TextContent
+          | DeveloperMessageRequest.ImageURLContent
+          | DeveloperMessageRequest.ImageContent
+        >;
+
+    name?: string | null;
+
+    role?: 'developer';
+  }
+
+  export namespace DeveloperMessageRequest {
+    /**
+     * Text content for a message.
+     */
+    export interface TextContent {
+      text: string;
+
+      type: 'text';
+    }
+
+    /**
+     * Image URL content for a message.
+     */
+    export interface ImageURLContent {
+      /**
+       * Image URL
+       */
+      image_url: ImageURLContent.ImageURL;
+
+      type: 'image_url';
+    }
+
+    export namespace ImageURLContent {
+      /**
+       * Image URL
+       */
+      export interface ImageURL {
+        url: string;
+
+        detail?: string | null;
+      }
+    }
+
+    /**
+     * Image URL content for a message.
+     */
+    export interface ImageContent {
+      image: string;
+
+      type: 'image';
     }
   }
 
@@ -891,8 +932,6 @@ export namespace ChatCompletionCreateParams {
     name?: string | null;
 
     role?: 'user';
-
-    [k: string]: unknown;
   }
 
   export namespace UserMessageRequest {
@@ -903,8 +942,6 @@ export namespace ChatCompletionCreateParams {
       text: string;
 
       type: 'text';
-
-      [k: string]: unknown;
     }
 
     /**
@@ -917,8 +954,6 @@ export namespace ChatCompletionCreateParams {
       image_url: ImageURLContent.ImageURL;
 
       type: 'image_url';
-
-      [k: string]: unknown;
     }
 
     export namespace ImageURLContent {
@@ -929,8 +964,6 @@ export namespace ChatCompletionCreateParams {
         url: string;
 
         detail?: string | null;
-
-        [k: string]: unknown;
       }
     }
 
@@ -941,8 +974,6 @@ export namespace ChatCompletionCreateParams {
       image: string;
 
       type: 'image';
-
-      [k: string]: unknown;
     }
   }
 
@@ -959,8 +990,6 @@ export namespace ChatCompletionCreateParams {
     role?: 'assistant';
 
     tool_calls?: Array<AssistantMessageRequest.ToolCall> | null;
-
-    [k: string]: unknown;
   }
 
   export namespace AssistantMessageRequest {
@@ -971,8 +1000,6 @@ export namespace ChatCompletionCreateParams {
       text: string;
 
       type: 'text';
-
-      [k: string]: unknown;
     }
 
     /**
@@ -988,7 +1015,7 @@ export namespace ChatCompletionCreateParams {
 
       type: 'function';
 
-      [k: string]: unknown;
+      index?: number | null;
     }
 
     export namespace ToolCall {
@@ -999,8 +1026,6 @@ export namespace ChatCompletionCreateParams {
         arguments: string;
 
         name: string;
-
-        [k: string]: unknown;
       }
     }
   }
@@ -1016,8 +1041,6 @@ export namespace ChatCompletionCreateParams {
     name?: string | null;
 
     role?: 'tool';
-
-    [k: string]: unknown;
   }
 
   export namespace ToolMessageRequest {
@@ -1028,8 +1051,6 @@ export namespace ChatCompletionCreateParams {
       text: string;
 
       type: 'text';
-
-      [k: string]: unknown;
     }
   }
 
@@ -1042,8 +1063,6 @@ export namespace ChatCompletionCreateParams {
     content: string | Array<Prediction.UnionMember1>;
 
     type: 'content';
-
-    [k: string]: unknown;
   }
 
   export namespace Prediction {
@@ -1054,8 +1073,6 @@ export namespace ChatCompletionCreateParams {
       text: string;
 
       type: 'text';
-
-      [k: string]: unknown;
     }
   }
 
@@ -1064,8 +1081,6 @@ export namespace ChatCompletionCreateParams {
    */
   export interface ResponseFormatText {
     type: 'text';
-
-    [k: string]: unknown;
   }
 
   /**
@@ -1073,8 +1088,6 @@ export namespace ChatCompletionCreateParams {
    */
   export interface ResponseFormatJsonObject {
     type: 'json_object';
-
-    [k: string]: unknown;
   }
 
   /**
@@ -1087,8 +1100,6 @@ export namespace ChatCompletionCreateParams {
     json_schema: ResponseFormatJsonSchema.JsonSchema;
 
     type: 'json_schema';
-
-    [k: string]: unknown;
   }
 
   export namespace ResponseFormatJsonSchema {
@@ -1100,11 +1111,9 @@ export namespace ChatCompletionCreateParams {
 
       description?: string | null;
 
-      schema?: unknown | null;
+      schema?: { [key: string]: unknown } | null;
 
       strict?: boolean | null;
-
-      [k: string]: unknown;
     }
   }
 
@@ -1113,8 +1122,6 @@ export namespace ChatCompletionCreateParams {
    */
   export interface StreamOptions {
     include_usage?: boolean | null;
-
-    [k: string]: unknown;
   }
 
   /**
@@ -1127,8 +1134,6 @@ export namespace ChatCompletionCreateParams {
     function: ChoiceObject.Function;
 
     type: string;
-
-    [k: string]: unknown;
   }
 
   export namespace ChoiceObject {
@@ -1137,8 +1142,6 @@ export namespace ChatCompletionCreateParams {
      */
     export interface Function {
       name: string;
-
-      [k: string]: unknown;
     }
   }
 
@@ -1152,8 +1155,6 @@ export namespace ChatCompletionCreateParams {
     function: Tool.Function;
 
     type: string;
-
-    [k: string]: unknown;
   }
 
   export namespace Tool {
@@ -1170,11 +1171,9 @@ export namespace ChatCompletionCreateParams {
        * flexible to accommodate any JSON Schema. The key-value pairs you provide will
        * define the parameters.
        */
-      parameters?: unknown | null;
+      parameters?: { [key: string]: unknown } | null;
 
       strict?: boolean;
-
-      [k: string]: unknown;
     }
   }
 }

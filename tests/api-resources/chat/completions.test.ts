@@ -10,7 +10,16 @@ const client = new Cerebras({
 
 describe('resource completions', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.chat.completions.create({ model: 'model' });
+    const responsePromise = client.chat.completions.create({
+      messages: [
+        {
+          content: 'You are a helpful assistant running on a CS-3 hardware at Cerebras Systems',
+          role: 'system',
+        },
+        { content: 'What is Generative AI?', role: 'user' },
+      ],
+      model: 'gpt-oss-120b',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,28 +31,35 @@ describe('resource completions', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.chat.completions.create({
-      model: 'model',
+      messages: [
+        {
+          content: 'You are a helpful assistant running on a CS-3 hardware at Cerebras Systems',
+          name: 'name',
+          role: 'system',
+        },
+        {
+          content: 'What is Generative AI?',
+          name: 'name',
+          role: 'user',
+        },
+      ],
+      model: 'gpt-oss-120b',
       clear_thinking: true,
       disable_reasoning: true,
       frequency_penalty: -2,
       logit_bias: { foo: 0 },
       logprobs: true,
-      max_completion_tokens: 0,
-      max_tokens: 0,
-      messages: [
-        {
-          content: 'string',
-          name: 'name',
-          role: 'system',
-        },
-      ],
-      min_completion_tokens: 0,
-      min_tokens: 0,
-      n: 0,
+      max_completion_tokens: -1,
+      max_tokens: -1,
+      min_completion_tokens: -1,
+      min_tokens: 1000,
+      model_parameters: { foo: 'bar' },
+      n: 1,
       parallel_tool_calls: true,
       prediction: { content: 'string', type: 'content' },
       presence_penalty: -2,
-      reasoning_effort: 'low',
+      prompt_cache_key: 'prompt_cache_key',
+      reasoning_effort: 'none',
       reasoning_format: 'none',
       response_format: { type: 'text' },
       seed: 0,
@@ -58,14 +74,14 @@ describe('resource completions', () => {
           function: {
             name: 'name',
             description: 'description',
-            parameters: {},
+            parameters: { foo: 'bar' },
             strict: true,
           },
           type: 'type',
         },
       ],
       top_logprobs: 0,
-      top_p: 0,
+      top_p: 1,
       user: 'user',
       'CF-RAY': 'CF-RAY',
       'X-Amz-Cf-Id': 'X-Amz-Cf-Id',

@@ -11,8 +11,8 @@ export class Completions extends APIResource {
    * @example
    * ```ts
    * const completion = await client.completions.create({
-   *   model: 'model',
-   *   prompt: 'string',
+   *   model: 'gpt-oss-120b',
+   *   prompt: 'Micheael Jordan is born in ',
    * });
    * ```
    */
@@ -66,28 +66,27 @@ export namespace Completion {
 
     system_fingerprint: string;
 
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
     time_info?: CompletionResponse.TimeInfo | null;
 
     usage?: CompletionResponse.Usage | null;
-
-    [k: string]: unknown;
   }
 
   export namespace CompletionResponse {
     export interface Choice {
       index: number;
 
-      finish_reason?: 'stop' | 'length' | 'content_filter' | null;
+      finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls' | null;
 
       logprobs?: Choice.Logprobs | null;
-
-      reasoning_logprobs?: Choice.ReasoningLogprobs | null;
 
       text?: string | null;
 
       tokens?: Array<number> | null;
-
-      [k: string]: unknown;
     }
 
     export namespace Choice {
@@ -99,79 +98,24 @@ export namespace Completion {
         tokens?: Array<string> | null;
 
         top_logprobs?: Array<{ [key: string]: number }> | null;
-
-        [k: string]: unknown;
-      }
-
-      export interface ReasoningLogprobs {
-        content: Array<ReasoningLogprobs.Content> | null;
-
-        refusal: Array<ReasoningLogprobs.Refusal> | null;
-
-        [k: string]: unknown;
-      }
-
-      export namespace ReasoningLogprobs {
-        export interface Content {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Array<Content.TopLogprob>;
-
-          bytes?: Array<number> | null;
-
-          [k: string]: unknown;
-        }
-
-        export namespace Content {
-          export interface TopLogprob {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-
-            [k: string]: unknown;
-          }
-        }
-
-        export interface Refusal {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Array<Refusal.TopLogprob>;
-
-          bytes?: Array<number> | null;
-
-          [k: string]: unknown;
-        }
-
-        export namespace Refusal {
-          export interface TopLogprob {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-
-            [k: string]: unknown;
-          }
-        }
       }
     }
 
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
     export interface TimeInfo {
-      completion_time?: number;
+      completion_time?: number | null;
 
-      prompt_time?: number;
+      created?: number | null;
 
-      queue_time?: number;
+      prompt_time?: number | null;
 
-      total_time?: number;
+      queue_time?: number | null;
 
-      [k: string]: unknown;
+      total_time?: number | null;
     }
 
     export interface Usage {
@@ -179,28 +123,26 @@ export namespace Completion {
 
       completion_tokens_details?: Usage.CompletionTokensDetails | null;
 
+      image_tokens?: number | null;
+
       prompt_tokens?: number;
 
       prompt_tokens_details?: Usage.PromptTokensDetails | null;
 
       total_tokens?: number;
-
-      [k: string]: unknown;
     }
 
     export namespace Usage {
       export interface CompletionTokensDetails {
         accepted_prediction_tokens?: number | null;
 
-        rejected_prediction_tokens?: number | null;
+        reasoning_tokens?: number | null;
 
-        [k: string]: unknown;
+        rejected_prediction_tokens?: number | null;
       }
 
       export interface PromptTokensDetails {
         cached_tokens?: number;
-
-        [k: string]: unknown;
       }
     }
   }
@@ -220,9 +162,14 @@ export namespace Completion {
 
     service_tier?: string | null;
 
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
     time_info?: CompletionChunkResponse.TimeInfo | null;
 
-    usage?: CompletionChunkResponse.Usage | null;
+    usage?: { [key: string]: unknown } | null;
 
     [k: string]: unknown;
   }
@@ -236,8 +183,6 @@ export namespace Completion {
       finish_reason?: 'stop' | 'length' | 'content_filter' | 'tool_calls' | null;
 
       logprobs?: Choice.Logprobs | null;
-
-      reasoning_logprobs?: Choice.ReasoningLogprobs | null;
 
       text?: string | null;
 
@@ -305,106 +250,23 @@ export namespace Completion {
 
         [k: string]: unknown;
       }
-
-      export interface ReasoningLogprobs {
-        content: Array<ReasoningLogprobs.Content> | null;
-
-        refusal: Array<ReasoningLogprobs.Refusal> | null;
-
-        [k: string]: unknown;
-      }
-
-      export namespace ReasoningLogprobs {
-        export interface Content {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Array<Content.TopLogprob>;
-
-          bytes?: Array<number> | null;
-
-          [k: string]: unknown;
-        }
-
-        export namespace Content {
-          export interface TopLogprob {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-
-            [k: string]: unknown;
-          }
-        }
-
-        export interface Refusal {
-          token: string;
-
-          logprob: number;
-
-          top_logprobs: Array<Refusal.TopLogprob>;
-
-          bytes?: Array<number> | null;
-
-          [k: string]: unknown;
-        }
-
-        export namespace Refusal {
-          export interface TopLogprob {
-            token: string;
-
-            logprob: number;
-
-            bytes?: Array<number> | null;
-
-            [k: string]: unknown;
-          }
-        }
-      }
     }
 
+    /**
+     * Time information for different phases of request processing.
+     *
+     * All times are measured in seconds.
+     */
     export interface TimeInfo {
-      completion_time?: number;
+      completion_time?: number | null;
 
-      prompt_time?: number;
+      prompt_time?: number | null;
 
-      queue_time?: number;
+      queue_time?: number | null;
 
-      total_time?: number;
-
-      [k: string]: unknown;
-    }
-
-    export interface Usage {
-      completion_tokens?: number;
-
-      completion_tokens_details?: Usage.CompletionTokensDetails | null;
-
-      prompt_tokens?: number;
-
-      prompt_tokens_details?: Usage.PromptTokensDetails | null;
-
-      total_tokens?: number;
+      total_time?: number | null;
 
       [k: string]: unknown;
-    }
-
-    export namespace Usage {
-      export interface CompletionTokensDetails {
-        accepted_prediction_tokens?: number | null;
-
-        rejected_prediction_tokens?: number | null;
-
-        [k: string]: unknown;
-      }
-
-      export interface PromptTokensDetails {
-        cached_tokens?: number;
-
-        [k: string]: unknown;
-      }
     }
   }
 
@@ -412,8 +274,6 @@ export namespace Completion {
     error: ErrorChunkResponse.Error;
 
     status_code: number;
-
-    [k: string]: unknown;
   }
 
   export namespace ErrorChunkResponse {
@@ -427,8 +287,6 @@ export namespace Completion {
       param?: string | null;
 
       type?: string | null;
-
-      [k: string]: unknown;
     }
   }
 }
@@ -536,13 +394,20 @@ export interface CompletionCreateParamsBase {
   presence_penalty?: number | null;
 
   /**
-   * Body param: Determines how reasoning is returned in the response. If set to
-   * `parsed`, the reasoning will be returned in the `reasoning` field of the
+   * Body param: An optional opaque string. The requests with the same prompt cache
+   * key would highly likely share the same prompt prefixes. Examples would be IDs of
+   * chat conversations, IDs of users, the hashes of system prompts, etc.
+   */
+  prompt_cache_key?: string | null;
+
+  /**
+   * @deprecated Body param: Determines how reasoning is returned in the response. If
+   * set to `parsed`, the reasoning will be returned in the `reasoning` field of the
    * response message as a string. If set to `raw`, the reasoning will be returned in
    * the `content` field of the response message with special tokens. If set to
    * `hidden`, the reasoning will not be returned in the response.
    */
-  reasoning_format?: 'none' | 'parsed' | 'text_parsed' | 'raw' | 'hidden';
+  reasoning_format?: 'none' | 'parsed' | 'text_parsed' | 'raw' | 'hidden' | null;
 
   /**
    * Body param: Return raw tokens instead of text
@@ -579,7 +444,7 @@ export interface CompletionCreateParamsBase {
   suffix?: string | null;
 
   /**
-   * Body param: What sampling temperature to use, between 0 and 1.5. Higher values
+   * Body param: What sampling temperature to use, between 0 and 2. Higher values
    * like 0.8 will make the output more random, while lower values like 0.2 will make
    * it more focused and deterministic. We generally recommend altering this or
    * `top_p` but not both.
@@ -623,8 +488,6 @@ export namespace CompletionCreateParams {
    */
   export interface StreamOptions {
     include_usage?: boolean | null;
-
-    [k: string]: unknown;
   }
 }
 

@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.91.0 (2026-07-08)
+
+Full Changelog: [v1.79.0...v1.91.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.79.0...v1.91.0)
+
+### Features
+
+* **api:** manual updates ([2b5e001](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/2b5e001d055a02e13518e4e35e20d613f53805e9))
+* **api:** manual updates ([c86ef1b](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c86ef1bd09c717cb40e1010083b0b9f5ff0aa7fa))
+* **api:** manual updates ([99305a7](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/99305a77f563b25b2bee277fa715a52072455635))
+* support setting headers via env ([da8d09f](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/da8d09fe377d9b0026c78587766f08021a03b403))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([3970abe](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/3970abecb46437eb5b2460493cf61ccbcbe15af0))
+* **tests:** bump steady to v0.22.1 ([4bfb140](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/4bfb14043e21bb2dd461c5a091fdf613a183c524))
+
+
+### Documentation
+
+* update examples ([c130186](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/commit/c1301864eb4e1cacf0534fc61b1a70defc2353a5))
+
 ## 1.79.0 (2026-04-09)
 
 Full Changelog: [v1.64.1...v1.79.0](https://github.com/Cerebras/cerebras-cloud-sdk-node-private/compare/v1.64.1...v1.79.0)
