@@ -265,3 +265,5 @@ export {
 } from './error';
 
 export default Cerebras;
+
+export { runAgent, run, type AgentTurnMessage, type RunAgentOptions, type AgentRunner, type RunAgentResult } from './agent';
