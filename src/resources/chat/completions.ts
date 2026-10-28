@@ -681,13 +681,14 @@ export interface ChatCompletionCreateParamsBase {
   prompt_cache_key?: string | null;
 
   /**
-   * Body param: Constrains effort on reasoning for reasoning models. Currently
-   * supported values are none, low, medium, and high. Reducing reasoning effort can
-   * result in faster responses and fewer tokens used on reasoning in a response. If
-   * set to None, the model will use the default reasoning effort for the model. If
-   * set to 'none', the model will not reason
+   * Body param: Constrains effort on reasoning for reasoning models. Available
+   * values are none, low, medium, high, and max. Model support varies. Reducing
+   * reasoning effort can result in faster responses and fewer tokens used on
+   * reasoning in a response. If omitted or set to null, the model will use its
+   * default reasoning effort. Models that support 'none' use it to disable
+   * reasoning.
    */
-  reasoning_effort?: 'none' | 'low' | 'medium' | 'high' | null;
+  reasoning_effort?: 'none' | 'low' | 'medium' | 'high' | 'max' | null;
 
   /**
    * Body param: Determines how reasoning is returned in the response. If set to

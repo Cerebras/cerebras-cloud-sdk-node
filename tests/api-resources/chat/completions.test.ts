@@ -59,7 +59,7 @@ describe('resource completions', () => {
       prediction: { content: 'string', type: 'content' },
       presence_penalty: -2,
       prompt_cache_key: 'prompt_cache_key',
-      reasoning_effort: 'none',
+      reasoning_effort: 'max',
       reasoning_format: 'none',
       response_format: { type: 'text' },
       seed: 0,
